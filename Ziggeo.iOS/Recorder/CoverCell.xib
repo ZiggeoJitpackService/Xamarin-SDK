@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="166" id="cxk-wN-pdQ" customClass="CoverCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="165"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="185">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="166"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="185" firstAttribute="trailing" secondItem="YTl-1W-gDM" secondAttribute="trailing" id="218"/>
+                    <constraint firstItem="185" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" id="227"/>
+                    <constraint firstItem="185" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" id="236"/>
+                    <constraint firstItem="185" firstAttribute="bottom" secondItem="YTl-1W-gDM" secondAttribute="bottom" id="245"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="CoverImage" destination="185" id="name-outlet-185"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>
