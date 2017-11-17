@@ -8,12 +8,12 @@ namespace Ziggeo
 {
     public class ZiggeoVideos
     {
-        public ZiggeoVideos(ZiggeoApplication application)
+        public ZiggeoVideos(ZiggeoApplicationBase application)
         {
             this.Application = application;
         }
 
-        protected ZiggeoApplication Application
+        protected ZiggeoApplicationBase Application
         {
             get;
             private set;

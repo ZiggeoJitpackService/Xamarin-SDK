@@ -37,7 +37,7 @@
                         <constraint firstAttribute="width" constant="72" id="1005"/>
                         <constraint firstAttribute="height" constant="72" id="1007"/>
                     </constraints>
-                    <state key="normal" image="Delete-50.png">
+                    <state key="normal" image="Delete-50">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -50,7 +50,7 @@
                         <constraint firstAttribute="width" constant="72" id="1561"/>
                         <constraint firstAttribute="height" constant="72" id="1562"/>
                     </constraints>
-                    <state key="normal" image="Record-100.png">
+                    <state key="normal" image="Record-100">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -63,7 +63,7 @@
                         <constraint firstAttribute="width" constant="72" id="1591"/>
                         <constraint firstAttribute="height" constant="72" id="1592"/>
                     </constraints>
-                    <state key="normal" image="SwitchCamera-50.png">
+                    <state key="normal" image="SwitchCamera-50">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -94,11 +94,18 @@
         <image name="Delete-50.png" width="50" height="50"/>
         <image name="Record-100.png" width="100" height="100"/>
         <image name="SwitchCamera-50.png" width="50" height="50"/>
-        <image name="DeleteAsset" width="50" height="50"/>
         <image name="Pause-50.png" width="50" height="50"/>
         <image name="Play-50.png" width="50" height="50"/>
         <image name="Stop-100.png" width="100" height="100"/>
         <image name="trash-50.png" width="50" height="50"/>
         <image name="upload-50.png" width="50" height="50"/>
+        <image name="Delete-50" width="50" height="50"/>
+        <image name="Pause-50" width="50" height="50"/>
+        <image name="Play-50" width="50" height="50"/>
+        <image name="Record-100" width="100" height="100"/>
+        <image name="Stop-100" width="100" height="100"/>
+        <image name="SwitchCamera-50" width="50" height="50"/>
+        <image name="Trash-50" width="50" height="50"/>
+        <image name="Upload-50" width="50" height="50"/>
     </resources>
 </document>

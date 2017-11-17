@@ -16,12 +16,12 @@ namespace Ziggeo
             PUT
         }
 
-        public ZiggeoConnect(ZiggeoApplication application)
+        public ZiggeoConnect(ZiggeoApplicationBase application)
         {
             this.Application = application;
         }
 
-        protected ZiggeoApplication Application
+        protected ZiggeoApplicationBase Application
         {
             get;
             private set;
