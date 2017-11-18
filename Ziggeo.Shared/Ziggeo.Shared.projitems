@@ -9,9 +9,10 @@
     <Import_RootNamespace>Ziggeo</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)ZiggeoApplication.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IZiggeoApplication.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ZiggeoConnect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ZiggeoConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ZiggeoVideos.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IZiggeoRecorder.cs" />
   </ItemGroup>
 </Project>

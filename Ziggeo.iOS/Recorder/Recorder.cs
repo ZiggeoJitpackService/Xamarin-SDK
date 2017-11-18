@@ -5,14 +5,25 @@ using UIKit;
 using Foundation;
 using CoreFoundation;
 using AVFoundation;
+using Newtonsoft.Json.Linq;
 
 namespace Ziggeo
 {
-    public partial class Recorder : UIViewController
+    public partial class Recorder : UIViewController, IZiggeoRecorder
     {
-        public Recorder() : base("Recorder", null)
+        public delegate void VideoUploadCompleteDelegate(string token);
+        public event VideoUploadCompleteDelegate OnVideoUploadComplete = null;
+
+        public delegate void VideoRecordingCanceledDelegate();
+        public event VideoRecordingCanceledDelegate OnVideoRecordingCanceled = null;
+
+        public delegate void ZiggeoRecorderErrorDelegate(Exception ex);
+        public event ZiggeoRecorderErrorDelegate OnRecorderError = null;
+
+        public Recorder(IZiggeoApplication ziggeoApplication) : base("Recorder", null)
         {
 			this.BackgroundRecordingID = UIApplication.BackgroundTaskInvalid;
+            this.ZiggeoApplication = ziggeoApplication;
 		}
 
         private CaptureSession CaptureSession
@@ -26,6 +37,12 @@ namespace Ziggeo
 			get;
 			private set;
 		}
+
+        public IZiggeoApplication ZiggeoApplication
+        {
+            get;
+            private set;
+        }
 
         private UITapGestureRecognizer FocusTapGesture
         {
@@ -59,6 +76,7 @@ namespace Ziggeo
             try
             {
                 CaptureSession = new CaptureSession(PreviewView);
+                CaptureSession.CaptureDevicePosition = (VideoDevice == ZiggeoVideoDevice.Front ? AVCaptureDevicePosition.Front : AVCaptureDevicePosition.Back);
                 CaptureSession.ConfigurationFailed += (session) =>
                 {
                     UpdateUIFailedState();
@@ -86,6 +104,7 @@ namespace Ziggeo
                 {
                     UpdateUIFailedState();
                     Alert("error", error.Domain);
+                    OnRecorderError?.Invoke(new Exception(error.Description));
                 };
                 CaptureSession.RecordingFinished += (session, outputFile) => 
                 {
@@ -109,6 +128,7 @@ namespace Ziggeo
             {
                 UpdateUIFailedState();
                 Alert("error", ex.ToString());
+                OnRecorderError?.Invoke(ex);
             }
         }
 
@@ -128,19 +148,25 @@ namespace Ziggeo
                     Console.WriteLine("converting complete");
 
                     Console.WriteLine("uploading...");
-                    ZiggeoApplication ziggeo = new ZiggeoApplication("4f0190ef04f6c877daae7e8aa20d54c6");
-                    await ziggeo.Videos.UploadVideo(convertedVideo, null);
-                    Console.WriteLine("uploading done");
+                    var video = await ZiggeoApplication.Videos.UploadVideo(convertedVideo, AdditionalParameters);
+                    string videoToken = video["video"]["token"].Value<string>();
+                    Console.WriteLine("uploading done: {0}", videoToken);
+                    OnVideoUploadComplete?.Invoke(videoToken);
                 }
                 catch(Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
+                    OnRecorderError?.Invoke(ex);
                 }
             };
             preview.Canceled += (processor) => {
                 Console.WriteLine("processing canceled, retaking video");
+                OnVideoRecordingCanceled?.Invoke();
             };
-            preview.NextProcessor = new CoverSelector(item);
+            if (CoverSelectorEnabled)
+            {
+                preview.NextProcessor = new CoverSelector(item);
+            }
             ShowViewController(preview, this);
         }
 
@@ -196,7 +222,7 @@ namespace Ziggeo
 			{
 				cancelButton.Enabled = true;
 				recordButton.Enabled = true;
-				cameraButton.Enabled = true;
+                cameraButton.Enabled = CameraFlipButtonVisible;
 			});
 		}
 
@@ -227,7 +253,7 @@ namespace Ziggeo
 			{
 				cancelButton.Enabled = true;
 				recordButton.Enabled = true;
-                cameraButton.Enabled = true;
+                cameraButton.Enabled = CameraFlipButtonVisible;
 				recordButton.ImageView.Image = ImageLoader.GetImageFromResource("Record-100");
 			});
 	    }
@@ -235,6 +261,7 @@ namespace Ziggeo
 
         public void CancelAndClose()
         {
+            OnVideoRecordingCanceled?.Invoke();
             this.DismissViewController(true, null);
 		}
 
@@ -252,6 +279,7 @@ namespace Ziggeo
             {
                 Alert("error", ex.Message);
                 UpdateUIFailedState();
+                OnRecorderError?.Invoke(ex);
             }
         }
 
@@ -265,6 +293,30 @@ namespace Ziggeo
 
         private string RawFileName
         {
+            get;
+            set;
+        }
+
+        public Dictionary<string, string> AdditionalParameters 
+        { 
+            get;
+            set; 
+        }
+
+        public bool CameraFlipButtonVisible 
+        { 
+            get;
+            set;
+        }
+
+        public ZiggeoVideoDevice VideoDevice 
+        { 
+            get;
+            set;
+        }
+
+        public double MaxRecordingDurationSeconds 
+        { 
             get;
             set;
         }
@@ -351,6 +403,23 @@ namespace Ziggeo
         partial void CameraButton_TouchUpInside(UIButton sender)
         {
             SwitchCamera();
+        }
+
+        public Task<string> Record()
+        {
+            TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
+            try
+            {
+                OnRecorderError += (Exception ex) => throw ex;
+                OnVideoRecordingCanceled += () => tcs.TrySetResult(null);
+                OnVideoUploadComplete += (string token) => tcs.TrySetResult(token);
+                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(this, true, null);
+            }
+            catch(Exception ex)
+            {
+                tcs.TrySetException(ex);
+            }
+            return tcs.Task;
         }
     }
 }
