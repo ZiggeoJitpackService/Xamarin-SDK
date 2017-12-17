@@ -54,9 +54,9 @@ namespace Ziggeo
             return await Application.Connection.RequestJSON(ZiggeoConnect.Method.POST, "/videos/" + token_or_key + "", data);
         }
 
-        public async Task<JObject> Delete(string token_or_key)
+        public async Task Delete(string token_or_key)
         {
-            return await Application.Connection.RequestJSON(ZiggeoConnect.Method.DELETE, "/videos/" + token_or_key + "", null);
+            await Application.Connection.RequestString(ZiggeoConnect.Method.DELETE, "/videos/" + token_or_key + "", null);
         }
 
         public async Task<JObject> CreateEmptyVideo(Dictionary<string, string> data)

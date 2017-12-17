@@ -410,7 +410,7 @@ namespace Ziggeo
             TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
             try
             {
-                OnRecorderError += (Exception ex) => throw ex;
+                OnRecorderError += (Exception ex) => tcs.TrySetException(ex);
                 OnVideoRecordingCanceled += () => tcs.TrySetResult(null);
                 OnVideoUploadComplete += (string token) => tcs.TrySetResult(token);
                 UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(this, true, null);
