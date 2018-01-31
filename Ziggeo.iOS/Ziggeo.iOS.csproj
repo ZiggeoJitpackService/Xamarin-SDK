@@ -74,6 +74,10 @@
     <Compile Include="Recorder\CoverGenerator.cs" />
     <Compile Include="Recorder\VideoConverter.cs" />
     <Compile Include="ZiggeoApplication.cs" />
+    <Compile Include="Recorder\Player.cs" />
+    <Compile Include="Recorder\Player.designer.cs">
+      <DependentUpon>Player.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -95,6 +99,7 @@
     <InterfaceDefinition Include="Recorder\CoverSelector.xib" />
     <InterfaceDefinition Include="Recorder\PreviewAndUpload.xib" />
     <InterfaceDefinition Include="Recorder\Recorder.xib" />
+    <InterfaceDefinition Include="Recorder\Player.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Delete-50.png">

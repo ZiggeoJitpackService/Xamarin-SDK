@@ -14,5 +14,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)ZiggeoConfig.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ZiggeoVideos.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IZiggeoRecorder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IZiggeoPlayer.cs" />
   </ItemGroup>
 </Project>
