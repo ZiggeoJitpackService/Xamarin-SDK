@@ -26,6 +26,12 @@ project.xcworkspace
 
 # Visual Studio
 *.userprefs
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.vs/
+UpgradeLog*.htm
 packages/
 *.dll
 *.exe
