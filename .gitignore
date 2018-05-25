@@ -36,12 +36,10 @@ packages/
 *.dll
 *.exe
 *.pdb
-Ziggeo.Android/bin/
 Ziggeo.Android/obj/
-Ziggeo.iOS/bin/
 Ziggeo.iOS/obj/
 Ziggeo.NuGet/obj/
-      
+bin/      
 
 # Android/IntelliJ
 #
@@ -55,4 +53,3 @@ local.properties
 buck-out/
 \.buckd/
 *.keystore
-      
