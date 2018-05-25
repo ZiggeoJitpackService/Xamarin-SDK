@@ -1,0 +1,13 @@
+﻿<metadata>
+  <!--
+  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+  
+  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
+  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
+  -->
+
+  <attr path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/class[@name='AspectRatio']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.ziggeo.androidsdk.widgets.cameraview.AspectRatio']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/class[@name='Size']/method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.ziggeo.androidsdk.widgets.cameraview.Size']]/parameter[1]" name="managedType">Java.Lang.Object</attr>
+
+</metadata>

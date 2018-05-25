@@ -1,0 +1,33 @@
+Binding for:
+com.github.ZiggeoJitpackService:Android-SDK:0.73.1
+
+Dependencies:
+
+Android-SDK-0.73.1.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.github.ZiggeoJitpackService\Android-SDK\0.73.1\9a8eb5957d021ade3cdac27fa96d74b88b6236aa\Android-SDK-0.73.1.aar
+	common-1.1.0.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\android.arch.core\common\1.1.0\8007981f7d7540d89cd18471b8e5dcd2b4f99167\common-1.1.0.jar
+	runtime-1.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\android.arch.core\runtime\1.1.0\dabc0064464782c5014c7e8be5e93bd76466c41\runtime-1.1.0.aar
+	common-1.1.0.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\common\1.1.0\edf3f7bfb84a7521d0599efa3b0113a0ee90f85\common-1.1.0.jar
+	livedata-core-1.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\livedata-core\1.1.0\d6827a080a137fa345a0ed4a438e14e5633e0032\livedata-core-1.1.0.aar
+	runtime-1.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\runtime\1.1.0\95428e5f6bf6875a6a1125d2157c3836a1a837f5\runtime-1.1.0.aar
+	viewmodel-1.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\android.arch.lifecycle\viewmodel\1.1.0\74ee369b874da61b5b81bebd7b8df0c2577309c8\viewmodel-1.1.0.aar
+	animated-vector-drawable-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\animated-vector-drawable\27.1.0\de8e39a293c7ae0bdb75306d60b40aa1a4e88d05\animated-vector-drawable-27.1.0.aar
+	appcompat-v7-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\appcompat-v7\27.1.0\41d5bc28ca11447234a8b9ab5fb133eaa3cc7fa5\appcompat-v7-27.1.0.aar
+	support-annotations-27.1.0.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-annotations\27.1.0\39ded76b5e1ce1c5b2688e1d25cdc20ecee32007\support-annotations-27.1.0.jar
+	support-compat-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-compat\27.1.0\a7eea3cb0c9f9bf5ce0f0899a9bee721ffd191e0\support-compat-27.1.0.aar
+	support-core-ui-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-core-ui\27.1.0\54b6f9853ff5e53174622f3f6f7eb208aacebd56\support-core-ui-27.1.0.aar
+	support-core-utils-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-core-utils\27.1.0\1f21723126baf81f154326bb5f2e901cec82d03b\support-core-utils-27.1.0.aar
+	support-fragment-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-fragment\27.1.0\2db3ef0a4733b8e65977621e161d1529c0020751\support-fragment-27.1.0.aar
+	support-media-compat-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-media-compat\27.1.0\ad75841e0999df3d8e732930d07ba2463cffd997\support-media-compat-27.1.0.aar
+	support-v4-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-v4\27.1.0\7f00bd779a0998074bbb2137e382a2fe2fc14458\support-v4-27.1.0.aar
+	support-vector-drawable-27.1.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.android.support\support-vector-drawable\27.1.0\cbfd5d8020f0cbd4b66a09f8d21e2265a55f529b\support-vector-drawable-27.1.0.aar
+	videocache-2.7.0.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.danikula\videocache\2.7.0\80387f5bcf7dcafd0b63e72da475c0bb9b4b24b4\videocache-2.7.0.aar
+	binaryprefs-1.0.0-BETA-2.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.github.iamironz\binaryprefs\1.0.0-BETA-2\f60e911109e7dc0b1ed3049038374106823fa3f5\binaryprefs-1.0.0-BETA-2.aar
+	gson-2.8.2.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.8.2\3edcfe49d2c6053a70a2a47e4e1c2f94998a49cf\gson-2.8.2.jar
+	logging-interceptor-3.9.0.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\logging-interceptor\3.9.0\3bf7f8d6a20c90ffe9fc3f3c9118193c7720ecf1\logging-interceptor-3.9.0.jar
+	okhttp-3.9.0.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.9.0\1b6c10b5120995a7542c1a31b7828fb8593c8ba\okhttp-3.9.0.jar
+	okio-1.13.0.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar
+	rxandroid-2.0.2.aar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\io.reactivex.rxjava2\rxandroid\2.0.2\84c9e88c62d14beb60c69bf8f6380f988b69561f\rxandroid-2.0.2.aar
+	rxjava-2.1.10.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\io.reactivex.rxjava2\rxjava\2.1.10\fb1adb822ccb4967d48f6546691f67fa96400d97\rxjava-2.1.10.jar
+	reactive-streams-1.0.2.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\org.reactivestreams\reactive-streams\1.0.2\323964c36556eb0e6209f65c1cef72b53b461ab8\reactive-streams-1.0.2.jar
+	slf4j-android-1.7.21.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-android\1.7.21\f4f6a07c00f3996d8db58c85a3d73377b40611eb\slf4j-android-1.7.21.jar
+	slf4j-api-1.7.21.jar,    Path=C:\Users\alexa\.gradle\caches\modules-2\files-2.1\org.slf4j\slf4j-api\1.7.21\139535a69a4239db087de9bab0bee568bf8e0b70\slf4j-api-1.7.21.jar

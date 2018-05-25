@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{897AD8D7-7E4F-4E0A-86EF-F5783A34BE9E}</ProjectGuid>
+    <ProjectTypeGuids>{10368E6C-D01B-4462-8E8B-01FC667A7035};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ZiggeoAndroidSDK</RootNamespace>
+    <AssemblyName>ZiggeoAndroidSDK</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Android-SDK-0.73.1.aar" />
+    <LibraryProjectZip Include="animated-vector-drawable-27.1.0.aar" />
+    <LibraryProjectZip Include="appcompat-v7-27.1.0.aar" />
+    <LibraryProjectZip Include="binaryprefs-1.0.0-BETA-2.aar" />
+    <None Include="Jars\AboutJars.txt" />
+    <None Include="Additions\AboutAdditions.txt" />
+    <LibraryProjectZip Include="runtime-1.1.0.aar" />
+    <LibraryProjectZip Include="livedata-core-1.1.0.aar" />
+    <LibraryProjectZip Include="viewmodel-1.1.0.aar" />
+    <LibraryProjectZip Include="support-compat-27.1.0.aar" />
+    <LibraryProjectZip Include="support-core-ui-27.1.0.aar" />
+    <LibraryProjectZip Include="support-core-utils-27.1.0.aar" />
+    <LibraryProjectZip Include="support-fragment-27.1.0.aar" />
+    <LibraryProjectZip Include="support-media-compat-27.1.0.aar" />
+    <LibraryProjectZip Include="support-v4-27.1.0.aar" />
+    <LibraryProjectZip Include="support-vector-drawable-27.1.0.aar" />
+    <LibraryProjectZip Include="videocache-2.7.0.aar" />
+    <LibraryProjectZip Include="rxandroid-2.0.2.aar" />
+  </ItemGroup>
+  <ItemGroup>
+    <TransformFile Include="Transforms\Metadata.xml">
+      <SubType>Designer</SubType>
+    </TransformFile>
+    <TransformFile Include="Transforms\EnumFields.xml" />
+    <TransformFile Include="Transforms\EnumMethods.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="common-1.1.0.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="support-annotations-27.1.0.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="gson-2.8.2.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="logging-interceptor-3.9.0.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="okhttp-3.9.0.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="okio-1.13.0.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="rxjava-2.1.10.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="reactive-streams-1.0.2.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="slf4j-android-1.7.21.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferenceJar Include="slf4j-api-1.7.21.jar" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GeneratedBindingInfo.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
