@@ -1,5 +1,6 @@
 ﻿using System;
 using Android.Content;
+using Com.Ziggeo.Androidsdk;
 
 namespace Ziggeo
 {
@@ -8,12 +9,13 @@ namespace Ziggeo
         public ZiggeoApplication(string token)
         {
             this.Token = token;
-            Context context = Android.App.Application.Context;
-            this.Videos = new ZiggeoVideosService(token, context);
-            this.Streams = new ZiggeoStreamsService(token, context);
+            this.Ziggeo = new Com.Ziggeo.Androidsdk.Ziggeo(token, Android.App.Application.Context);
+            this.Videos = new ZiggeoVideosService(Ziggeo);
+            this.Streams = new ZiggeoStreamsService(Ziggeo);
         }
 
         public string Token { get; private set; }
+        public IZiggeo Ziggeo { get; private set; }
 
         public IZiggeoVideos Videos { get; private set; }
 

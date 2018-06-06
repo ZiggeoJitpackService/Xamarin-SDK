@@ -4,17 +4,18 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using Android.Content;
+using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Net.Rest.Services.Streams;
 using Java.IO;
 using File = Java.IO.File;
 
 namespace Ziggeo
 {
-    public class ZiggeoStreamsService : BaseService, IZiggeoStreams
+    public class ZiggeoStreamsService : IZiggeoStreams
     {
-        public ZiggeoStreamsService(string token, Context context) : base(token, context)
+        public ZiggeoStreamsService(IZiggeo ziggeo)
         {
-            Streams = Ziggeo.Streams();
+            Streams = ziggeo.Streams();
         }
 
         public IStreamsService Streams { get; private set; }

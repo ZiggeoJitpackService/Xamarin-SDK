@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using Android.Content;
+using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Net.Rest.Services.Videos;
 using Java.IO;
 using Square.OkHttp3;
@@ -11,11 +12,11 @@ using File = Java.IO.File;
 
 namespace Ziggeo
 {
-    public class ZiggeoVideosService : BaseService, IZiggeoVideos
+    public class ZiggeoVideosService : IZiggeoVideos
     {
-        public ZiggeoVideosService(string token, Context context) : base(token, context)
+        public ZiggeoVideosService(IZiggeo ziggeo) 
         {
-            Videos = Ziggeo.Videos();
+            Videos = ziggeo.Videos();
         }
 
         public IVideosService Videos { get; private set; }
