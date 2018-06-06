@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using System.IO;
 
-namespace Ziggeo
+namespace Ziggeo.Services
 {
     public class ZiggeoStreamsService : BaseService, IZiggeoStreams
     {

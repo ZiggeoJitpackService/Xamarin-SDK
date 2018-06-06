@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.Content;
 using Com.Ziggeo.Androidsdk;
+using Ziggeo.Services;
 
 namespace Ziggeo
 {

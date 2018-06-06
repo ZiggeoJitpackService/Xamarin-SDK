@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 using System.IO;
+using System.Threading.Tasks;
+using Newtonsoft.Json.Linq;
 
-namespace Ziggeo
+namespace Ziggeo.Services
 {
     public class ZiggeoVideosService : BaseService, IZiggeoVideos
     {

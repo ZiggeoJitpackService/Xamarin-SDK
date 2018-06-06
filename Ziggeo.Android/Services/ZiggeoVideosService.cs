@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
 using System.IO;
-using Android.Content;
+using System.Threading.Tasks;
 using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Net.Rest.Services.Videos;
-using Java.IO;
-using Square.OkHttp3;
+using Newtonsoft.Json.Linq;
 using File = Java.IO.File;
 
-namespace Ziggeo
+namespace Ziggeo.Services
 {
     public class ZiggeoVideosService : IZiggeoVideos
     {

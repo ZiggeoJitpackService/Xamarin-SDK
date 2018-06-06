@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
-using System.IO;
-using Android.Content;
 using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Net.Rest.Services.Streams;
-using Java.IO;
+using Newtonsoft.Json.Linq;
 using File = Java.IO.File;
 
-namespace Ziggeo
+namespace Ziggeo.Services
 {
     public class ZiggeoStreamsService : IZiggeoStreams
     {

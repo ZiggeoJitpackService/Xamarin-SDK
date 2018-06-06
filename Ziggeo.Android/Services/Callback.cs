@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
-using System.IO;
-using Android.Content;
-using Com.Ziggeo.Androidsdk;
 using Square.OkHttp3;
 using IOException = Java.IO.IOException;
 
-namespace Ziggeo
+namespace Ziggeo.Services
 {
     public class Callback : ICallback
     {
