@@ -1,4 +1,5 @@
 ﻿using System;
+using Android.Content;
 
 namespace Ziggeo
 {
@@ -7,9 +8,9 @@ namespace Ziggeo
         public ZiggeoApplication(string token)
         {
             this.Token = token;
-            ZiggeoConnect connect = new ZiggeoConnectImpl(token);
-            this.Videos = new ZiggeoVideosService(connect);
-            this.Streams = new ZiggeoStreamsService(connect);
+            Context context = Android.App.Application.Context;
+            this.Videos = new ZiggeoVideosService(token, context);
+            this.Streams = new ZiggeoStreamsService(token, context);
         }
 
         public string Token { get; private set; }

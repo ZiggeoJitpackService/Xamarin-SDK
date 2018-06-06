@@ -148,7 +148,7 @@ namespace Ziggeo
                     Console.WriteLine("converting complete");
 
                     Console.WriteLine("uploading...");
-                    var video = await ZiggeoApplication.Videos.UploadVideo(convertedVideo, AdditionalParameters);
+                    var video = await ZiggeoApplication.Videos.Create(convertedVideo, AdditionalParameters);
                     string videoToken = video["video"]["token"].Value<string>();
                     Console.WriteLine("uploading done: {0}", videoToken);
                     OnVideoUploadComplete?.Invoke(videoToken);

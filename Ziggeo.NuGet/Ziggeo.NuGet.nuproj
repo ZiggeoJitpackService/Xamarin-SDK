@@ -10,7 +10,7 @@
     <ProjectGuid>{68B8AF7C-2CBB-4566-AE93-4E13204DD789}</ProjectGuid>
     <Description>Ziggeo</Description>
     <PackageId>Ziggeo</PackageId>
-    <PackageVersion>1.1.0</PackageVersion>
+    <PackageVersion>1.0.0</PackageVersion>
     <Authors>Ziggeo</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

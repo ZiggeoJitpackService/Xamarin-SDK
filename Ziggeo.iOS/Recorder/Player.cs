@@ -46,15 +46,16 @@ namespace Ziggeo
             TaskCompletionSource<int> tcs = new TaskCompletionSource<int>();
             try
             {
-                AVPlayer player = new AVPlayer(new Foundation.NSUrl(Application.Videos.GetVideoURL(videoToken)));
-                this.Player = player;
-                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(this, true, null);
-                DismissingNow += () => {
-                    tcs.SetResult(0);
-                };
-                this.Player.Play();
+                //TODO since we're unifying the services API we should move GetVideoURL to some other place
+                //                AVPlayer player = new AVPlayer(new Foundation.NSUrl(Application.Videos.GetVideoURL(videoToken)));
+                //                this.Player = player;
+                //                UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(this, true, null);
+                //                DismissingNow += () => {
+                //                    tcs.SetResult(0);
+                //                };
+                //                this.Player.Play();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 tcs.TrySetException(ex);
             }

@@ -16,16 +16,15 @@ namespace Ziggeo
             PUT
         }
 
-        public ZiggeoConnect(IZiggeoApplication application)
+        public ZiggeoConnect(string token, ZiggeoConfig config)
         {
-            this.Application = application;
+            Config = config;
+            Token = token;
         }
 
-        protected IZiggeoApplication Application
-        {
-            get;
-            private set;
-        }
+        protected ZiggeoConfig Config { get; private set; }
+
+        protected string Token { get; private set; }
 
         protected string SerializeParameters(IDictionary<string, string> parameters)
         {
@@ -37,6 +36,7 @@ namespace Ziggeo
                     result += string.Format("{0}={1}&", item.Key, item.Value);
                 }
             }
+
             return result;
         }
 
@@ -49,17 +49,19 @@ namespace Ziggeo
             {
                 body = System.Text.Encoding.UTF8.GetBytes(parameters);
             }
+
             return RequestData(method, path, "application/x-www-form-urlencoded", body);
         }
 
         public string GetCDNURL(string path)
         {
-            return string.Format("{0}/v1/applications/{1}{2}", Application.Config.CDNApiURL, Application.Token, path);
+            return string.Format("{0}/v1/applications/{1}{2}", Config.CDNApiURL, Token, path);
         }
 
         public string GetServerURL(string path)
         {
-            return string.Format("{0}/v1/applications/{1}{2}", Application.Config.ServerApiURL, Application.Token, path);
+            return string.Format("{0}/v1/applications/{1}{2}", Config.ServerApiURL, Token,
+                path);
         }
 
         public abstract Task<byte[]> RequestData(Method method, string path, string contentType, byte[] body);
@@ -84,9 +86,11 @@ namespace Ziggeo
             return JArray.Parse(jsonDump);
         }
 
-        public abstract Task<byte[]> BackgroundUpload(string destinationPath, string remoteFileName, string identifier, string sourceFileName);
+        public abstract Task<byte[]> BackgroundUpload(string destinationPath, string remoteFileName, string identifier,
+            string sourceFileName);
 
-        protected async Task<long> GenerateMultipartBody(string sourceFile, string destinationFile, string remoteFileName, string boundaryTemplate)
+        protected async Task<long> GenerateMultipartBody(string sourceFile, string destinationFile,
+            string remoteFileName, string boundaryTemplate)
         {
             long result = 0;
             if (System.IO.File.Exists(sourceFile))
@@ -94,8 +98,11 @@ namespace Ziggeo
                 using (Stream inputStream = File.OpenRead(sourceFile))
                 {
                     byte[] boundary = System.Text.Encoding.UTF8.GetBytes(string.Format("--{0}\r\n", boundaryTemplate));
-                    byte[] trailer = System.Text.Encoding.UTF8.GetBytes(string.Format("\r\n--{0}--\r\n", boundaryTemplate));
-                    byte[] disposition = System.Text.Encoding.UTF8.GetBytes(string.Format("Content-Disposition: form-data; name=\"file\"; filename=\"{0}\";\r\nContent-Type: video/mp4\r\n\r\n", remoteFileName));
+                    byte[] trailer =
+                        System.Text.Encoding.UTF8.GetBytes(string.Format("\r\n--{0}--\r\n", boundaryTemplate));
+                    byte[] disposition = System.Text.Encoding.UTF8.GetBytes(string.Format(
+                        "Content-Disposition: form-data; name=\"file\"; filename=\"{0}\";\r\nContent-Type: video/mp4\r\n\r\n",
+                        remoteFileName));
                     using (Stream outputStream = File.OpenWrite(destinationFile))
                     {
                         await outputStream.WriteAsync(boundary, 0, boundary.Length);
@@ -106,9 +113,8 @@ namespace Ziggeo
                     }
                 }
             }
+
             return result;
         }
-
-
     }
 }

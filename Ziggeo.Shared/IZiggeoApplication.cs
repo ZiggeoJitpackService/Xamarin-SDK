@@ -8,19 +8,15 @@ namespace Ziggeo
             get;
         }
 
-        ZiggeoConfig Config
+        IZiggeoVideos Videos
         {
             get;
         }
 
-        ZiggeoConnect Connection
+        IZiggeoStreams Streams
         {
             get;
         }
 
-        ZiggeoVideos Videos
-        {
-            get;
-        }
     }
 }
