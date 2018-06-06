@@ -10,6 +10,13 @@ namespace Ziggeo
         Front
     };
 
+    public enum VideoQuality: uint
+    {
+        High = 0,
+        Medium,
+        Low
+    };
+
     public interface IZiggeoRecorder
     {
         Task<string> Record();

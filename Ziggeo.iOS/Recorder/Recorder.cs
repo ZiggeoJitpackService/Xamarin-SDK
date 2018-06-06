@@ -315,6 +315,11 @@ namespace Ziggeo
             set;
         }
 
+        public VideoQuality VideoQuality
+        {
+            get; set;
+        }
+
         public double MaxRecordingDurationSeconds 
         { 
             get;
