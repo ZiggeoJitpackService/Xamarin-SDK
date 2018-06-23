@@ -18,5 +18,14 @@ namespace Ziggeo
             get;
         }
 
+        IZiggeoPlayer Player 
+        {
+            get;
+        }
+
+        IZiggeoRecorder Recorder
+        {
+            get;
+        }
     }
 }
