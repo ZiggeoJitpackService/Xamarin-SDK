@@ -11,6 +11,8 @@ namespace Ziggeo
             ZiggeoConnect connect = new ZiggeoConnectImpl(token);
             this.Videos = new ZiggeoVideosService(connect);
             this.Streams = new ZiggeoStreamsService(connect);
+            this.Recorder = new Recorder(this);
+            this.Player = new Player(this);
         }
 
         public string Token { get; private set; }
@@ -18,5 +20,9 @@ namespace Ziggeo
         public IZiggeoVideos Videos { get; private set; }
 
         public IZiggeoStreams Streams { get; private set; }
+
+        public IZiggeoPlayer Player { get; }
+
+        public IZiggeoRecorder Recorder { get; }
     }
 }

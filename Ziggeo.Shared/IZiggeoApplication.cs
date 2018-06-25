@@ -1,22 +1,17 @@
 ﻿using System;
+
 namespace Ziggeo
 {
     public interface IZiggeoApplication
     {
-        string Token
-        {
-            get;
-        }
+        string Token { get; }
 
-        IZiggeoVideos Videos
-        {
-            get;
-        }
+        IZiggeoVideos Videos { get; }
 
-        IZiggeoStreams Streams
-        {
-            get;
-        }
+        IZiggeoStreams Streams { get; }
 
+        IZiggeoPlayer Player { get; }
+
+        IZiggeoRecorder Recorder { get; }
     }
 }
