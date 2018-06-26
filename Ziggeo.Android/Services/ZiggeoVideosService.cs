@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
 using Com.Ziggeo.Androidsdk;
+using Com.Ziggeo.Androidsdk.Net.Rest;
 using Com.Ziggeo.Androidsdk.Net.Rest.Services.Videos;
 using Newtonsoft.Json.Linq;
 using File = Java.IO.File;
@@ -11,12 +12,14 @@ namespace Ziggeo.Services
 {
     public class ZiggeoVideosService : IZiggeoVideos
     {
-        public ZiggeoVideosService(IZiggeo ziggeo) 
+        public ZiggeoVideosService(IZiggeo ziggeo)
         {
             Videos = ziggeo.Videos();
+            ZiggeoInstance = ziggeo;
         }
 
         public IVideosService Videos { get; private set; }
+        public IZiggeo ZiggeoInstance{ get; private set; }
 
         public async Task<JArray> Index(Dictionary<string, string> data)
         {
@@ -205,6 +208,11 @@ namespace Ziggeo.Services
                 (call, exception) => { task = Task<JObject>.Factory.StartNew(() => throw exception); }
             ));
             return await task;
+        }
+
+        public Uri GetVideoUrl(string tokenOrKey)
+        {
+            return new Uri(ZUrlHelper.PrepareDownloadVideoUrl(ZiggeoInstance.AppToken, tokenOrKey).Build().ToString());
         }
     }
 }

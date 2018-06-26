@@ -9,8 +9,8 @@ namespace Ziggeo.Services
         public Callback(Action<ICall, Response> onResponse,
             Action<ICall, IOException> onFailure)
         {
-            OnResponseAction = onResponse;
-            OnFailureAction = onFailure;
+            _onResponseAction = onResponse;
+            _onFailureAction = onFailure;
         }
 
         public void Dispose()
@@ -18,18 +18,18 @@ namespace Ziggeo.Services
             GC.SuppressFinalize(this);
         }
 
-        public Action<ICall, Response> OnResponseAction { get; private set; }
-        public Action<ICall, IOException> OnFailureAction { get; private set; }
+        private readonly Action<ICall, Response> _onResponseAction;
+        private readonly Action<ICall, IOException> _onFailureAction;
         public IntPtr Handle { get; }
 
         public void OnFailure(ICall call, IOException exception)
         {
-            OnFailureAction(call, exception);
+            _onFailureAction(call, exception);
         }
 
         public void OnResponse(ICall call, Response response)
         {
-            OnResponseAction(call, response);
+            _onResponseAction(call, response);
         }
     }
 }
