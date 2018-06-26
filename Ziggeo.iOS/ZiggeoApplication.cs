@@ -9,8 +9,9 @@ namespace Ziggeo
         {
             this.Token = token;
             ZiggeoConnect connect = new ZiggeoConnectImpl(token);
-            this.Videos = new ZiggeoVideosService(connect);
             this.Streams = new ZiggeoStreamsService(connect);
+            this.Videos = new ZiggeoVideosService(connect, Streams);
+
             this.Recorder = new Recorder(this);
             this.Player = new Player(this);
         }

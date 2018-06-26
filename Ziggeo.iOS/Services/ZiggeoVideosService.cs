@@ -8,8 +8,15 @@ namespace Ziggeo.Services
 {
     public class ZiggeoVideosService : BaseService, IZiggeoVideos
     {
-        public ZiggeoVideosService(ZiggeoConnect connection) : base(connection)
+        public ZiggeoVideosService(ZiggeoConnect connection, IZiggeoStreams streams) : base(connection)
         {
+            this.Streams = streams;
+        }
+
+        public IZiggeoStreams Streams
+        {
+            get;
+            private set;
         }
 
         public async Task<JArray> Index(Dictionary<string, string> data)
@@ -25,18 +32,14 @@ namespace Ziggeo.Services
 
         public async Task<Stream> DownloadVideo(string tokenOrKey)
         {
-            //TODO
+            //not needed in current implementation
             throw new NotImplementedException();
-            // return await Connection.GetServerURL("/videos/" + tokenOrKey + "/video.mp4");
         }
 
         public async Task<Stream> DownloadImage(string tokenOrKey)
         {
-
-            //TODO
-            throw new NotImplementedException();
-//            return await Connection.RequestData(ZiggeoConnect.Method.GET,
-//                "/videos/" + tokenOrKey + "/image", null);
+            byte[] data = await Connection.RequestData(ZiggeoConnect.Method.GET, "/videos/" + tokenOrKey + "/image", null);
+            return new System.IO.MemoryStream(data);
         }
 
         public async Task<JObject> ApplyEffect(string tokenOrKey, Dictionary<string, string> data)
@@ -71,31 +74,14 @@ namespace Ziggeo.Services
             Console.WriteLine("video token = {0}", videoToken);
             string streamToken = video["stream"]["token"].Value<string>();
             Console.WriteLine("stream token = {0}", streamToken);
-            await AttachVideo(videoToken, streamToken, filePath);
+            await Streams.AttachVideo(videoToken, streamToken, filePath);
             Console.WriteLine("video attached");
-            return await Submit(videoToken, streamToken);
+            return await Streams.Bind(videoToken, streamToken);
         }
 
-        // TODO four methods below should be removed when Create method with file will be reimplemented
-        public async Task<JObject> CreateStream(string tokenOrKey)
+        public Uri GetVideoUrl(string tokenOrKey)
         {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.POST,
-                string.Format("/videos/{0}/streams?create_stream=true", tokenOrKey), null);
-        }
-
-        public async Task<JObject> Submit(string tokenOrKey, string streamToken)
-        {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.POST,
-                string.Format("/videos/{0}/streams/{1}/recordersubmit", tokenOrKey, streamToken), null);
-        }
-
-        public async Task AttachVideo(string tokenOrKey, string streamToken, string file)
-        {
-            throw new NotImplementedException();
-//            return await Connection.BackgroundUpload(
-//                string.Format("/videos/{0}/streams/{1}/videoattach", tokenOrKey, streamToken),
-//                "video.mp4",
-//                string.Format("/videos/{0}/streams/{1}/recordersubmit", tokenOrKey, streamToken), file);
+            return new Uri(Connection.GetServerURL("/videos/" + tokenOrKey + "/video.mp4"));
         }
     }
 }

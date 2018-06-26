@@ -18,13 +18,9 @@ namespace Ziggeo.Services
 
         public async Task AttachImage(string tokenOrKey, string streamToken, string filePath)
         {
-            throw new NotImplementedException();
-            // TODO change this method to accept filePath as arg
-            //            await Connection.RequestData(ZiggeoConnect.Method.POST,
-            //                string.Format("/videos/{0}/streams/{1}/imageattach", tokenOrKey, streamToken), "image/jpeg",
-            //                filePath);
+            await Connection.RequestData(ZiggeoConnect.Method.POST, string.Format("/videos/{0}/streams/{1}/imageattach", tokenOrKey, streamToken), "image/jpeg", System.IO.File.ReadAllBytes(filePath));
         }
-
+    
         public async Task<JObject> Bind(string tokenOrKey, string streamToken)
         {
             return await Connection.RequestJSON(ZiggeoConnect.Method.POST,
@@ -33,11 +29,10 @@ namespace Ziggeo.Services
 
         public async Task AttachVideo(string tokenOrKey, string streamToken, string file)
         {
-            throw new NotImplementedException();
-//            return await Connection.BackgroundUpload(
-//                string.Format("/videos/{0}/streams/{1}/videoattach", tokenOrKey, streamToken),
-//                "video.mp4",
-//                string.Format("/videos/{0}/streams/{1}/recordersubmit", tokenOrKey, streamToken), file);
+            await Connection.BackgroundUpload(
+                string.Format("/videos/{0}/streams/{1}/videoattach", tokenOrKey, streamToken),
+                "video.mp4",
+                string.Format("/videos/{0}/streams/{1}/recordersubmit", tokenOrKey, streamToken), file);
         }
     }
 }
