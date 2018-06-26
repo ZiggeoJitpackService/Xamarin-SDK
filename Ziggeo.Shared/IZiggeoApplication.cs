@@ -14,9 +14,5 @@ namespace Ziggeo
 
         IZiggeoRecorder Recorder { get; }
 
-        IZiggeoPlayer Player 
-        {
-            get;
-        }
     }
 }

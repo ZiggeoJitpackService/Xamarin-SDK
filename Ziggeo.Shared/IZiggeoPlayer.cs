@@ -6,12 +6,6 @@ namespace Ziggeo
 {
     public interface IZiggeoPlayer
     {
-        Dictionary<string, string> AdditionalParameters
-        {
-            get;
-            set;
-        }
-
         Task Play(string videoToken);
     }
 }
