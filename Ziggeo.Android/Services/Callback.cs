@@ -4,7 +4,7 @@ using IOException = Java.IO.IOException;
 
 namespace Ziggeo.Services
 {
-    public class Callback : ICallback
+    public class Callback : Java.Lang.Object, ICallback
     {
         public Callback(Action<ICall, Response> onResponse,
             Action<ICall, IOException> onFailure)
@@ -13,14 +13,8 @@ namespace Ziggeo.Services
             _onFailureAction = onFailure;
         }
 
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
-
         private readonly Action<ICall, Response> _onResponseAction;
         private readonly Action<ICall, IOException> _onFailureAction;
-        public IntPtr Handle { get; }
 
         public void OnFailure(ICall call, IOException exception)
         {

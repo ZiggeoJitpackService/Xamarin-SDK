@@ -10,7 +10,7 @@ using Uri = Android.Net.Uri;
 
 namespace Ziggeo
 {
-    public class ActivityLifecycleCallbacks : Application.IActivityLifecycleCallbacks
+    public class ActivityLifecycleCallbacks : Java.Lang.Object, Application.IActivityLifecycleCallbacks
     {
         public Action<Activity, Bundle> OnCreated { get; set; }
         public Action<Activity> OnDestroyed = null;
@@ -19,13 +19,6 @@ namespace Ziggeo
         public Action<Activity, Bundle> OnSavedInstanceState = null;
         public Action<Activity> OnStarted = null;
         public Action<Activity> OnStopped = null;
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
-
-        public IntPtr Handle { get; }
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {

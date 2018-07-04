@@ -7,7 +7,7 @@ using Uri = Android.Net.Uri;
 
 namespace Ziggeo
 {
-    public class RecorderCallback : IVideoRecordingCallback
+    public class RecorderCallback : Java.Lang.Object, IVideoRecordingCallback
     {
         public RecorderCallback(Action<Throwable> onError, Action onStarted, Action<string> onStopped,
             Action<Uri> onUploadingStarted)
@@ -17,13 +17,6 @@ namespace Ziggeo
             _onStopped = onStopped;
             _onUploadingStarted = onUploadingStarted;
         }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
-
-        public IntPtr Handle { get; }
 
         private readonly Action<Throwable> _onError = null;
         private readonly Action _onStarted = null;
