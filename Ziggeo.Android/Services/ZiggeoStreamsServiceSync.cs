@@ -8,7 +8,7 @@ using File = Java.IO.File;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoStreamsServiceSync
+    class ZiggeoStreamsServiceSync
     {
         public ZiggeoStreamsServiceSync(IZiggeo ziggeo)
         {
@@ -27,6 +27,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         jobj = JObject.Parse(response.Body().String());
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -68,6 +69,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         jobj = JObject.Parse(response.Body().String());
+                        autoResetEvent.Set();
                     }
                     else
                     {

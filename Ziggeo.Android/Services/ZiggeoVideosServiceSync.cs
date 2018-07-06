@@ -11,7 +11,7 @@ using File = Java.IO.File;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoVideosServiceSync
+    class ZiggeoVideosServiceSync
     {
         public ZiggeoVideosServiceSync(IZiggeo ziggeo)
         {
@@ -53,6 +53,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         jobj = JObject.Parse(response.Body().String());
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -75,6 +76,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         stream = response.Body().ByteStream();
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -90,13 +92,13 @@ namespace Ziggeo.Services
         {
             Stream stream = null;
             AutoResetEvent autoResetEvent = new AutoResetEvent(false);
-
             Videos.DownloadImage(tokenOrKey, new Callback(
                 (call, response) =>
                 {
                     if (response.IsSuccessful)
                     {
                         stream = response.Body().ByteStream();
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -118,6 +120,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         jobj = JObject.Parse(response.Body().String());
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -139,6 +142,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         jobj = JObject.Parse(response.Body().String());
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -160,6 +164,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         str = response.Body().String();
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -181,6 +186,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         jobj = JObject.Parse(response.Body().String());
+                        autoResetEvent.Set();
                     }
                     else
                     {
@@ -202,6 +208,7 @@ namespace Ziggeo.Services
                     if (response.IsSuccessful)
                     {
                         jobj = JObject.Parse(response.Body().String());
+                        autoResetEvent.Set();
                     }
                     else
                     {
