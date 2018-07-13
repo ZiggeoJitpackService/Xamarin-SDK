@@ -36,10 +36,8 @@ packages/
 *.dll
 *.exe
 *.pdb
-Ziggeo.Android/obj/
-Ziggeo.iOS/obj/
-Ziggeo.NuGet/obj/
-bin/      
+**obj/
+**bin/      
 
 # Android/IntelliJ
 #
