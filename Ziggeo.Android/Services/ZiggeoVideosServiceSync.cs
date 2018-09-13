@@ -4,8 +4,8 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Com.Ziggeo.Androidsdk;
-using Com.Ziggeo.Androidsdk.Net.Rest;
-using Com.Ziggeo.Androidsdk.Net.Rest.Services.Videos;
+using Com.Ziggeo.Androidsdk.Net;
+using Com.Ziggeo.Androidsdk.Net.Services.Videos;
 using Newtonsoft.Json.Linq;
 using File = Java.IO.File;
 

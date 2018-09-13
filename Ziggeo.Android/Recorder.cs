@@ -43,11 +43,11 @@ namespace Ziggeo
 
             try
             {
-                Ziggeo.SetCoverSelectorEnabled(CoverSelectorEnabled);
-                Ziggeo.SetExtraArgsForRecorder(AdditionalParameters);
+                Ziggeo.CoverSelectorEnabled = CoverSelectorEnabled;
+                Ziggeo.ExtraArgsForRecorder = AdditionalParameters;
                 Ziggeo.SetCameraSwitchDisabled(!CameraFlipButtonVisible);
                 Ziggeo.SetPreferredCameraFacing((int) VideoDevice);
-                Ziggeo.SetPreferredQuality((int) VideQuality);
+                Ziggeo.PreferredQuality = ((int) VideQuality);
                 Ziggeo.SetMaxRecordingDuration((long) (MaxRecordingDurationSeconds * 1000));
                 Ziggeo.VideoRecordingProcessCallback =
                     new RecorderCallback(throwable => tcs.TrySetException(throwable), null, null, null);
@@ -69,7 +69,7 @@ namespace Ziggeo
                 {
                     OnStopped = activity =>
                     {
-                        if (activity is FullscreenRecorderActivity && activity.IsFinishing)
+                        if (activity is CameraRecorderActivity && activity.IsFinishing)
                         {
                             tcs.TrySetResult(null);
                         }

@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using Com.Ziggeo.Androidsdk;
-using Com.Ziggeo.Androidsdk.Net.Rest.Services.Streams;
+using Com.Ziggeo.Androidsdk.Net.Services.Streams;
 using Newtonsoft.Json.Linq;
 using File = Java.IO.File;
 

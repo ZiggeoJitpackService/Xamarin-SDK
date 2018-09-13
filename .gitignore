@@ -33,9 +33,7 @@ project.xcworkspace
 .vs/
 UpgradeLog*.htm
 packages/
-*.dll
 *.exe
-*.pdb
 **obj/
 **bin/      
 
