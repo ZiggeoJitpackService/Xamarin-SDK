@@ -33,13 +33,13 @@ namespace Ziggeo
 
         public ZiggeoVideoDevice VideoDevice { get; set; }
 
-        public VideoQuality VideQuality { get; set; }
+        public VideoQuality VideoQuality { get; set; }
 
         public double MaxRecordingDurationSeconds { get; set; }
 
         public Task<string> Record()
         {
-            TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
+            var tcs = new TaskCompletionSource<string>();
 
             try
             {
@@ -47,7 +47,7 @@ namespace Ziggeo
                 Ziggeo.ExtraArgsForRecorder = AdditionalParameters;
                 Ziggeo.SetCameraSwitchDisabled(!CameraFlipButtonVisible);
                 Ziggeo.SetPreferredCameraFacing((int) VideoDevice);
-                Ziggeo.PreferredQuality = ((int) VideQuality);
+                Ziggeo.PreferredQuality = (int) VideoQuality;
                 Ziggeo.SetMaxRecordingDuration((long) (MaxRecordingDurationSeconds * 1000));
                 Ziggeo.VideoRecordingProcessCallback =
                     new RecorderCallback(throwable => tcs.TrySetException(throwable), null, null, null);
@@ -55,8 +55,8 @@ namespace Ziggeo
                 {
                     if (response.IsSuccessful)
                     {
-                        var jobj = JObject.Parse(response.Body().String());
-                        var token = jobj["video"]["token"].ToString();
+                        var parsedResponse = JObject.Parse(response.Body().String());
+                        var token = parsedResponse["video"]["token"].ToString();
                         tcs.TrySetResult(token);
                     }
                     else
@@ -65,6 +65,7 @@ namespace Ziggeo
                     }
                 }, (call, exception) => { tcs.TrySetException(exception); }));
 
+                // return null when a user manually close the recorder screen
                 var callback = new ActivityLifecycleCallbacks
                 {
                     OnStopped = activity =>
@@ -73,7 +74,7 @@ namespace Ziggeo
                         {
                             tcs.TrySetResult(null);
                         }
-                    },
+                    }
                 };
                 ((Application) Application.Context.ApplicationContext).RegisterActivityLifecycleCallbacks(callback);
 
