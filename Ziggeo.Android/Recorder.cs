@@ -40,7 +40,7 @@ namespace Ziggeo
         public Task<string> Record()
         {
             var tcs = new TaskCompletionSource<string>();
-
+            var isRecording = false;
             try
             {
                 Ziggeo.CoverSelectorEnabled = CoverSelectorEnabled;
@@ -50,7 +50,8 @@ namespace Ziggeo
                 Ziggeo.PreferredQuality = (int) VideoQuality;
                 Ziggeo.SetMaxRecordingDuration((long) (MaxRecordingDurationSeconds * 1000));
                 Ziggeo.VideoRecordingProcessCallback =
-                    new RecorderCallback(throwable => tcs.TrySetException(throwable), null, null, null);
+                    new RecorderCallback(throwable => tcs.TrySetException(throwable), () => isRecording = true, null,
+                        null);
                 Ziggeo.SetNetworkRequestsCallback(new Callback((call, response) =>
                 {
                     if (response.IsSuccessful)
@@ -70,7 +71,7 @@ namespace Ziggeo
                 {
                     OnStopped = activity =>
                     {
-                        if (activity is CameraRecorderActivity && activity.IsFinishing)
+                        if (activity is CameraRecorderActivity && activity.IsFinishing && !isRecording)
                         {
                             tcs.TrySetResult(null);
                         }
