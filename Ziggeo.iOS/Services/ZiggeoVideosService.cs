@@ -38,7 +38,7 @@ namespace Ziggeo.Services
 
         public async Task<Stream> DownloadImage(string tokenOrKey)
         {
-            byte[] data = await Connection.RequestData(ZiggeoConnect.Method.GET, "/videos/" + tokenOrKey + "/image", null);
+            byte[] data = await Connection.RequestDataAsync(ZiggeoConnect.Method.GET, "/videos/" + tokenOrKey + "/image", null);
             return new System.IO.MemoryStream(data);
         }
 
@@ -81,6 +81,7 @@ namespace Ziggeo.Services
 
         public Uri GetVideoUrl(string tokenOrKey)
         {
+            
             return new Uri(Connection.GetServerURL("/videos/" + tokenOrKey + "/video.mp4"));
         }
     }

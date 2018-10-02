@@ -36,6 +36,15 @@ await player.Play(viewModel.Item.token);
 For the full documentation, please visit [ziggeo.com](https://ziggeo.com/docs).
 
 
+## Auth Tokens
+
+To enable client/server auth tokens use:
+
+```csharp
+ZiggeoApplication.ServerAuthToken = "SERVER_AUTH_TOKEN"
+ZiggeoApplication.ClientAuthToken = "CLIENT_AUTH_TOKEN"
+```
+
 ## API Methods
 To access API methods, use:
 ```csharp

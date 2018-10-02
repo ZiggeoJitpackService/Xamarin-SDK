@@ -16,13 +16,20 @@ namespace Ziggeo
             string requestString = GetServerURL(path);
             NSMutableUrlRequest request = new NSMutableUrlRequest(new NSUrl(requestString));
             request.HttpMethod = Enum.GetName(typeof(Method), method);
-            if (method == Method.POST && body != null && body.Length > 0)
+            Console.WriteLine("Request: {0} {1}", method, requestString);
+            if ((method == Method.POST || method == Method.DELETE) && body != null && body.Length > 0)
             {
+                if (method == Method.DELETE) Console.WriteLine("delete body detected");
                 request.Body = NSData.FromArray(body);
                 request["Content-Type"] = new NSString(contentType);
                 if (body != null && body.Length > 0)
+                {
                     request["Content-Length"] = new NSString(request.Body.Length.ToString());
+                    Console.WriteLine("body: {0}\n{1}", contentType, System.Text.Encoding.UTF8.GetString(body));
+                }
             }
+
+
 
             var tcs = new TaskCompletionSource<byte[]>();
             var task = NSUrlSession.SharedSession.CreateDataTask(request,
@@ -78,6 +85,10 @@ namespace Ziggeo
         public override async Task<byte[]> BackgroundUpload(string destinationPath, string remoteFileName,
             string identifier, string sourceFileName)
         {
+            var requestParams = await AddSessionData(null, destinationPath);
+            string parameters = SerializeParameters(requestParams);
+            destinationPath += string.Format("?{0}", parameters);
+
             string boundaryTemplate = "----WebKitFormBoundaryLEjTQVMVbVg9HRYu";
             string contentType = string.Format("multipart/form-data; boundary={0}", boundaryTemplate);
             string outputFileName = System.IO.Path.Combine(System.IO.Path.GetTempPath(),
@@ -119,6 +130,7 @@ namespace Ziggeo
             request["Content-Length"] = new NSString(contentSize.ToString());
             var task = backgroundSession.CreateUploadTask(request, NSUrl.CreateFileUrl(new string[] {outputFileName}));
             task.Resume();
+            Console.WriteLine("background upload: POST {0}", requestString);
             return await tcs.Task;
         }
     }

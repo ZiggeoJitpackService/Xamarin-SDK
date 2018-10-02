@@ -28,5 +28,17 @@ namespace Ziggeo
         public IZiggeoPlayer Player { get; }
 
         public IZiggeoRecorder Recorder { get; }
+
+        public string ServerAuthToken
+        {
+            get => Ziggeo.ServerAuthToken;
+            set => Ziggeo.ServerAuthToken = value;
+        }
+
+        public string ClientAuthToken
+        {
+            get => Ziggeo.ClientAuthToken;
+            set => Ziggeo.ClientAuthToken = value;
+        }
     }
 }

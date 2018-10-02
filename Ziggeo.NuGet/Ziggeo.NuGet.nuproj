@@ -3,6 +3,8 @@
   <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props')" />
   <PropertyGroup Label="Configuration">
     <Owners>Ziggeo</Owners>
+    <ReleaseVersion>1.1.0</ReleaseVersion>
+    <PackageVersion>1.1.0</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -10,7 +12,6 @@
     <ProjectGuid>{68B8AF7C-2CBB-4566-AE93-4E13204DD789}</ProjectGuid>
     <Description>ZiggeoXamarinSDK</Description>
     <PackageId>ZiggeoXamarinSDK</PackageId>
-    <PackageVersion>1.0.0</PackageVersion>
     <Authors>Ziggeo</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>

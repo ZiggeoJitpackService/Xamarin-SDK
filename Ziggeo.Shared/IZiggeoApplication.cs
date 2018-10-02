@@ -6,6 +6,10 @@ namespace Ziggeo
     {
         string Token { get; }
 
+        string ServerAuthToken { get; set; }
+
+        string ClientAuthToken { get; set; }
+
         IZiggeoVideos Videos { get; }
 
         IZiggeoStreams Streams { get; }

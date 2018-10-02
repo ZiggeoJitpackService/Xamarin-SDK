@@ -31,18 +31,6 @@ namespace Ziggeo
 
             public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
             {
-                //            CoverSelectorTableCell* cell = [tableView dequeueReusableCellWithIdentifier: @"CoverCell"];
-                //            if (!cell)
-                //            {
-                //                UINib* cellNib = [UINib nibWithNibName: @"CoverSelectorTableCell" bundle:[NSBundle bundleForClass:[CoverSelectorController class]]];
-                //    [tableView registerNib:cellNib forCellReuseIdentifier:@"CoverCell"];
-                //    cell = [tableView dequeueReusableCellWithIdentifier:@"CoverCell"];
-                //}
-                //if(m_covers && m_covers.count > indexPath.row)
-                //{
-                //    cell.coverView.image = [m_covers objectAtIndex:indexPath.row];
-                //}
-                //return cell;
                 CoverCell cell = tableView.DequeueReusableCell("CoverCell") as CoverCell;
                 if(cell == null)
                 {

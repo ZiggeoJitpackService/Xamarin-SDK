@@ -12,12 +12,19 @@ namespace Ziggeo
         delegate void PlayerDelegate();
         event PlayerDelegate DismissingNow = null;
 
-        public Player(IZiggeoApplication application) : base("Player", null)
+        public Player(IZiggeoApplication application, ZiggeoConnect connect) : base("Player", null)
         {
             this.Application = application;
+            this.Connect = connect;
         }
 
         public IZiggeoApplication Application
+        {
+            get;
+            private set;
+        }
+
+        protected ZiggeoConnect Connect
         {
             get;
             private set;
@@ -41,16 +48,24 @@ namespace Ziggeo
             DismissingNow?.Invoke();
         }
 
-        public Task Play(string videoToken)
+        public async Task Play(string videoToken)
         {
             TaskCompletionSource<int> tcs = new TaskCompletionSource<int>();
             try
             {
-                AVPlayer player = new AVPlayer(new Foundation.NSUrl(Application.Videos.GetVideoUrl(videoToken).AbsoluteUri));
+                string videoURL = Application.Videos.GetVideoUrl(videoToken).AbsoluteUri;
+                var sessionData = await Connect.AddSessionData(null, videoURL);
+                string appendedString = "";
+                foreach(string key in sessionData.Keys)
+                {
+                    appendedString += string.Format("{0}={1}&", key, sessionData[key]);
+                }
+                videoURL = string.Format("{0}?{1}", videoURL, appendedString);
+                AVPlayer player = new AVPlayer(new Foundation.NSUrl(videoURL));
                 this.Player = player;
                 UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(this, true, null);
                 DismissingNow += () => {
-                    tcs.SetResult(0);
+                    tcs.TrySetResult(0);
                 };
                 this.Player.Play();
             }
@@ -58,7 +73,7 @@ namespace Ziggeo
             {
                 tcs.TrySetException(ex);
             }
-            return tcs.Task;
+            await tcs.Task;
         }
     }
 }

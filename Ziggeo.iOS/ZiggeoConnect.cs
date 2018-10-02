@@ -26,6 +26,10 @@ namespace Ziggeo
 
         protected string Token { get; private set; }
 
+        protected string SessionValue { get; private set; }
+
+        protected string SessionKey { get; private set; }
+
         protected string SerializeParameters(IDictionary<string, string> parameters)
         {
             string result = string.Empty;
@@ -40,17 +44,19 @@ namespace Ziggeo
             return result;
         }
 
-        public Task<byte[]> RequestData(Method method, string path, Dictionary<string, string> requestParams)
+        public async Task<byte[]> RequestDataAsync(Method method, string path, Dictionary<string, string> requestParams)
         {
+            requestParams = await AddSessionData(requestParams, path);
             string parameters = SerializeParameters(requestParams);
             if (method != Method.POST) path += string.Format("?{0}", parameters);
             byte[] body = null;
-            if (method == Method.POST)
+            if (method == Method.POST || method == Method.DELETE)
             {
+                if (method == Method.DELETE) Console.WriteLine("delete body added");
                 body = System.Text.Encoding.UTF8.GetBytes(parameters);
             }
 
-            return RequestData(method, path, "application/x-www-form-urlencoded", body);
+            return await RequestData(method, path, "application/x-www-form-urlencoded", body);
         }
 
         public string GetCDNURL(string path)
@@ -68,8 +74,10 @@ namespace Ziggeo
 
         public async Task<string> RequestString(Method method, string path, Dictionary<string, string> requestParams)
         {
-            var data = await RequestData(method, path, requestParams);
-            return System.Text.Encoding.UTF8.GetString(data);
+            var data = await RequestDataAsync(method, path, requestParams);
+            string result = System.Text.Encoding.UTF8.GetString(data);
+            Console.WriteLine("string dump: {0}", result);
+            return result;
         }
 
         public async Task<JObject> RequestJSON(Method method, string path, Dictionary<string, string> requestParams)
@@ -116,5 +124,36 @@ namespace Ziggeo
 
             return result;
         }
+
+        private async Task<string> GetSession()
+        {
+            if (string.IsNullOrEmpty(SessionValue))
+            {
+                var session = await RequestJSON(Method.POST, "/session", null);
+                SessionValue = session["token"].Value<string>();
+                SessionKey = string.Format("i07af2jp98rvoctt26y5egy3{0}", Token);
+            }
+            return SessionValue;
+        }
+
+        public async Task<Dictionary<string, string>> AddSessionData(Dictionary<string, string> requestParams, string path)
+        {
+            if("/session".Equals(path, StringComparison.CurrentCultureIgnoreCase))
+            {
+                return requestParams;
+            }
+            else
+            {
+                await GetSession();
+                var result = requestParams != null ? new Dictionary<string, string>(requestParams) : new Dictionary<string, string>();
+                result[SessionKey] = SessionValue;
+                if (!string.IsNullOrEmpty(ClientAuthToken)) result["client_auth"] = ClientAuthToken;
+                if (!string.IsNullOrEmpty(ServerAuthToken)) result["server_auth"] = ServerAuthToken;
+                return result;
+            }
+        }
+
+        public string ServerAuthToken { get; set; }
+        public string ClientAuthToken { get; set; }
     }
 }
