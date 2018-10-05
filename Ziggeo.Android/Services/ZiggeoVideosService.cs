@@ -11,8 +11,13 @@ using File = Java.IO.File;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoVideosService : IZiggeoVideos
+    public class ZiggeoVideosService : IZiggeoVideos 
     {
+        public event VideoFileDelegate UploadStarted;
+        public event VideoTokenFileProgressDelegate UploadProgressChanged;
+        public event VideoTokenFileDelegate UploadComplete;
+        public event VideoFileErrorDelegate UploadFailed;
+
         public ZiggeoVideosService(IZiggeo ziggeo)
         {
             _videosSync = new ZiggeoVideosServiceSync(ziggeo);
@@ -64,7 +69,19 @@ namespace Ziggeo.Services
 
         public async Task<JObject> Create(string filePath, Dictionary<string, string> data)
         {
-            return await Task<JObject>.Factory.StartNew(() => _videosSync.Create(filePath, data));
+            try
+            {
+                UploadStarted?.Invoke(filePath);
+                var result = await Task<JObject>.Factory.StartNew(() => _videosSync.Create(filePath, data));
+                string videoToken = result["video"]["token"].Value<string>();
+                UploadComplete?.Invoke(videoToken, filePath);
+                return result;
+            }
+            catch(Exception ex)
+            {
+                UploadFailed?.Invoke(filePath, ex);
+                throw ex;
+            }
         }
 
         public Uri GetVideoUrl(string tokenOrKey)

@@ -11,14 +11,10 @@ namespace Ziggeo
 {
     public partial class Recorder : UIViewController, IZiggeoRecorder
     {
-        public delegate void VideoUploadCompleteDelegate(string token);
-        public event VideoUploadCompleteDelegate OnVideoUploadComplete = null;
-
-        public delegate void VideoRecordingCanceledDelegate();
-        public event VideoRecordingCanceledDelegate OnVideoRecordingCanceled = null;
-
-        public delegate void ZiggeoRecorderErrorDelegate(Exception ex);
-        public event ZiggeoRecorderErrorDelegate OnRecorderError = null;
+        public event RecorderDelegate RecordingStarted;
+        public event RecorderDelegate RecordingCanceled;
+        public event RecordingFinishedDelegate RecordingFinishedUploadDone;
+        public event RecorderErrorDelegate RecordingError;
 
         public Recorder(IZiggeoApplication ziggeoApplication) : base("Recorder", null)
         {
@@ -104,7 +100,7 @@ namespace Ziggeo
                 {
                     UpdateUIFailedState();
                     Alert("error", error.Domain);
-                    OnRecorderError?.Invoke(new Exception(error.Description));
+                    RecordingError?.Invoke(new Exception(error.Description));
                 };
                 CaptureSession.RecordingFinished += (session, outputFile) => 
                 {
@@ -128,7 +124,7 @@ namespace Ziggeo
             {
                 UpdateUIFailedState();
                 Alert("error", ex.ToString());
-                OnRecorderError?.Invoke(ex);
+                RecordingError?.Invoke(ex);
             }
         }
 
@@ -151,17 +147,17 @@ namespace Ziggeo
                     var video = await ZiggeoApplication.Videos.Create(convertedVideo, AdditionalParameters);
                     string videoToken = video["video"]["token"].Value<string>();
                     Console.WriteLine("uploading done: {0}", videoToken);
-                    OnVideoUploadComplete?.Invoke(videoToken);
+                    RecordingFinishedUploadDone?.Invoke(videoToken);
                 }
                 catch(Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    OnRecorderError?.Invoke(ex);
+                    RecordingError?.Invoke(ex);
                 }
             };
             preview.Canceled += (processor) => {
                 Console.WriteLine("processing canceled, retaking video");
-                OnVideoRecordingCanceled?.Invoke();
+                //RecordingCanceled?.Invoke();
             };
             if (CoverSelectorEnabled)
             {
@@ -261,8 +257,8 @@ namespace Ziggeo
 
         public void CancelAndClose()
         {
-            OnVideoRecordingCanceled?.Invoke();
             this.DismissViewController(true, null);
+            RecordingCanceled?.Invoke();
 		}
 
         public void SwitchCamera()
@@ -279,7 +275,7 @@ namespace Ziggeo
             {
                 Alert("error", ex.Message);
                 UpdateUIFailedState();
-                OnRecorderError?.Invoke(ex);
+                RecordingError?.Invoke(ex);
             }
         }
 
@@ -412,12 +408,13 @@ namespace Ziggeo
 
         public Task<string> Record()
         {
+            RecordingStarted?.Invoke();
             TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
             try
             {
-                OnRecorderError += (Exception ex) => tcs.TrySetException(ex);
-                OnVideoRecordingCanceled += () => tcs.TrySetResult(null);
-                OnVideoUploadComplete += (string token) => tcs.TrySetResult(token);
+                RecordingError += (Exception ex) => tcs.TrySetException(ex);
+                RecordingCanceled += () => tcs.TrySetResult(null);
+                RecordingFinishedUploadDone += (string token) => tcs.TrySetResult(token);
                 UIApplication.SharedApplication.KeyWindow.RootViewController.PresentViewController(this, true, null);
             }
             catch(Exception ex)

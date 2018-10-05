@@ -103,8 +103,14 @@ namespace Ziggeo
             sessionDelegate.OnCompleteOrError +=
                 (NSUrlSession session, NSUrlSessionTask uploadingTask, NSError error) =>
                 {
-                    if (error != null) tcs.TrySetException(new Exception(error.ToString()));
-                    else tcs.TrySetResult(responseData.ToArray());
+                    if (error != null)
+                    {
+                        tcs.TrySetException(new Exception(error.ToString()));
+                    }
+                    else
+                    {
+                        tcs.TrySetResult(responseData.ToArray());
+                    }
                 };
             sessionDelegate.OnReceiveData += (NSUrlSession session, NSUrlSessionDataTask dataTask, NSData data) =>
             {
@@ -120,6 +126,7 @@ namespace Ziggeo
                     long totalBytesExpectedToSend) =>
                 {
                     Console.WriteLine("uploading progress: {0}/{1}", totalBytesSent, totalBytesExpectedToSend);
+                    OnUploadProgressChanged(identifier, sourceFileName, totalBytesSent, totalBytesExpectedToSend);
                 };
             NSUrlSession backgroundSession =
                 NSUrlSession.FromConfiguration(sessionConfiguration, sessionDelegate as INSUrlSessionDelegate, null);

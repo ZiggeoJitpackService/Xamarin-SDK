@@ -6,8 +6,11 @@ using Newtonsoft.Json.Linq;
 
 namespace Ziggeo
 {
+    public delegate void BackgroundUploadFileProgressDelegate(string token, string filename, long bytesSent, long totalBytes);
     public abstract class ZiggeoConnect
     {
+        public event BackgroundUploadFileProgressDelegate UploadProgressChanged;
+
         public enum Method
         {
             GET,
@@ -42,6 +45,11 @@ namespace Ziggeo
             }
 
             return result;
+        }
+
+        protected void OnUploadProgressChanged(string token, string filename, long bytesSent, long totalBytes)
+        {
+            UploadProgressChanged?.Invoke(token, filename, bytesSent, totalBytes);
         }
 
         public async Task<byte[]> RequestDataAsync(Method method, string path, Dictionary<string, string> requestParams)
