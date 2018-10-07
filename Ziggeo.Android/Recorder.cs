@@ -58,7 +58,7 @@ namespace Ziggeo
                 Ziggeo.VideoRecordingProcessCallback =
                           new RecorderCallback(throwable => { tcs.TrySetException(throwable); RecordingError?.Invoke(throwable); }, () => isRecording = true, null,
                         null);
-                Ziggeo.SetNetworkRequestsCallback(new Callback((call, response) =>
+                Ziggeo.SetNetworkRequestsCallback(new ProgressCallback((call, response) =>
                 {
                     if (response.IsSuccessful)
                     {
@@ -76,6 +76,9 @@ namespace Ziggeo
                 }, (call, exception) => { 
                     tcs.TrySetException(exception);
                     RecordingError?.Invoke(exception);
+                }, (file, sent, total) =>
+                {
+                    ZiggeoApplication.Videos.UploadProgressChanged(token, filename, bytesSent, totalBytes);
                 }));
 
                 // return null when a user manually close the recorder screen

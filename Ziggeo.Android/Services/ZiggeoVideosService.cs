@@ -11,7 +11,7 @@ using File = Java.IO.File;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoVideosService : IZiggeoVideos 
+    public class ZiggeoVideosService : IZiggeoVideos
     {
         public event VideoFileDelegate UploadStarted;
         public event VideoTokenFileProgressDelegate UploadProgressChanged;
@@ -77,7 +77,7 @@ namespace Ziggeo.Services
                 UploadComplete?.Invoke(videoToken, filePath);
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 UploadFailed?.Invoke(filePath, ex);
                 throw ex;
@@ -87,6 +87,11 @@ namespace Ziggeo.Services
         public Uri GetVideoUrl(string tokenOrKey)
         {
             return new Uri(ZUrlHelper.PrepareDownloadVideoUrl(_ziggeoInstance.AppToken, tokenOrKey).Build().ToString());
+        }
+
+        public void onProgressUpdate(File file, long sent, long total)
+        {
+            UploadProgressChanged?.Invoke(null, file.Name, sent, total);
         }
     }
 }

@@ -128,6 +128,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recorder.cs" />
     <Compile Include="Services\Callback.cs" />
+    <Compile Include="Services\ProgressCallback.cs" />
     <Compile Include="Services\ZiggeoStreamsServiceSync.cs" />
     <Compile Include="Services\ZiggeoStreamsService.cs" />
     <Compile Include="Services\ZiggeoVideosServiceSync.cs" />
