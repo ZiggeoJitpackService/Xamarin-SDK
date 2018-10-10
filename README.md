@@ -1,9 +1,9 @@
-# Ziggeo Xamarin SDK 1.2.0
+# Ziggeo Xamarin SDK 1.2.1
 
 Ziggeo API (https://ziggeo.com) allows you to integrate video recording and playback with only
 several lines of code in your app.
 
-## Upgrading from v.1.1.0 to v.1.2.0
+## Upgrading from v.1.1.0 to v.1.2.1
 The update bring crossplatform available events for recorder and video service.
 
 ## Upgrading from v.1.0.0 to v.1.1.0
