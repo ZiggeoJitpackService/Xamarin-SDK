@@ -10,7 +10,7 @@ namespace Ziggeo.Services
     {
         public ProgressCallback(Action<ICall, Response> onResponse,
             Action<ICall, IOException> onFailure,
-            Action<File, long, long> onProgress)
+            Action<string, File, long, long> onProgress)
         {
             _onResponse = onResponse;
             _onFailure = onFailure;
@@ -19,7 +19,7 @@ namespace Ziggeo.Services
 
         private readonly Action<ICall, Response> _onResponse;
         private readonly Action<ICall, IOException> _onFailure;
-        private readonly Action<File, long, long> _onProgress;
+        private readonly Action<string, File, long, long> _onProgress;
 
         public void OnFailure(ICall call, IOException exception)
         {
@@ -31,14 +31,14 @@ namespace Ziggeo.Services
             _onResponse(call, response);
         }
 
+        public void OnProgressUpdate(string token, File file, long sent, long total)
+        {
+            _onProgress(token, file, sent, total);
+        }
+
         [Obsolete]
         public void OnProgressUpdate(long p0, long p1)
         {
-        }
-
-        public void OnProgressUpdate(File file, long sent, long total)
-        {
-            _onProgress(file, sent, total);
         }
     }
 }

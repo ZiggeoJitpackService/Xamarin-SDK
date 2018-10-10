@@ -11,7 +11,6 @@ using Ziggeo.Services;
 
 
 namespace Ziggeo
-
 {
     public partial class Recorder : IZiggeoRecorder
     {
@@ -55,31 +54,33 @@ namespace Ziggeo
                 Ziggeo.SetPreferredCameraFacing((int) VideoDevice);
                 Ziggeo.PreferredQuality = (int) VideoQuality;
                 Ziggeo.SetMaxRecordingDuration((long) (MaxRecordingDurationSeconds * 1000));
-                Ziggeo.VideoRecordingProcessCallback =
-                          new RecorderCallback(throwable => { tcs.TrySetException(throwable); RecordingError?.Invoke(throwable); }, () => isRecording = true, null,
-                        null);
+                Ziggeo.VideoRecordingProcessCallback = new RecorderCallback(throwable =>
+                {
+                    tcs.TrySetException(throwable);
+                    RecordingError?.Invoke(throwable);
+                }, () => isRecording = true, null, null);
+
                 Ziggeo.SetNetworkRequestsCallback(new ProgressCallback((call, response) =>
-                {
-                    if (response.IsSuccessful)
                     {
-                        var parsedResponse = JObject.Parse(response.Body().String());
-                        var token = parsedResponse["video"]["token"].ToString();
-                        tcs.TrySetResult(token);
-                        RecordingFinishedUploadDone?.Invoke(token);
-                    }
-                    else
+                        if (response.IsSuccessful)
+                        {
+                            var parsedResponse = JObject.Parse(response.Body().String());
+                            var token = parsedResponse["video"]["token"].ToString();
+                            tcs.TrySetResult(token);
+                            RecordingFinishedUploadDone?.Invoke(token);
+                        }
+                        else
+                        {
+                            Exception ex = new Exception(response.Message());
+                            tcs.TrySetException(ex);
+                            RecordingError?.Invoke(ex);
+                        }
+                    }, (call, exception) =>
                     {
-                        Exception ex = new Exception(response.Message());
-                        tcs.TrySetException(ex);
-                        RecordingError?.Invoke(ex);
-                    }
-                }, (call, exception) => { 
-                    tcs.TrySetException(exception);
-                    RecordingError?.Invoke(exception);
-                }, (file, sent, total) =>
-                {
-                    ZiggeoApplication.Videos.UploadProgressChanged(token, filename, bytesSent, totalBytes);
-                }));
+                        tcs.TrySetException(exception);
+                        RecordingError?.Invoke(exception);
+                    }, (token, file, sent, total) => { }
+                ));
 
                 // return null when a user manually close the recorder screen
                 var callback = new ActivityLifecycleCallbacks
