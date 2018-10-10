@@ -90,22 +90,4 @@
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="Delete-50" width="50" height="50"/>
-        <image name="Record-100" width="100" height="100"/>
-        <image name="SwitchCamera-50" width="50" height="50"/>
-        <image name="Delete-50.png" width="50" height="50"/>
-        <image name="Pause-50.png" width="50" height="50"/>
-        <image name="Play-50.png" width="50" height="50"/>
-        <image name="Record-100.png" width="100" height="100"/>
-        <image name="Stop-100.png" width="100" height="100"/>
-        <image name="SwitchCamera-50.png" width="50" height="50"/>
-        <image name="trash-50.png" width="50" height="50"/>
-        <image name="upload-50.png" width="50" height="50"/>
-        <image name="Pause-50" width="50" height="50"/>
-        <image name="Play-50" width="50" height="50"/>
-        <image name="Stop-100" width="100" height="100"/>
-        <image name="Trash-50" width="50" height="50"/>
-        <image name="Upload-50" width="50" height="50"/>
-    </resources>
 </document>
