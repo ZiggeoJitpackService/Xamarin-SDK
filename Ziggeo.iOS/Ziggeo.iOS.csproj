@@ -12,7 +12,7 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>1.1.0</ReleaseVersion>
+    <ReleaseVersion>1.2.1</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -99,155 +99,29 @@
     <InterfaceDefinition Include="Recorder\Player.xib" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Delete-50.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Delete-50%402x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Delete-50%403x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Pause-50.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Pause-50%402x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Pause-50%403x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Play-50.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Play-50%402x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Play-50%403x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Record-100.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\Stop-100.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\SwitchCamera-50.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\SwitchCamera-50%402x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\SwitchCamera-50%403x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\trash-50.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\trash-50%402x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\trash-50%403x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\upload-50.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\upload-50%402x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
-    <BundleResource Include="Resources\upload-50%403x.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </BundleResource>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Media.xcassets\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Delete-50.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Delete-50.imageset\Delete-50.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Delete-50.imageset\Delete-50%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Delete-50.imageset\Delete-50%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Pause-50.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Pause-50.imageset\Pause-50.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Pause-50.imageset\Pause-50%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Pause-50.imageset\Pause-50%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Play-50.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Play-50.imageset\Play-50.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Play-50.imageset\Play-50%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Play-50.imageset\Play-50%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Record-100.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Record-100.imageset\Record-100.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Stop-100.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Stop-100.imageset\Stop-100.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\SwitchCamera-50.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\SwitchCamera-50.imageset\SwitchCamera-50.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\SwitchCamera-50.imageset\SwitchCamera-50%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\SwitchCamera-50.imageset\SwitchCamera-50%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Trash-50.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Trash-50.imageset\trash-50.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Trash-50.imageset\trash-50%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Trash-50.imageset\trash-50%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Upload-50.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Upload-50.imageset\upload-50.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Upload-50.imageset\upload-50%402x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Media.xcassets\Upload-50.imageset\upload-50%403x.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <BundleResource Include="Resources\Delete-50.png" />
+    <BundleResource Include="Resources\Delete-50%402x.png" />
+    <BundleResource Include="Resources\Delete-50%403x.png" />
+    <BundleResource Include="Resources\Pause-50.png" />
+    <BundleResource Include="Resources\Pause-50%402x.png" />
+    <BundleResource Include="Resources\Pause-50%403x.png" />
+    <BundleResource Include="Resources\Play-50.png" />
+    <BundleResource Include="Resources\Play-50%402x.png" />
+    <BundleResource Include="Resources\Play-50%403x.png" />
+    <BundleResource Include="Resources\Record-100.png" />
+    <BundleResource Include="Resources\Stop-100.png" />
+    <BundleResource Include="Resources\SwitchCamera-50.png" />
+    <BundleResource Include="Resources\SwitchCamera-50%402x.png" />
+    <BundleResource Include="Resources\SwitchCamera-50%403x.png" />
+    <BundleResource Include="Resources\trash-50.png" />
+    <BundleResource Include="Resources\trash-50%402x.png" />
+    <BundleResource Include="Resources\trash-50%403x.png" />
+    <BundleResource Include="Resources\upload-50.png" />
+    <BundleResource Include="Resources\upload-50%402x.png" />
+    <BundleResource Include="Resources\upload-50%403x.png" />
   </ItemGroup>
   <Import Project="..\Ziggeo.Shared\Ziggeo.Shared.projitems" Label="Shared" Condition="Exists('..\Ziggeo.Shared\Ziggeo.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -32,7 +32,7 @@ namespace Ziggeo.Services
             await Connection.BackgroundUpload(
                 string.Format("/videos/{0}/streams/{1}/videoattach", tokenOrKey, streamToken),
                 "video.mp4",
-                string.Format("/videos/{0}/streams/{1}/recordersubmit", tokenOrKey, streamToken), file);
+                tokenOrKey, file);
         }
     }
 }

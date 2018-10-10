@@ -8,9 +8,18 @@ namespace Ziggeo.Services
 {
     public class ZiggeoVideosService : BaseService, IZiggeoVideos
     {
+        public event VideoFileDelegate UploadStarted;
+        //public event VideoTokenFileDelegate TokenAssigned;
+        public event VideoTokenFileProgressDelegate UploadProgressChanged;
+        public event VideoTokenFileDelegate UploadComplete;
+        public event VideoFileErrorDelegate UploadFailed;
+
         public ZiggeoVideosService(ZiggeoConnect connection, IZiggeoStreams streams) : base(connection)
         {
             this.Streams = streams;
+            connection.UploadProgressChanged += (string token, string filename, long bytesSent, long totalBytes) => {
+                UploadProgressChanged?.Invoke(token, filename, bytesSent, totalBytes);
+            };
         }
 
         public IZiggeoStreams Streams
@@ -68,15 +77,27 @@ namespace Ziggeo.Services
 
         public async Task<JObject> Create(string filePath, Dictionary<string, string> data)
         {
-            Console.WriteLine("creating video...");
-            var video = await Create(data);
-            string videoToken = video["video"]["token"].Value<string>();
-            Console.WriteLine("video token = {0}", videoToken);
-            string streamToken = video["stream"]["token"].Value<string>();
-            Console.WriteLine("stream token = {0}", streamToken);
-            await Streams.AttachVideo(videoToken, streamToken, filePath);
-            Console.WriteLine("video attached");
-            return await Streams.Bind(videoToken, streamToken);
+            try
+            {
+                UploadStarted?.Invoke(filePath);
+                Console.WriteLine("creating video...");
+                var video = await Create(data);
+                string videoToken = video["video"]["token"].Value<string>();
+                Console.WriteLine("video token = {0}", videoToken);
+                //TokenAssigned?.Invoke(videoToken, filePath);
+                string streamToken = video["stream"]["token"].Value<string>();
+                Console.WriteLine("stream token = {0}", streamToken);
+                await Streams.AttachVideo(videoToken, streamToken, filePath);
+                Console.WriteLine("video attached");
+                var result = await Streams.Bind(videoToken, streamToken);
+                UploadComplete?.Invoke(videoToken, filePath);
+                return result;
+            }
+            catch(Exception ex)
+            {
+                UploadFailed?.Invoke(filePath, ex);
+                throw ex;
+            }
         }
 
         public Uri GetVideoUrl(string tokenOrKey)

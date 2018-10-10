@@ -17,8 +17,16 @@ namespace Ziggeo
         Low
     };
 
+    public delegate void RecorderDelegate();
+    public delegate void RecorderErrorDelegate(Exception ex);
+    public delegate void RecordingFinishedDelegate(string token);
     public interface IZiggeoRecorder
     {
+        event RecorderDelegate RecordingStarted;
+        event RecorderDelegate RecordingCanceled;
+        event RecordingFinishedDelegate RecordingFinishedUploadDone;
+        event RecorderErrorDelegate RecordingError;
+
         Task<string> Record();
 
         bool CoverSelectorEnabled

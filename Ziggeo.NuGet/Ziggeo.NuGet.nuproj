@@ -3,8 +3,8 @@
   <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props')" />
   <PropertyGroup Label="Configuration">
     <Owners>Ziggeo</Owners>
-    <ReleaseVersion>1.1.0</ReleaseVersion>
-    <PackageVersion>1.1.0</PackageVersion>
+    <ReleaseVersion>1.2.1</ReleaseVersion>
+    <PackageVersion>1.2.1</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
