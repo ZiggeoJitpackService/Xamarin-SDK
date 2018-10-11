@@ -65,7 +65,7 @@ namespace Ziggeo
                         if (response.IsSuccessful)
                         {
                             var parsedResponse = JObject.Parse(response.Body().String());
-                            var token = parsedResponse["video"]["token"].ToString();
+                            var token = parsedResponse["token"].Value<string>();
                             tcs.TrySetResult(token);
                             RecordingFinishedUploadDone?.Invoke(token);
                         }

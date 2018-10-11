@@ -70,7 +70,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Xamarin-ZiggeoAndroidSDK-Binding, Version=0.75.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Xamarin-ZiggeoAndroidSDK-Binding, Version=0.76.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>libs\Xamarin-ZiggeoAndroidSDK-Binding.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Arch.Core.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
