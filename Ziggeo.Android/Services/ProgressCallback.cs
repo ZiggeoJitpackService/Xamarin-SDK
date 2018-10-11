@@ -23,17 +23,17 @@ namespace Ziggeo.Services
 
         public void OnFailure(ICall call, IOException exception)
         {
-            _onFailure(call, exception);
+            _onFailure?.Invoke(call, exception);
         }
 
         public void OnResponse(ICall call, Response response)
         {
-            _onResponse(call, response);
+            _onResponse?.Invoke(call, response);
         }
 
         public void OnProgressUpdate(string token, File file, long sent, long total)
         {
-            _onProgress(token, file, sent, total);
+            _onProgress?.Invoke(token, file, sent, total);
         }
 
         [Obsolete]
