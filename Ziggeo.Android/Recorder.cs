@@ -43,7 +43,6 @@ namespace Ziggeo
 
         public Task<string> Record()
         {
-            RecordingStarted?.Invoke();
             var tcs = new TaskCompletionSource<string>();
             var isRecording = false;
             try
@@ -58,7 +57,11 @@ namespace Ziggeo
                 {
                     tcs.TrySetException(throwable);
                     RecordingError?.Invoke(throwable);
-                }, () => isRecording = true, null, null);
+                }, () =>
+                {
+                    isRecording = true;
+                    RecordingStarted?.Invoke();
+                }, null, null);
 
                 Ziggeo.SetNetworkRequestsCallback(new ProgressCallback((call, response) =>
                     {
