@@ -76,12 +76,10 @@ namespace Ziggeo
                         {
                             Exception ex = new Exception(response.Message());
                             tcs.TrySetException(ex);
-                            RecordingError?.Invoke(ex);
                         }
                     }, (call, exception) =>
                     {
                         tcs.TrySetException(exception);
-                        RecordingError?.Invoke(exception);
                     }, (token, file, sent, total) => { }
                 ));
 
