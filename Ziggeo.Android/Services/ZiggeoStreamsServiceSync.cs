@@ -31,10 +31,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return jobj;
         }
@@ -52,10 +57,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
         }
 
@@ -73,10 +83,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return jobj;
         }
@@ -94,10 +109,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
         }
     }

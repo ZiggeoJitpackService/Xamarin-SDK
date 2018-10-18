@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 using Com.Ziggeo.Androidsdk;
-using Com.Ziggeo.Androidsdk.Net;
 using Com.Ziggeo.Androidsdk.Net.Services.Videos;
 using Newtonsoft.Json.Linq;
 using File = Java.IO.File;
@@ -35,10 +33,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return array;
         }
@@ -57,10 +60,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return jobj;
         }
@@ -80,10 +88,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return stream;
         }
@@ -102,10 +115,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return stream;
         }
@@ -124,10 +142,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return jobj;
         }
@@ -146,10 +169,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return jobj;
         }
@@ -168,10 +196,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return str;
         }
@@ -190,10 +223,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return jobj;
         }
@@ -212,10 +250,15 @@ namespace Ziggeo.Services
                     }
                     else
                     {
+                        autoResetEvent.Set();
                         throw new Exception(response.Message());
                     }
                 },
-                (call, exception) => throw exception));
+                (call, exception) =>
+                {
+                    autoResetEvent.Set();
+                    throw exception;
+                }));
             autoResetEvent.WaitOne();
             return jobj;
         }
