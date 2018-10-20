@@ -131,9 +131,7 @@
     <Compile Include="Services\NativeDelegates\NVideoTokenFileDelegate.cs" />
     <Compile Include="Services\NativeDelegates\NVideoTokenFileProgressDelegatecs.cs" />
     <Compile Include="Services\ProgressCallback.cs" />
-    <Compile Include="Services\ZiggeoStreamsServiceSync.cs" />
     <Compile Include="Services\ZiggeoStreamsService.cs" />
-    <Compile Include="Services\ZiggeoVideosServiceSync.cs" />
     <Compile Include="Services\ZiggeoVideosService.cs" />
     <Compile Include="ZiggeoApplication.cs" />
   </ItemGroup>
