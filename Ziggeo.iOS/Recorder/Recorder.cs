@@ -12,6 +12,7 @@ namespace Ziggeo
     public partial class Recorder : UIViewController, IZiggeoRecorder
     {
         public event RecorderDelegate RecordingStarted;
+        public event RecorderDelegate RecordingStopped;
         public event RecorderDelegate RecordingCanceled;
         public event RecordingFinishedDelegate RecordingFinishedUploadDone;
         public event RecorderErrorDelegate RecordingError;

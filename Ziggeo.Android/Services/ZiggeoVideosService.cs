@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Net;
+using Com.Ziggeo.Androidsdk.Net.Exceptions;
 using Com.Ziggeo.Androidsdk.Net.Models.Auth;
 using Com.Ziggeo.Androidsdk.Net.Services.Videos;
 using IO.Reactivex.Internal.Functions;
@@ -23,7 +24,7 @@ namespace Ziggeo.Services
 
         public ZiggeoVideosService(IZiggeo ziggeo)
         {
-            _videosSync = new ZiggeoVideosServiceSync(ziggeo);
+            Videos = ziggeo.Videos();
             _ziggeoInstance = ziggeo;
             ((VideosService) ziggeo.Videos()).UploadStartedDelegate =
                 new NVideoFileDelegate(fileName => UploadStarted?.Invoke(fileName));
@@ -36,64 +37,180 @@ namespace Ziggeo.Services
                     UploadProgressChanged?.Invoke(token, fileName, sent, total));
         }
 
-        private readonly ZiggeoVideosServiceSync _videosSync;
         private readonly IZiggeo _ziggeoInstance;
+        private IVideosService Videos { get; }
 
         public async Task<JArray> Index(Dictionary<string, string> data)
         {
-            return await Task<JArray>.Factory.StartNew(() => _videosSync.Index(data));
+            var source = new TaskCompletionSource<JArray>();
+            Videos.Index(data, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(JArray.Parse(response.Body().String()));
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            return await source.Task;
         }
 
         public async Task<JObject> Get(string tokenOrKey)
         {
-            return await Task<JObject>.Factory.StartNew(() => _videosSync.Get(tokenOrKey));
+            var source = new TaskCompletionSource<JObject>();
+            Videos.Get(tokenOrKey, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(JObject.Parse(response.Body().String()));
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            return await source.Task;
         }
 
         public async Task<Stream> DownloadVideo(string tokenOrKey)
         {
-            return await Task<Stream>.Factory.StartNew(() => _videosSync.DownloadVideo(tokenOrKey));
+            var source = new TaskCompletionSource<Stream>();
+            Videos.DownloadVideo(tokenOrKey, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(response.Body().ByteStream());
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            return await source.Task;
         }
 
         public async Task<Stream> DownloadImage(string tokenOrKey)
         {
-            return await Task<Stream>.Factory.StartNew(() => _videosSync.DownloadImage(tokenOrKey));
+            var source = new TaskCompletionSource<Stream>();
+            Videos.DownloadImage(tokenOrKey, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(response.Body().ByteStream());
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            return await source.Task;
         }
 
         public async Task<JObject> ApplyEffect(string tokenOrKey, Dictionary<string, string> data)
         {
-            return await Task<JObject>.Factory.StartNew(() => _videosSync.ApplyEffect(tokenOrKey, data));
+            var source = new TaskCompletionSource<JObject>();
+            Videos.ApplyEffect(tokenOrKey, data, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(JObject.Parse(response.Body().String()));
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            return await source.Task;
         }
 
         public async Task<JObject> Update(string tokenOrKey, Dictionary<string, string> data)
         {
-            return await Task<JObject>.Factory.StartNew(() => _videosSync.Update(tokenOrKey, data));
+            var source = new TaskCompletionSource<JObject>();
+            Videos.Update(tokenOrKey, data, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(JObject.Parse(response.Body().String()));
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            return await source.Task;
         }
 
         public async Task Destroy(string tokenOrKey)
         {
-            await Task<string>.Factory.StartNew(() => _videosSync.Destroy(tokenOrKey));
+            var source = new TaskCompletionSource<string>();
+            Videos.Destroy(tokenOrKey, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(response.Body().String());
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            await source.Task;
         }
 
         public async Task<JObject> Create(Dictionary<string, string> data)
         {
-            return await Task<JObject>.Factory.StartNew(() => _videosSync.Create(data));
+            var source = new TaskCompletionSource<JObject>();
+            Videos.Create(data, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(JObject.Parse(response.Body().String()));
+                    }
+                    else
+                    {
+                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+            return await source.Task;
         }
 
         public async Task<JObject> Create(string filePath, Dictionary<string, string> data)
         {
-            try
-            {
-                UploadStarted?.Invoke(filePath);
-                var result = await Task<JObject>.Factory.StartNew(() => _videosSync.Create(filePath, data));
-                string videoToken = result["video"]["token"].Value<string>();
-                UploadComplete?.Invoke(videoToken, filePath);
-                return result;
-            }
-            catch (Exception ex)
-            {
-                UploadFailed?.Invoke(filePath, ex);
-                throw ex;
-            }
+            var source = new TaskCompletionSource<JObject>();
+            Videos.Create(new File(filePath), data, new Callback(
+                (call, response) =>
+                {
+                    if (response.IsSuccessful)
+                    {
+                        source.TrySetResult(JObject.Parse(response.Body().String()));
+                    }
+                    else
+                    {
+                        var ex = new ResponseException(response.Code(), response.Message());
+                        source.TrySetException(ex);
+                    }
+                },
+                (call, exception) => { source.TrySetException(exception); }));
+
+            return await source.Task;
         }
 
         public Uri GetVideoUrl(string tokenOrKey)
