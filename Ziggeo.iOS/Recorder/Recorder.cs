@@ -340,6 +340,7 @@ namespace Ziggeo
         {
             try
             {
+                RecordingStarted?.Invoke();
                 CleanUp();
 				if (UIDevice.CurrentDevice.IsMultitaskingSupported)
 				{
@@ -408,7 +409,6 @@ namespace Ziggeo
 
         public Task<string> Record()
         {
-            RecordingStarted?.Invoke();
             TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
             try
             {
