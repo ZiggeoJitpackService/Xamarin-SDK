@@ -1,7 +1,10 @@
-# Ziggeo Xamarin SDK 1.2.2
+# Ziggeo Xamarin SDK 1.2.3
 
 Ziggeo API (https://ziggeo.com) allows you to integrate video recording and playback with only
 several lines of code in your app.
+
+## Upgrading from v.1.2.2 to v.1.2.3
+The update bring  `RecordingStopped` event. It will be invoked at the moment of the recording was stopped
 
 ## Upgrading from v.1.2.1 to v.1.2.2
 The update changes the behaviour of the `RecordingStarted` event. It will be invoked on actual recording start instead of the recorder UI appearance
@@ -11,7 +14,6 @@ The update bring crossplatform available events for recorder and video service.
 
 ## Upgrading from v.1.0.0 to v.1.1.0
 The update bring crossplatform avaiable client/server auth tokens. Use ZiggeoApplication.ClientAuthToken and ZiggeoApplication.ServerAuthToken properties to set the auth tokens on iOS and Android platforms
-
 
 ## Integration
 
@@ -28,11 +30,11 @@ To fire up a recorder, add:
 Ziggeo.IZiggeoRecorder recorder = App.ZiggeoApplication.Recorder;
 try
 {
-	string token = await recorder.Record();
+string token = await recorder.Record();
 }
 catch(Exception ex)
 {
-	await DisplayAlert("Error", ex.Message, "Okay");
+await DisplayAlert("Error", ex.Message, "Okay");
 }
 ``` 
 
@@ -87,8 +89,14 @@ Console.WriteLine("{0} upload failed with error {1}", filename, error.ToString()
 ```csharp
 ZiggeoApplication.Recorder.RecordingStarted += () =>
 {
-//recorder started
-Console.WriteLine("recorder interface was shown");
+//recording started
+Console.WriteLine("recording started");
+};
+
+ZiggeoApplication.Recorder.RecordingStopped += () =>
+{
+//recording was stopped
+Console.WriteLine("recording stopped");
 };
 
 ZiggeoApplication.Recorder.RecordingCanceled += () =>

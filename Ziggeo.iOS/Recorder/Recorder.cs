@@ -362,6 +362,7 @@ namespace Ziggeo
         {
 			try
 			{
+                RecordingStopped?.Invoke();
                 UpdateUIChangingStateNow();
                 CaptureSession.StopRecording();
                 UpdateUIRecordingStopped();
