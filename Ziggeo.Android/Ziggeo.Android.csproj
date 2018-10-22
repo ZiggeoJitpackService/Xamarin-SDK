@@ -15,7 +15,7 @@
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>1.2.1</ReleaseVersion>
+    <ReleaseVersion>1.2.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,7 +70,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="Xamarin-ZiggeoAndroidSDK-Binding, Version=0.75.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Xamarin-ZiggeoAndroidSDK-Binding, Version=0.76.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>libs\Xamarin-ZiggeoAndroidSDK-Binding.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Arch.Core.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -131,9 +131,7 @@
     <Compile Include="Services\NativeDelegates\NVideoTokenFileDelegate.cs" />
     <Compile Include="Services\NativeDelegates\NVideoTokenFileProgressDelegatecs.cs" />
     <Compile Include="Services\ProgressCallback.cs" />
-    <Compile Include="Services\ZiggeoStreamsServiceSync.cs" />
     <Compile Include="Services\ZiggeoStreamsService.cs" />
-    <Compile Include="Services\ZiggeoVideosServiceSync.cs" />
     <Compile Include="Services\ZiggeoVideosService.cs" />
     <Compile Include="ZiggeoApplication.cs" />
   </ItemGroup>

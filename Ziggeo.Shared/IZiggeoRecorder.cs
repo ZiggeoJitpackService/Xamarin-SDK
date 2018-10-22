@@ -23,6 +23,7 @@ namespace Ziggeo
     public interface IZiggeoRecorder
     {
         event RecorderDelegate RecordingStarted;
+        event RecorderDelegate RecordingStopped;
         event RecorderDelegate RecordingCanceled;
         event RecordingFinishedDelegate RecordingFinishedUploadDone;
         event RecorderErrorDelegate RecordingError;
