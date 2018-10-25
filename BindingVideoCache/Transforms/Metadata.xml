@@ -1,0 +1,9 @@
+<metadata>
+    <attr
+            path="/api/package[@name='com.danikula.videocache.file']/
+    class[@name='LruDiskUsage.TouchCallable']/
+    method[@name='call']"
+            name="managedReturn">
+        Java.Lang.Object
+    </attr>
+</metadata>
