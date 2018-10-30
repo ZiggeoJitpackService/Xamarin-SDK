@@ -278,27 +278,6 @@ Closes and submits the stream
 ```csharp 
 App.ZiggeoApplication.Streams.Bind(string video_token_or_key, string token_or_key, Dictionary<string, string> arguments) 
 ``` 
- 
-
-#### Publishing
-There is an issue with Nugetizer-3000 plugin, so a few dlls will not be copied in the final `nupkg` file.
-For now we should do it manually:
-
-There are 4 files needs to be copied to `...\Ziggeo._v.nupkg\lib\monoandroid81\`
-- `Binding_Videocache.dll`
-- `Binding_Videocache.pdb`
-- `Xamarin-ZiggeoAndroidSDK-Binding.dll`
-- `Xamarin-ZiggeoAndroidSDK-Binding.pdb`
-3. The above 4 files are here
-`_project_root_\Ziggeo.Android\bin\Debug\`
-4. There is a config file `...\Ziggeo._v.nupkg\Ziggeo.nuspec`
-It has `xml` structure. The following code should be added to the 4th line
-```
-<files>
-     <file src="lib\monoandroid81\Xamarin-ZiggeoAndroidSDK-Binding.dll" target="lib\monoandroid81" />
-     <file src="lib\monoandroid81\Binding_Videocache.dll" target="lib\monoandroid81" />
-</files>
-``` 
 
 ## License
 
