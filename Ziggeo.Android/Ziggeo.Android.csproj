@@ -14,7 +14,6 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <ReleaseVersion>1.2.3</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,9 +48,6 @@
     </Reference>
     <Reference Include="Naxam.SquareUp.OkHttp3.LoggingInterceptor, Version=3.9.1.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naxam.SquareUp.OkHttp3.LoggingInterceptor.3.9.1.2\lib\MonoAndroid10\Naxam.SquareUp.OkHttp3.LoggingInterceptor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Square.OkHttp3, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Square.OkHttp3.3.8.1\lib\MonoAndroid\Square.OkHttp3.dll</HintPath>
@@ -111,6 +107,9 @@
     <Reference Include="Xamarin.Android.Support.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Android.Support.Vector.Drawable.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityLifecycleCallbacks.cs" />
@@ -140,8 +139,11 @@
       <Project>{687b157d-d39b-4b99-b380-702fd51adbc6}</Project>
       <Name>Ziggeo.BindingAndroidSDK</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj">
+      <Project>{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}</Project>
+      <Name>Ziggeo.Xamarin.NetStandard</Name>
+    </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Ziggeo.Shared\Ziggeo.Shared.projitems" Label="Shared" Condition="Exists('..\Ziggeo.Shared\Ziggeo.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

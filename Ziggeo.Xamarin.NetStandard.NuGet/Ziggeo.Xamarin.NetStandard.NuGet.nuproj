@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.props')" />
-  <PropertyGroup Label="Configuration">
-    <Owners>Ziggeo</Owners>
-    <ReleaseVersion>1.2.3</ReleaseVersion>
-    <PackageVersion>1.2.3</PackageVersion>
-  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{68B8AF7C-2CBB-4566-AE93-4E13204DD789}</ProjectGuid>
-    <Description>ZiggeoXamarinSDK</Description>
-    <PackageId>ZiggeoXamarinSDK</PackageId>
-    <Authors>Ziggeo</Authors>
+    <ProjectGuid>{4B336229-1505-4A36-BCD4-9D6B19DBFC2B}</ProjectGuid>
+    <Description>Ziggeo.Xamarin.NetStandard.Nuget</Description>
+    <PackageId>Ziggeo.Xamarin.NetStandard.Nuget</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>alex</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ziggeo</RootNamespace>
+    <RootNamespace>Ziggeo.Xamarin.NetStandard.NuGet</RootNamespace>
     <UsePartialTypes>false</UsePartialTypes>
-    <AssemblyName>Ziggeo.NuGet</AssemblyName>
+    <AssemblyName>Ziggeo.Xamarin.NetStandard.NuGet</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -32,19 +28,24 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="readme.txt">
+      <IncludeInPackage>true</IncludeInPackage>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ziggeo.Xamarin.iOS\Ziggeo.Xamarin.iOS.csproj">
+      <Project>{7E6DE777-DA24-4276-ABC8-025075D41ED0}</Project>
+      <Name>Ziggeo.Xamarin.iOS</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ziggeo.Android\Ziggeo.Android.csproj">
       <Project>{1340EB8E-A2FC-42BC-A1E2-C32F11161A6C}</Project>
       <Name>Ziggeo.Android</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ziggeo.iOS\Ziggeo.iOS.csproj">
-      <Project>{7E6DE777-DA24-4276-ABC8-025075D41ED0}</Project>
-      <Name>Ziggeo.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NuGet.Build.Packaging">
       <Version>0.2.2</Version>
-      <PrivateAssets>all</PrivateAssets>
+      <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
