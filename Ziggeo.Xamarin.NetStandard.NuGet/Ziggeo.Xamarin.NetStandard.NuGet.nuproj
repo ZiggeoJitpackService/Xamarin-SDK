@@ -41,12 +41,18 @@
       <Project>{1340EB8E-A2FC-42BC-A1E2-C32F11161A6C}</Project>
       <Name>Ziggeo.Android</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NuGet.Build.Packaging">
       <Version>0.2.2</Version>
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Ziggeo.Xamarin.NetStandard">
+      <HintPath>..\Ziggeo.Xamarin.NetStandard\bin\Debug\netstandard2.0\Ziggeo.Xamarin.NetStandard.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
   <Import Project="$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets" Condition="Exists('$(NuGetAuthoringPath)\NuGet.Packaging.Authoring.targets')" />

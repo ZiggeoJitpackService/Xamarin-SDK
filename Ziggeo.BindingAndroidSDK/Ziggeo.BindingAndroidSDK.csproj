@@ -139,6 +139,10 @@
       <Project>{15da011b-63b4-4ca9-95ac-57fd86ccf7f3}</Project>
       <Name>BindingVideoCache</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj">
+      <Project>{b6ed4a52-2857-410a-8a78-4e5a83e64db8}</Project>
+      <Name>Ziggeo.Xamarin.NetStandard</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
