@@ -31,3 +31,6 @@ See the actual list if dependencies below
 3. After adding the dependencies there are can be binding conflicts due to C#/Java Generics binding problem. Common steps to resolve conflicts are
  - make sure there is a setter AND a getter for fields, not just a setter or just a getter nothod.
  - take a look at `Metadata.xml` and add config for resolving generic conflicts
+4. It seems like binding for exoplayer or binding for aar at all does not share exported ids or styles, so
+ - If you're getting error similar too `No resource found that matches the given name (at 'layout_constraintLeft_toRightOf' with value '@id/exo_play')`, make sure to mark all ids with plus sign.
+ - If you're getting error similar too `No resource found that matches the given name (at 'style' with value '@style/ExoMediaButton.Play')`, make sure to duplicate missing styles from transitive aar in `styles.xml` of ziggeo sdk. Just create empty styles with the same names.
