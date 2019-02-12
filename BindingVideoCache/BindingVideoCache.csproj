@@ -131,7 +131,6 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Jars\AboutJars.txt" />
     <LibraryProjectZip Include="Jars\videocache-2.7.0.aar" />
   </ItemGroup>
   <ItemGroup>
