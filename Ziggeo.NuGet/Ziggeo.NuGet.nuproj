@@ -4,7 +4,7 @@
   <PropertyGroup Label="Configuration">
     <Owners>Ziggeo</Owners>
     <ReleaseVersion>1.2.3</ReleaseVersion>
-    <PackageVersion>1.2.3</PackageVersion>
+    <PackageVersion>1.2.5</PackageVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
