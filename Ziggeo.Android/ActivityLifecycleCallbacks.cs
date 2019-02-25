@@ -2,7 +2,6 @@
 using Android.App;
 using Android.Content;
 using Android.OS;
-using Com.Ziggeo.Androidsdk.Recording;
 using Java.Lang;
 using Square.OkHttp3;
 using IOException = Java.IO.IOException;
