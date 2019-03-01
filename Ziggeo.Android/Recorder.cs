@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Android.App;
 using Com.Ziggeo.Androidsdk;
+using Com.Ziggeo.Androidsdk.Recorder;
 using Com.Ziggeo.Androidsdk.UI.Activities;
 using Newtonsoft.Json.Linq;
 using Ziggeo.Services;
@@ -25,7 +26,7 @@ namespace Ziggeo
         }
 
         private readonly IZiggeo _ziggeo;
-        private bool _isRecording;
+        private bool _isRecordingStarted;
         private ActivityLifecycleCallbacks _callbacks;
 
         public IZiggeoApplication ZiggeoApplication { get; private set; }
@@ -45,41 +46,37 @@ namespace Ziggeo
         public Task<string> Record()
         {
             var tcs = new TaskCompletionSource<string>();
-            _isRecording = false;
+            _isRecordingStarted = false;
             try
             {
-                _ziggeo.CoverSelectorEnabled = CoverSelectorEnabled;
-                _ziggeo.ExtraArgsForRecorder = AdditionalParameters;
-                _ziggeo.SetCameraSwitchDisabled(!CameraFlipButtonVisible);
-                _ziggeo.SetPreferredCameraFacing((int) VideoDevice);
-                _ziggeo.PreferredQuality = (int) VideoQuality;
-                _ziggeo.SetMaxRecordingDuration((long) (MaxRecordingDurationSeconds * 1000));
-                _ziggeo.VideoRecordingProcessCallback = new RecorderCallback(throwable =>
+                RecorderCallback recorderCallback = new RecorderCallback
                 {
-                    tcs.TrySetException(throwable);
-                    RecordingError?.Invoke(throwable);
-                }, () =>
-                {
-                    _isRecording = true;
-                    RecordingStarted?.Invoke();
-                }, path => { RecordingStopped?.Invoke(); }, null);
-
-                _ziggeo.SetNetworkRequestsCallback(new ProgressCallback((call, response) =>
+                    _onError = throwable =>
                     {
-                        if (response.IsSuccessful)
-                        {
-                            var parsedResponse = JObject.Parse(response.Body().String());
-                            var token = parsedResponse["token"].Value<string>();
-                            tcs.TrySetResult(token);
-                            RecordingFinishedUploadDone?.Invoke(token);
-                        }
-                        else
-                        {
-                            Exception ex = new Exception(response.Message());
-                            tcs.TrySetException(ex);
-                        }
-                    }, (call, exception) => { tcs.TrySetException(exception); }, (token, file, sent, total) => { }
-                ));
+                        tcs.TrySetException(throwable);
+                        RecordingError?.Invoke(throwable);
+                    },
+                    _onRecordingStarted = () =>
+                    {
+                        _isRecordingStarted = true;
+                        RecordingStarted?.Invoke();
+                    },
+                    _onRecordingStopped = path => { RecordingStopped?.Invoke(); },
+                    _onUploadingFinished = (path, token) =>
+                    {
+                        tcs.TrySetResult(token);
+                        RecordingFinishedUploadDone?.Invoke(token);
+                    }
+                };
+                _ziggeo.ConfigureRecorder(new RecorderConfig.Builder()
+                    .DisableCameraSwitch(!CameraFlipButtonVisible)
+                    .Facing((int) VideoDevice)
+                    .ExtraArgs(AdditionalParameters)
+                    .EnableCoverShot(CoverSelectorEnabled)
+                    .Quality((int) VideoQuality)
+                    .MaxDuration((long) (MaxRecordingDurationSeconds * 1000))
+                    .Callback(recorderCallback)
+                    .Build());
 
                 // return null when a user manually close the recorder screen
                 if (_callbacks == null)
@@ -88,7 +85,7 @@ namespace Ziggeo
                     {
                         OnStopped = activity =>
                         {
-                            if (activity is CameraRecorderActivity && activity.IsFinishing && !_isRecording)
+                            if (activity is CameraRecorderActivity && activity.IsFinishing && !_isRecordingStarted)
                             {
                                 tcs.TrySetResult(null);
                                 RecordingCanceled?.Invoke();
@@ -99,7 +96,7 @@ namespace Ziggeo
                         _callbacks);
                 }
 
-                _ziggeo.StartRecorder();
+                _ziggeo.StartCameraRecorder();
             }
             catch (Exception ex)
             {

@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using Android.Media.TV;
 using Com.Ziggeo.Androidsdk.Recorder;
+using Java.IO;
 using Java.Lang;
 using Square.OkHttp3;
 using IOException = Java.IO.IOException;
@@ -7,40 +10,50 @@ using Uri = Android.Net.Uri;
 
 namespace Ziggeo
 {
-    public class RecorderCallback : Java.Lang.Object, IVideoRecordingCallback
+    public class RecorderCallback : Com.Ziggeo.Androidsdk.Callbacks.RecorderCallback
     {
-        public RecorderCallback(Action<Throwable> onError, Action onStarted, Action<string> onStopped,
-            Action<Uri> onUploadingStarted)
+
+        public Action<Throwable> _onError = null;
+        public Action _onRecordingStarted = null;
+        public Action<string> _onRecordingStopped = null;
+        public Action<string> _onUploadingStarted = null;
+        public Action<string, string> _onUploadingFinished = null;
+        public Action<string, File, long, long> _onUploadingProgress = null;
+
+        public override void UploadingStarted(string path)
         {
-            _onError = onError;
-            _onStarted = onStarted;
-            _onStopped = onStopped;
-            _onUploadingStarted = onUploadingStarted;
+            base.UploadingStarted(path);
+            _onUploadingStarted?.Invoke(path);
         }
 
-        private readonly Action<Throwable> _onError = null;
-        private readonly Action _onStarted = null;
-        private readonly Action<string> _onStopped = null;
-        private readonly Action<Uri> _onUploadingStarted = null;
-
-        public void OnError(Throwable exception)
+        public override void UploadProgress(string token, File file, long sent, long total)
         {
+            base.UploadProgress(token, file, sent, total);
+            _onUploadingProgress?.Invoke(token, file, sent, total);
+        }
+
+        public override void Uploaded(string path, string token)
+        {
+            base.Uploaded(path, token);
+            _onUploadingFinished?.Invoke(path, token);
+        }
+
+        public override void Error(Throwable exception)
+        {
+            base.Error(exception);
             _onError?.Invoke(exception);
         }
 
-        public void OnStarted()
+        public override void RecordingStarted()
         {
-            _onStarted?.Invoke();
+            base.RecordingStarted();
+            _onRecordingStarted?.Invoke();
         }
 
-        public void OnStopped(string path)
+        public override void RecordingStopped(string path)
         {
-            _onStopped?.Invoke(path);
-        }
-
-        public void OnUploadingStarted(Uri fileUri)
-        {
-            _onUploadingStarted?.Invoke(fileUri);
+            base.RecordingStopped(path);
+            _onRecordingStopped?.Invoke(path);
         }
     }
 }

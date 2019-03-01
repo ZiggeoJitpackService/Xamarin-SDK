@@ -51,9 +51,8 @@
     <Reference Include="ExoPlayer.UI, Version=2.9.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugins.Android.ExoPlayer.UI.2.9.0\lib\monoandroid81\ExoPlayer.UI.dll</HintPath>
     </Reference>
-    <Reference Include="GoogleGson, Version=2.8.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="GoogleGson, Version=2.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GoogleGson.2.8.1\lib\MonoAndroid\GoogleGson.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Java.Interop" />
     <Reference Include="Mono.Android" />
@@ -61,17 +60,14 @@
       <HintPath>..\packages\Naxam.ReactiveStreams.Droid.1.0.1\lib\MonoAndroid10\Naxam.ReactiveStreams.Droid.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Naxam.RxJava2.Droid, Version=2.1.2.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Naxam.RxJava2.Droid, Version=2.1.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Naxam.RxJava2.Droid.2.1.2\lib\MonoAndroid10\Naxam.RxJava2.Droid.dll</HintPath>
-      <Private>True</Private>
     </Reference>
-    <Reference Include="Naxam.SquareUp.OkHttp3.LoggingInterceptor, Version=3.9.1.2, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Naxam.SquareUp.OkHttp3.LoggingInterceptor.3.9.1.2\lib\MonoAndroid10\Naxam.SquareUp.OkHttp3.LoggingInterceptor.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Naxam.SquareUp.OkHttp3.LoggingInterceptor, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naxam.SquareUp.OkHttp3.LoggingInterceptor.3.11.0\lib\MonoAndroid10\Naxam.SquareUp.OkHttp3.LoggingInterceptor.dll</HintPath>
     </Reference>
-    <Reference Include="Square.OkHttp3, Version=3.8.0.0, Culture=neutral, PublicKeyToken=null">
+    <Reference Include="Square.OkHttp3, Version=3.8.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Square.OkHttp3.3.8.1\lib\MonoAndroid\Square.OkHttp3.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="Square.OkIO, Version=1.13.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Square.OkIO.1.13.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
@@ -101,13 +97,11 @@
       <HintPath>..\packages\Xamarin.Android.Support.Compat.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Compat.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.Constraint.Layout, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Android.Support.Constraint.Layout.1.1.0\lib\MonoAndroid70\Xamarin.Android.Support.Constraint.Layout.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Xamarin.Android.Support.Constraint.Layout, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Android.Support.Constraint.Layout.1.1.2\lib\MonoAndroid70\Xamarin.Android.Support.Constraint.Layout.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.Android.Support.Constraint.Layout.Solver, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\packages\Xamarin.Android.Support.Constraint.Layout.Solver.1.1.0\lib\MonoAndroid70\Xamarin.Android.Support.Constraint.Layout.Solver.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Xamarin.Android.Support.Constraint.Layout.Solver, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Android.Support.Constraint.Layout.Solver.1.1.2\lib\MonoAndroid70\Xamarin.Android.Support.Constraint.Layout.Solver.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.Core.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\packages\Xamarin.Android.Support.Core.UI.27.0.2.1\lib\MonoAndroid81\Xamarin.Android.Support.Core.UI.dll</HintPath>
