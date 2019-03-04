@@ -141,7 +141,6 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\ziggeo-android-sdk-debug-v0.78.1.aar" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -155,6 +154,9 @@
       <Project>{b6ed4a52-2857-410a-8a78-4e5a83e64db8}</Project>
       <Name>Ziggeo.Xamarin.NetStandard</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Jars\ziggeo-android-sdk-release-v0.78.3.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
