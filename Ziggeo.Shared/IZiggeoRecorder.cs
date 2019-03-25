@@ -53,6 +53,12 @@ namespace Ziggeo
             get;
             set;
         }
+        
+        VideoQuality VideoQuality
+        {
+            get;
+            set;
+        }
 
         double MaxRecordingDurationSeconds
         {           
