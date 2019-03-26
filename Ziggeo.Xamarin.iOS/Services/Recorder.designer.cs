@@ -16,11 +16,27 @@ namespace Ziggeo
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        Ziggeo.AudioLevelView audioLevelView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton cameraButton { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton cancelButton { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel durationLabel { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        Ziggeo.FaceOutlineView faceOutlineView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        Ziggeo.LuxMeterView luxMeter { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -48,6 +64,11 @@ namespace Ziggeo
 
         void ReleaseDesignerOutlets ()
         {
+            if (audioLevelView != null) {
+                audioLevelView.Dispose ();
+                audioLevelView = null;
+            }
+
             if (cameraButton != null) {
                 cameraButton.Dispose ();
                 cameraButton = null;
@@ -56,6 +77,21 @@ namespace Ziggeo
             if (cancelButton != null) {
                 cancelButton.Dispose ();
                 cancelButton = null;
+            }
+
+            if (durationLabel != null) {
+                durationLabel.Dispose ();
+                durationLabel = null;
+            }
+
+            if (faceOutlineView != null) {
+                faceOutlineView.Dispose ();
+                faceOutlineView = null;
+            }
+
+            if (luxMeter != null) {
+                luxMeter.Dispose ();
+                luxMeter = null;
             }
 
             if (PreviewView != null) {

@@ -18,6 +18,10 @@ namespace Ziggeo
         public event RecorderDelegate RecordingCanceled;
         public event RecordingFinishedDelegate RecordingFinishedUploadDone;
         public event RecorderErrorDelegate RecordingError;
+        public event RecordingDurationDelegate RecordingDurationUpdated;
+        public event LuxMeterDelegate LuminosityUpdated;
+        public event AudioMeterDelegate AudioLevelUpdated;
+        public event FaceDetectorDelegate FaceDetected;
 
         public Recorder(IZiggeoApplication ziggeoApplication)
         {
@@ -42,6 +46,9 @@ namespace Ziggeo
         public VideoQuality VideoQuality { get; set; }
 
         public double MaxRecordingDurationSeconds { get; set; }
+        public bool ShowLightIndicator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool ShowAudioIndicator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool ShowFaceOutline { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public Task<string> Record()
         {

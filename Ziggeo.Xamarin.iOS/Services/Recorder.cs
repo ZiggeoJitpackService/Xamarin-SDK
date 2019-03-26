@@ -16,11 +16,18 @@ namespace Ziggeo
         public event RecorderDelegate RecordingCanceled;
         public event RecordingFinishedDelegate RecordingFinishedUploadDone;
         public event RecorderErrorDelegate RecordingError;
+        public event RecordingDurationDelegate RecordingDurationUpdated;
+        public event LuxMeterDelegate LuminosityUpdated;
+        public event AudioMeterDelegate AudioLevelUpdated;
+        public event FaceDetectorDelegate FaceDetected;
 
         public Recorder(IZiggeoApplication ziggeoApplication) : base("Recorder", null)
         {
 			this.BackgroundRecordingID = UIApplication.BackgroundTaskInvalid;
             this.ZiggeoApplication = ziggeoApplication;
+            ShowLightIndicator = true;
+            ShowFaceOutline = true;
+            ShowAudioIndicator = true;
 		}
 
         private CaptureSession CaptureSession
@@ -57,6 +64,10 @@ namespace Ziggeo
         {
             base.ViewDidLoad();
 
+            faceOutlineView.Hidden = !ShowFaceOutline;
+            audioLevelView.Hidden = !ShowAudioIndicator;
+            luxMeter.Hidden = !ShowLightIndicator;
+
             // Perform any additional setup after loading the view, typically from a nib.
             PreviewView.UserInteractionEnabled = true;
             FocusTapGesture = new UITapGestureRecognizer(() =>
@@ -73,6 +84,8 @@ namespace Ziggeo
             try
             {
                 CaptureSession = new CaptureSession(PreviewView);
+                CaptureSession.MaxDuration = MaxRecordingDurationSeconds;
+                CaptureSession.Quality = VideoQuality;
                 CaptureSession.CaptureDevicePosition = (VideoDevice == ZiggeoVideoDevice.Front ? AVCaptureDevicePosition.Front : AVCaptureDevicePosition.Back);
                 CaptureSession.ConfigurationFailed += (session) =>
                 {
@@ -119,6 +132,27 @@ namespace Ziggeo
                     Console.WriteLine("subject area did change");
                     CaptureSession?.Focus(AVFoundation.AVCaptureFocusMode.ContinuousAutoFocus, AVFoundation.AVCaptureExposureMode.ContinuousAutoExposure, new CoreGraphics.CGPoint(0.5, 0.5), false);
                 };
+                CaptureSession.RecordingDurationChanged += (session) =>
+                {
+                    RecordingDurationUpdated?.Invoke(session.Duration);
+                    RenderDuration();
+                };
+                CaptureSession.LuminosityUpdated += (session, value) =>
+                {
+                    LuminosityUpdated?.Invoke(value);
+                    luxMeter.Luminosity = value;
+                    DrawFaces();
+                };
+                CaptureSession.AudioLevelUpdated += (session, value) =>
+                {
+                    AudioLevelUpdated?.Invoke(value);
+                    audioLevelView.AudioLevel = value;
+                };
+                CaptureSession.FaceDetected += (session, rect, faceID) =>
+                {
+                    FaceDetected?.Invoke(faceID, rect.Left, rect.Top, rect.Width, rect.Height);
+                    faceOutlineView.AddFace(faceID, rect);
+                };
                 CaptureSession.Setup();
             }
             catch(Exception ex)
@@ -127,6 +161,17 @@ namespace Ziggeo
                 Alert("error", ex.ToString());
                 RecordingError?.Invoke(ex);
             }
+        }
+
+        private void DrawFaces()
+        {
+            DispatchQueue.MainQueue.DispatchAsync(() =>
+            {
+                if (!faceOutlineView.Hidden)
+                {
+                    faceOutlineView.SetNeedsDisplay();
+                }
+            });
         }
 
         protected virtual void StartVideoProcessorChain(NSUrl fileName)
@@ -141,7 +186,20 @@ namespace Ziggeo
 
                     VideoConverter converter = new VideoConverter(item.FilePath.Path);
                     Console.WriteLine("converting started");
-                    string convertedVideo = await converter.Convert(AVAssetExportSessionPreset.MediumQuality.GetConstant());
+                    NSString preset;
+                    switch(VideoQuality)
+                    {
+                        case VideoQuality.High:
+                            preset = AVAssetExportSessionPreset.HighestQuality.GetConstant();
+                            break;
+                        case VideoQuality.Low:
+                            preset = AVAssetExportSessionPreset.LowQuality.GetConstant();
+                            break;
+                        default:
+                            preset = AVAssetExportSessionPreset.MediumQuality.GetConstant();
+                            break;
+                    }
+                    string convertedVideo = await converter.Convert(preset);
                     Console.WriteLine("converting complete");
 
                     Console.WriteLine("uploading...");
@@ -192,6 +250,12 @@ namespace Ziggeo
             CaptureSession?.UpdateOrientation(UIDevice.CurrentDevice.Orientation);
         }
 
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+            CaptureSession?.UpdateOrientation(UIDevice.CurrentDevice.Orientation);
+        }
+
         void Alert(string title, string message, IEnumerable<UIAlertAction> actions = null, UIAlertControllerStyle style = UIAlertControllerStyle.Alert)
         {
             DispatchQueue.MainQueue.DispatchAsync(() =>
@@ -203,6 +267,24 @@ namespace Ziggeo
             });
         }
 
+        void RenderDuration()
+        {
+            DispatchQueue.MainQueue.DispatchAsync(() =>
+            {
+                double duration = CaptureSession != null ? CaptureSession.Duration : 0;
+                if(MaxRecordingDurationSeconds > 0)
+                {
+                    double remainingDuration = MaxRecordingDurationSeconds - duration;
+                    if (remainingDuration < 0) remainingDuration = 0;
+                    duration = remainingDuration;
+                }
+                int minutes = (int)(duration / 60);
+                int seconds = ((int)(duration + 0.4)) % 60;
+                string currentDurationSeconds = string.Format("{0:00}:{1:00}", minutes, seconds);
+                durationLabel.Text = currentDurationSeconds;
+            });
+        }
+
         void UpdateUIChangingStateNow()
         {
             DispatchQueue.MainQueue.DispatchAsync(() =>
@@ -211,6 +293,7 @@ namespace Ziggeo
                 recordButton.Enabled = false;
                 cameraButton.Enabled = false;
             });
+            RenderDuration();
         }
 
 		void UpdateUIInitializedOK()
@@ -221,7 +304,8 @@ namespace Ziggeo
 				recordButton.Enabled = true;
                 cameraButton.Enabled = CameraFlipButtonVisible;
 			});
-		}
+            RenderDuration();
+        }
 
         void UpdateUIFailedState()
         {
@@ -231,6 +315,7 @@ namespace Ziggeo
                 recordButton.Enabled = false;
                 cameraButton.Enabled = false;
 			});
+            RenderDuration();
         }
 
         void UpdateUIRecordingNow()
@@ -242,7 +327,8 @@ namespace Ziggeo
                 cameraButton.Enabled = false;
                 recordButton.ImageView.Image = ImageLoader.GetImageFromResource("Stop-100");
             });
-	    }
+            RenderDuration();
+        }
 
         void UpdateUIRecordingStopped()
         {
@@ -253,7 +339,8 @@ namespace Ziggeo
                 cameraButton.Enabled = CameraFlipButtonVisible;
 				recordButton.ImageView.Image = ImageLoader.GetImageFromResource("Record-100");
 			});
-	    }
+            RenderDuration();
+        }
 
 
         public void CancelAndClose()
@@ -322,6 +409,10 @@ namespace Ziggeo
             get;
             set;
         }
+
+        public bool ShowLightIndicator { get; set; }
+        public bool ShowAudioIndicator { get; set; }
+        public bool ShowFaceOutline { get; set; }
 
         private void CleanUp()
         {

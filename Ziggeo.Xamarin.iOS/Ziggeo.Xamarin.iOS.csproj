@@ -12,6 +12,7 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ReleaseVersion>0.1.12</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -26,6 +27,7 @@
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchFastDev>true</MtouchFastDev>
     <IOSDebuggerPort>16550</IOSDebuggerPort>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,6 +39,7 @@
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchLink>SdkOnly</MtouchLink>
     <MtouchDebug></MtouchDebug>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -57,10 +60,6 @@
     <Compile Include="ZiggeoConfig.cs" />
     <Compile Include="ZiggeoConnect.cs" />
     <Compile Include="ZiggeoConnectImpl.cs" />
-    <Compile Include="Recorder\Recorder.cs" />
-    <Compile Include="Recorder\Recorder.designer.cs">
-      <DependentUpon>Recorder.cs</DependentUpon>
-    </Compile>
     <Compile Include="Recorder\CaptureSession.cs" />
     <Compile Include="Recorder\CapturePreviewView.cs" />
     <Compile Include="Recorder\VideoProcessor.cs" />
@@ -86,6 +85,19 @@
       <DependentUpon>Player.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\ZiggeoVideosService.cs" />
+    <Compile Include="Services\Recorder.cs" />
+    <Compile Include="Services\Recorder.designer.cs">
+      <DependentUpon>Recorder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recorder\Controls\AudioLevelView.cs" />
+    <Compile Include="Recorder\Controls\AudioLevelView.designer.cs">
+      <DependentUpon>AudioLevelView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recorder\Controls\LuxMeterView.cs" />
+    <Compile Include="Recorder\Controls\LuxMeterView.designer.cs">
+      <DependentUpon>LuxMeterView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recorder\Controls\FaceOutlineView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -97,9 +109,12 @@
     <InterfaceDefinition Include="Recorder\PreviewAndUpload.xib" />
     <InterfaceDefinition Include="Recorder\Recorder.xib" />
     <InterfaceDefinition Include="Recorder\Player.xib" />
+    <InterfaceDefinition Include="Recorder\Controls\AudioLevelView.xib" />
+    <InterfaceDefinition Include="Recorder\Controls\LuxMeterView.xib" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Recorder\Controls\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Delete-50.png" />
@@ -122,6 +137,9 @@
     <BundleResource Include="Resources\upload-50.png" />
     <BundleResource Include="Resources\upload-50%402x.png" />
     <BundleResource Include="Resources\upload-50%403x.png" />
+    <BundleResource Include="Resources\sun-50_red.png" />
+    <BundleResource Include="Resources\sun-50_yellow.png" />
+    <BundleResource Include="Resources\sun-50.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj">
