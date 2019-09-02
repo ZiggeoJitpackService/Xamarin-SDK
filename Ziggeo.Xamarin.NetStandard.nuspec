@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Ziggeo.Xamarin.NetStandard</id>
+    <version>1.1.22</version>
+    <authors>Ziggeo.Xamarin.NetStandard</authors>
+    <owners>Ziggeo.Xamarin.NetStandard</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+     <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="MonoAndroid9.0">
+          <package id="Dexter" version="1.0.3" targetFramework="monoandroid81" />
+          <package id="GoogleGson" version="2.8.5" targetFramework="monoandroid81" />
+          <package id="Microsoft.NETCore.Platforms" version="2.2.0" targetFramework="monoandroid81" />
+  <package id="NuGet.Build.Packaging" version="0.2.2" targetFramework="monoandroid81" developmentDependency="true" />
+  <package id="Square.OkHttp3" version="3.8.1" targetFramework="monoandroid81" />
+  <package id="Square.OkIO" version="1.13.0" targetFramework="monoandroid81" />
+  <package id="System.Net.Http" version="4.3.4" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Arch.Core.Common" version="1.1.1.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Arch.Lifecycle.Common" version="1.1.1.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Arch.Lifecycle.Runtime" version="1.1.1.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.ReactiveStreams" version="1.0.2" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.ReactiveX.RxAndroid" version="2.1.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.ReactiveX.RxJava" version="2.2.7" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Animated.Vector.Drawable" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Annotations" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Compat" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Core.UI" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Core.Utils" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Fragment" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Media.Compat" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.v4" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.v7.AppCompat" version="28.0.0.1" targetFramework="monoandroid81" />
+  <package id="Xamarin.Android.Support.Vector.Drawable" version="28.0.0.1" targetFramework="monoandroid81" />
+          <package id="Xamarin.JakeWharton.Timber" version="4.7.1" targetFramework="monoandroid81" />
+        <dependency id="Xamarin.Android.Support.VersionedParcelable" version="28.0.0.1" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Java.Interop" targetFramework="MonoAndroid9.0" />
+      <frameworkAssembly assemblyName="Mono.Android" targetFramework="MonoAndroid9.0" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="MonoAndroid9.0" />
+      <frameworkAssembly assemblyName="System" targetFramework="MonoAndroid9.0" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="MonoAndroid9.0" />
+    </frameworkAssemblies>
+  </metadata>
+   <files>
+      <file src="bin\Debug\netstandard2.0\AndroidZiggeoSDK.dll" target="lib\netstandard2.0" />
+      <file src="bin\Debug\netstandard2.0\AndroidVideoCache.dll" target="lib\netstandard2.0" />
+    </files>
+</package>
