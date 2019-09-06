@@ -2,7 +2,6 @@ using System;
 using System.Net;
 using Android.Runtime;
 using Com.Ziggeo.Androidsdk.Xamarin.Delegates;
-using IO.Reactivex.Functions;
 
 namespace Ziggeo.Services.NativeDelegates
 {

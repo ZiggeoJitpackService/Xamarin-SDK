@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggeo.Xamarin.NetStandard", "Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj", "{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}"
-EndProject
-Project("{5DD5E4FA-CB73-4610-85AB-557B54E96AA9}") = "Ziggeo.Xamarin.NetStandard.NuGet", "Ziggeo.Xamarin.NetStandard.NuGet\Ziggeo.Xamarin.NetStandard.NuGet.nuproj", "{4B336229-1505-4A36-BCD4-9D6B19DBFC2B}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ziggeo.Xamarin.NetStandard", "Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj", "{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggeo.Xamarin.iOS", "Ziggeo.Xamarin.iOS\Ziggeo.Xamarin.iOS.csproj", "{7E6DE777-DA24-4276-ABC8-025075D41ED0}"
 EndProject
@@ -21,10 +21,6 @@ Global
 		{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4B336229-1505-4A36-BCD4-9D6B19DBFC2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4B336229-1505-4A36-BCD4-9D6B19DBFC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4B336229-1505-4A36-BCD4-9D6B19DBFC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4B336229-1505-4A36-BCD4-9D6B19DBFC2B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E6DE777-DA24-4276-ABC8-025075D41ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E6DE777-DA24-4276-ABC8-025075D41ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E6DE777-DA24-4276-ABC8-025075D41ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,6 +33,12 @@ Global
 		{687B157D-D39B-4B99-B380-702FD51ADBC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{687B157D-D39B-4B99-B380-702FD51ADBC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{687B157D-D39B-4B99-B380-702FD51ADBC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1922BE4D-0D6D-4B94-9D7C-C4B579922493}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0

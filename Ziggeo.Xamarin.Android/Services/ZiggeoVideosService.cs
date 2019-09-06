@@ -8,7 +8,6 @@ using Com.Ziggeo.Androidsdk.Net;
 using Com.Ziggeo.Androidsdk.Net.Exceptions;
 using Com.Ziggeo.Androidsdk.Net.Models.Auth;
 using Com.Ziggeo.Androidsdk.Net.Services.Videos;
-using IO.Reactivex.Internal.Functions;
 using Newtonsoft.Json.Linq;
 using Ziggeo.Services.NativeDelegates;
 using File = Java.IO.File;

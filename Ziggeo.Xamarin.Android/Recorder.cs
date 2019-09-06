@@ -46,9 +46,9 @@ namespace Ziggeo
         public VideoQuality VideoQuality { get; set; }
 
         public double MaxRecordingDurationSeconds { get; set; }
-        public bool ShowLightIndicator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool ShowAudioIndicator { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-        public bool ShowFaceOutline { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public bool ShowLightIndicator { get; set; }
+        public bool ShowAudioIndicator { get; set; }
+        public bool ShowFaceOutline { get; set; }
 
         public Task<string> Record()
         {
@@ -75,7 +75,7 @@ namespace Ziggeo
                         RecordingFinishedUploadDone?.Invoke(token);
                     }
                 };
-                _ziggeo.ConfigureRecorder(new RecorderConfig.Builder()
+                _ziggeo.RecorderConfig = new RecorderConfig.Builder()
                     .DisableCameraSwitch(!CameraFlipButtonVisible)
                     .Facing((int) VideoDevice)
                     .ExtraArgs(AdditionalParameters)
@@ -83,7 +83,7 @@ namespace Ziggeo
                     .Quality((int) VideoQuality)
                     .MaxDuration((long) (MaxRecordingDurationSeconds * 1000))
                     .Callback(recorderCallback)
-                    .Build());
+                    .Build();
 
                 // return null when a user manually close the recorder screen
                 if (_callbacks == null)

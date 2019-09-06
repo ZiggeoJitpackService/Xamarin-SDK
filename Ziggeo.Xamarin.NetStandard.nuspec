@@ -1,42 +1,126 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
-    <id>Ziggeo.Xamarin.NetStandard</id>
-    <version>1.1.22</version>
-    <authors>Ziggeo.Xamarin.NetStandard</authors>
-    <owners>Ziggeo.Xamarin.NetStandard</owners>
+    <id>Ziggeo.Xamarin.Netstandard</id>
+    <version>1.3.0</version>
+    <authors>Ziggeo</authors>
+    <owners>Ziggeo</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Package Description</description>
+    <licenseUrl>https://raw.github.com/Ziggeo/ZiggeoCSharpSDK/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://raw.github.com/Ziggeo/ZiggeoCSharpSDK</projectUrl>
+    <iconUrl>https://ziggeo.com/assets/images/logo.png</iconUrl>
+    <description>Ziggeo API (https://ziggeo.com) allows you to integrate video recording and playback with only several lines of code in your app.</description>
+    <language>en-US</language>
+    <tags>Ziggeo, video recording, playback, Android, iOs</tags>
      <dependencies>
       <group targetFramework=".NETStandard2.0">
         <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="MonoAndroid9.0">
-          <package id="Dexter" version="1.0.3" targetFramework="monoandroid81" />
-          <package id="GoogleGson" version="2.8.5" targetFramework="monoandroid81" />
-          <package id="Microsoft.NETCore.Platforms" version="2.2.0" targetFramework="monoandroid81" />
-  <package id="NuGet.Build.Packaging" version="0.2.2" targetFramework="monoandroid81" developmentDependency="true" />
-  <package id="Square.OkHttp3" version="3.8.1" targetFramework="monoandroid81" />
-  <package id="Square.OkIO" version="1.13.0" targetFramework="monoandroid81" />
-  <package id="System.Net.Http" version="4.3.4" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Arch.Core.Common" version="1.1.1.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Arch.Lifecycle.Common" version="1.1.1.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Arch.Lifecycle.Runtime" version="1.1.1.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.ReactiveStreams" version="1.0.2" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.ReactiveX.RxAndroid" version="2.1.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.ReactiveX.RxJava" version="2.2.7" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Animated.Vector.Drawable" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Annotations" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Compat" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Core.UI" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Core.Utils" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Fragment" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Media.Compat" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.v4" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.v7.AppCompat" version="28.0.0.1" targetFramework="monoandroid81" />
-  <package id="Xamarin.Android.Support.Vector.Drawable" version="28.0.0.1" targetFramework="monoandroid81" />
-          <package id="Xamarin.JakeWharton.Timber" version="4.7.1" targetFramework="monoandroid81" />
-        <dependency id="Xamarin.Android.Support.VersionedParcelable" version="28.0.0.1" />
+          <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
+          <dependency id="Dexter" version="1.0.3"/>
+          <dependency id="GoogleGson" version="2.8.5"/>
+          <dependency id="Microsoft.NETCore.Platforms" version="2.2.0"/>
+          <dependency id="Square.OkHttp3" version="3.14.2"/> 
+          <dependency id="System.Net.Http" version="4.3.4"/> 
+          <dependency id="Xam.Plugins.Android.ExoPlayer" version="2.9.7"/> 
+          <dependency id="Xam.Plugins.Android.ExoPlayer.Core" version="2.9.7"/>
+          <dependency id="Xam.Plugins.Android.ExoPlayer.Dash" version="2.9.7"/>
+          <dependency id="Xam.Plugins.Android.ExoPlayer.Hls" version="2.9.7"/>
+          <dependency id="Xam.Plugins.Android.ExoPlayer.UI" version="2.9.7"/>
+          <dependency id="Xamarin.Android.Arch.Core.Common" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Core.Runtime" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Lifecycle.Common" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Lifecycle.Extensions" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Lifecycle.LiveData" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Lifecycle.LiveData.Core" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Lifecycle.Runtime" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Lifecycle.ViewModel" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Persistence.Db" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Persistence.Db.Framework" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Persistence.Room.Common" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Persistence.Room.Runtime" version="1.1.1.1"/> 
+          <dependency id="Xamarin.Android.Arch.Work.Runtime" version="1.0.0"/> 
+          <dependency id="Xamarin.Android.ReactiveX.RxAndroid" version="2.1.1"/> 
+          <dependency id="Xamarin.Android.Support.Animated.Vector.Drawable" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Annotations" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.AsyncLayoutInflater" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Collections" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Compat" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Constraint.Layout" version="1.1.2"/> 
+          <dependency id="Xamarin.Android.Support.CoordinaterLayout" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Core.UI" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Core.Utils" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.CursorAdapter" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.CustomView" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.DocumentFile" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.DrawerLayout" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Fragment" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Interpolator" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Loader" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.LocalBroadcastManager" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Media.Compat" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Print" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.SlidingPaneLayout" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.SwipeRefreshLayout" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.v4" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.v7.AppCompat" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.Vector.Drawable" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.VersionedParcelable" version="28.0.0.1"/> 
+          <dependency id="Xamarin.Android.Support.ViewPager" version="28.0.0.1"/> 
+      </group>
+      <group targetFramework="Xamarin.iOS1.0">
+        <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.5.0" />
+        <dependency id="Microsoft.NETCore.Platforms" version="2.1.0" />
+        <dependency id="Microsoft.Win32.Primitives" version="4.3.0" />
+        <dependency id="NETStandard.Library" version="2.0.3" />
+        <dependency id="System.AppContext" version="4.3.0" />
+        <dependency id="System.Collections" version="4.3.0" />
+        <dependency id="System.Collections.Concurrent" version="4.3.0" />
+        <dependency id="System.ComponentModel.TypeConverter" version="4.3.0" />
+        <dependency id="System.Console" version="4.3.1" />
+        <dependency id="System.Diagnostics.Debug" version="4.3.0" />
+        <dependency id="System.Diagnostics.Tools" version="4.3.0" />
+        <dependency id="System.Diagnostics.Tracing" version="4.3.0" />
+        <dependency id="System.Globalization" version="4.3.0" />
+        <dependency id="System.Globalization.Calendars" version="4.3.0" />
+        <dependency id="System.IO" version="4.3.0" />
+        <dependency id="System.IO.Compression" version="4.3.0" />
+        <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
+        <dependency id="System.IO.FileSystem" version="4.3.0" />
+        <dependency id="System.IO.FileSystem.Primitives" version="4.3.0" />
+        <dependency id="System.Linq" version="4.3.0" />
+        <dependency id="System.Linq.Expressions" version="4.3.0" />
+        <dependency id="System.Net.Http" version="4.3.3" />
+        <dependency id="System.Net.Primitives" version="4.3.0" />
+        <dependency id="System.Net.Sockets" version="4.3.0" />
+        <dependency id="System.ObjectModel" version="4.3.0" />
+        <dependency id="System.Reflection" version="4.3.0" />
+        <dependency id="System.Reflection.Extensions" version="4.3.0" />
+        <dependency id="System.Reflection.Primitives" version="4.3.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.3.0" />
+        <dependency id="System.Runtime" version="4.3.0" />
+        <dependency id="System.Runtime.Extensions" version="4.3.0" />
+        <dependency id="System.Runtime.Handles" version="4.3.0" />
+        <dependency id="System.Runtime.InteropServices" version="4.3.0" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" />
+        <dependency id="System.Runtime.Numerics" version="4.3.0" />
+        <dependency id="System.Runtime.Serialization.Formatters" version="4.3.0" />
+        <dependency id="System.Runtime.Serialization.Primitives" version="4.3.0" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="4.3.1" />
+        <dependency id="System.Security.Cryptography.Encoding" version="4.3.0" />
+        <dependency id="System.Security.Cryptography.Primitives" version="4.3.0" />
+        <dependency id="System.Security.Cryptography.X509Certificates" version="4.3.2" />
+        <dependency id="System.Text.Encoding" version="4.3.0" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.3.0" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.0" />
+        <dependency id="System.Threading" version="4.3.0" />
+        <dependency id="System.Threading.Tasks" version="4.3.0" />
+        <dependency id="System.Threading.Timer" version="4.3.0" />
+        <dependency id="System.Xml.ReaderWriter" version="4.3.1" />
+        <dependency id="System.Xml.XDocument" version="4.3.0" />
+        <dependency id="System.Xml.XmlDocument" version="4.3.0" />
       </group>
     </dependencies>
     <frameworkAssemblies>
@@ -47,8 +131,24 @@
       <frameworkAssembly assemblyName="System.Xml" targetFramework="MonoAndroid9.0" />
     </frameworkAssemblies>
   </metadata>
-   <files>
-      <file src="bin\Debug\netstandard2.0\AndroidZiggeoSDK.dll" target="lib\netstandard2.0" />
-      <file src="bin\Debug\netstandard2.0\AndroidVideoCache.dll" target="lib\netstandard2.0" />
-    </files>
+  <files>
+    <!-- NetStandard -->
+    <file src="Ziggeo.Xamarin.NetStandard/bin/Release/netstandard2.0/Ziggeo.Xamarin.NetStandard.dll"  target="lib/netstandard2.0/Ziggeo.Xamarin.NetStandard.dll" />
+    <file src="Ziggeo.Xamarin.NetStandard/bin/Release/netstandard2.0/Ziggeo.Xamarin.NetStandard.pdb"  target="lib/netstandard2.0/Ziggeo.Xamarin.NetStandard.pdb" />
+
+    <!-- Xamarin.iOS -->
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.dll"                     target="lib/Xamarin.iOS10/Ziggeo.dll" />
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.pdb"                     target="lib/Xamarin.iOS10/Ziggeo.pdb" />
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.Xamarin.NetStandard.dll" target="lib/Xamarin.iOS10/Ziggeo.Xamarin.NetStandard.dll" />
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.Xamarin.NetStandard.pdb" target="lib/Xamarin.iOS10/Ziggeo.Xamarin.NetStandard.pdb" />
+  
+    <!-- Xamarin.Android -->
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.dll"                         target="lib/MonoAndroid10/Ziggeo.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.pdb"                         target="lib/MonoAndroid10/Ziggeo.pdb" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.dll"     target="lib/MonoAndroid10/Ziggeo.Xamarin.NetStandard.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.pdb"     target="lib/MonoAndroid10/Ziggeo.Xamarin.NetStandard.pdb" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.dll" target="lib/MonoAndroid10/Ziggeo.Xamarin.Android.Binding.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.pdb" target="lib/MonoAndroid10/Ziggeo.Xamarin.Android.Binding.pdb" />
+  
+  </files>
 </package>
