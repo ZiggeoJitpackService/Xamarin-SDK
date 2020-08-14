@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Com.Ziggeo.Androidsdk.Xamarin.Delegates;
 using Java.Lang;
 using Exception = System.Exception;

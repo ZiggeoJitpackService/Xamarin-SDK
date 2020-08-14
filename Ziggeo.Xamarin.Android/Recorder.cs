@@ -5,8 +5,6 @@ using Android.App;
 using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Recorder;
 using Com.Ziggeo.Androidsdk.UI.Activities;
-using Newtonsoft.Json.Linq;
-using Ziggeo.Services;
 
 
 namespace Ziggeo
@@ -75,11 +73,11 @@ namespace Ziggeo
                         RecordingFinishedUploadDone?.Invoke(token);
                     }
                 };
-                _ziggeo.RecorderConfig = new RecorderConfig.Builder()
-                    .DisableCameraSwitch(!CameraFlipButtonVisible)
+                _ziggeo.RecorderConfig = new RecorderConfig.Builder(Application.Context)
+                    .ShouldDisableCameraSwitch(!CameraFlipButtonVisible)
                     .Facing((int) VideoDevice)
                     .ExtraArgs(AdditionalParameters)
-                    .EnableCoverShot(CoverSelectorEnabled)
+                    .ShouldEnableCoverShot(CoverSelectorEnabled)
                     .Quality((int) VideoQuality)
                     .MaxDuration((long) (MaxRecordingDurationSeconds * 1000))
                     .Callback(recorderCallback)
@@ -99,7 +97,7 @@ namespace Ziggeo
                             }
                         }
                     };
-                    ((Application) Application.Context.ApplicationContext).RegisterActivityLifecycleCallbacks(
+                    ((Application) Application.Context.ApplicationContext)?.RegisterActivityLifecycleCallbacks(
                         _callbacks);
                 }
 

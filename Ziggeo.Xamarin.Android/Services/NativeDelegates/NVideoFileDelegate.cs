@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Android.Runtime;
 using Com.Ziggeo.Androidsdk.Xamarin.Delegates;
 

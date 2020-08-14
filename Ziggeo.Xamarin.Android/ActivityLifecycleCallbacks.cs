@@ -1,11 +1,6 @@
 ﻿using System;
 using Android.App;
-using Android.Content;
 using Android.OS;
-using Java.Lang;
-using Square.OkHttp3;
-using IOException = Java.IO.IOException;
-using Uri = Android.Net.Uri;
 
 namespace Ziggeo
 {

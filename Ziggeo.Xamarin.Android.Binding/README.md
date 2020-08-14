@@ -34,3 +34,5 @@ See the actual list if dependencies below
 4. It seems like binding for exoplayer or binding for aar at all does not share exported ids or styles, so
  - If you're getting error similar too `No resource found that matches the given name (at 'layout_constraintLeft_toRightOf' with value '@id/exo_play')`, make sure to mark all ids with plus sign.
  - If you're getting error similar too `No resource found that matches the given name (at 'style' with value '@style/ExoMediaButton.Play')`, make sure to duplicate missing styles from transitive aar in `styles.xml` of ziggeo sdk. Just create empty styles with the same names.
+5. `multiple substitutions specified in non-positional format; did you mean to add the formatted="false" attribute`
+ - That is because your String resource has multiple %s or similar. To avoid this, you must identify each like this: %1$s
