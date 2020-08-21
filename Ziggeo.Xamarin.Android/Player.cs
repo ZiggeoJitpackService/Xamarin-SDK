@@ -23,7 +23,6 @@ namespace Ziggeo
             TaskCompletionSource<int> tcs = new TaskCompletionSource<int>();
             try
             {
-                //   Ziggeo.SetExtraArgsForPlayer(AdditionalParameters);
                 Ziggeo.StartPlayer(videoToken);
             }
             catch (Exception ex)

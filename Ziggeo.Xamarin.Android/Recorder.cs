@@ -6,7 +6,6 @@ using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Recorder;
 using Com.Ziggeo.Androidsdk.UI.Activities;
 
-
 namespace Ziggeo
 {
     public partial class Recorder : IZiggeoRecorder
