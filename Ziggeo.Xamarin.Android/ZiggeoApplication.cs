@@ -15,6 +15,7 @@ namespace Ziggeo
             this.Streams = new ZiggeoStreamsService(Ziggeo);
             this.Recorder = new Recorder(this);
             this.Player = new Player(this);
+            this.QrScanner = new QrScanner(this);
         }
 
         public string Token { get; private set; }
@@ -28,6 +29,8 @@ namespace Ziggeo
         public IZiggeoPlayer Player { get; }
 
         public IZiggeoRecorder Recorder { get; }
+
+        public IZiggeoQrScanner QrScanner { get; }
 
         public string ServerAuthToken
         {

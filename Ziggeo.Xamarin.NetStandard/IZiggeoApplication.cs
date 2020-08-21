@@ -17,6 +17,8 @@ namespace Ziggeo
         IZiggeoPlayer Player { get; }
 
         IZiggeoRecorder Recorder { get; }
+        
+        IZiggeoQrScanner QrScanner { get; }
 
     }
 }

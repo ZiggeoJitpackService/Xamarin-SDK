@@ -15,8 +15,10 @@ namespace Ziggeo
 
             this.Recorder = new Recorder(this);
             this.Player = new Player(this, Connect);
+            this.QrScanner = new QrScanner(this);
 
-            AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord, AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
+            AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord,
+                AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
         }
 
         public string Token { get; private set; }
@@ -31,16 +33,18 @@ namespace Ziggeo
 
         public IZiggeoRecorder Recorder { get; }
 
+        public IZiggeoQrScanner QrScanner { get; }
+
         public string ServerAuthToken
         {
             get => Connect.ServerAuthToken;
             set => Connect.ServerAuthToken = value;
         }
 
-        public string ClientAuthToken 
-        { 
-            get => Connect.ClientAuthToken; 
-            set => Connect.ClientAuthToken = value; 
+        public string ClientAuthToken
+        {
+            get => Connect.ClientAuthToken;
+            set => Connect.ClientAuthToken = value;
         }
     }
 }
