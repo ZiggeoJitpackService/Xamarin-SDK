@@ -90,11 +90,11 @@
       </group>
     </dependencies>
     <frameworkAssemblies>
-      <frameworkAssembly assemblyName="Java.Interop" targetFramework="MonoAndroid9.0" />
-      <frameworkAssembly assemblyName="Mono.Android" targetFramework="MonoAndroid9.0" />
-      <frameworkAssembly assemblyName="System.Core" targetFramework="MonoAndroid9.0" />
-      <frameworkAssembly assemblyName="System" targetFramework="MonoAndroid9.0" />
-      <frameworkAssembly assemblyName="System.Xml" targetFramework="MonoAndroid9.0" />
+      <frameworkAssembly assemblyName="Java.Interop" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="Mono.Android" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="System" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="MonoAndroid" />
     </frameworkAssemblies>
   </metadata>
   <files>
@@ -109,12 +109,12 @@
     <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.Xamarin.NetStandard.pdb" target="lib/Xamarin.iOS10/Ziggeo.Xamarin.NetStandard.pdb" />
   
     <!-- Xamarin.Android -->
-    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.dll"         target="lib/MonoAndroid10/Ziggeo.Xamarin.Android.dll" />
-    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.pdb"         target="lib/MonoAndroid10/Ziggeo.Xamarin.Android.pdb" />
-    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.dll"     target="lib/MonoAndroid10/Ziggeo.Xamarin.NetStandard.dll" />
-    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.pdb"     target="lib/MonoAndroid10/Ziggeo.Xamarin.NetStandard.pdb" />
-    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.dll" target="lib/MonoAndroid10/Ziggeo.Xamarin.Android.Binding.dll" />
-    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.pdb" target="lib/MonoAndroid10/Ziggeo.Xamarin.Android.Binding.pdb" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.dll"         target="lib/MonoAndroid/Ziggeo.Xamarin.Android.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.pdb"         target="lib/MonoAndroid/Ziggeo.Xamarin.Android.pdb" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.dll"     target="lib/MonoAndroid/Ziggeo.Xamarin.NetStandard.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.pdb"     target="lib/MonoAndroid/Ziggeo.Xamarin.NetStandard.pdb" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.dll" target="lib/MonoAndroid/Ziggeo.Xamarin.Android.Binding.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.pdb" target="lib/MonoAndroid/Ziggeo.Xamarin.Android.Binding.pdb" />
   
   </files>
 </package>
