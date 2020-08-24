@@ -37,20 +37,17 @@ namespace Ziggeo
             TaskCompletionSource<int> tcs = new TaskCompletionSource<int>();
             try
             {
-                //TODO
                 Ziggeo.QrScannerConfig = new QrScannerConfig(ShouldCloseAfterSuccessfulScan, new QrScannerCallback
                 {
-                    OnError = throwable => { Console.WriteLine("OnError:" + throwable); },
-                    OnDecoded = qr => { Console.WriteLine("OnDecoded:" + qr); },
-                    OnLoaded = () => { Console.WriteLine("OnLoaded"); },
-                    OnAccessForbidden = permissions => { Console.WriteLine("OnAccessForbidden:" + permissions); },
-                    OnAccessGranted = () => { Console.WriteLine("OnAccessGranted"); },
-                    OnHasCamera = () => { Console.WriteLine("OnHasCamera"); },
-                    OnHasMicrophone = () => { Console.WriteLine("OnHasMicrophone"); },
-                    OnMicrophoneHealth = health => { Console.WriteLine("OnMicrophoneHealth:" + health); },
-                    OnNoCamera = () => { Console.WriteLine("OnNoCamera"); },
-                    OnNoMicrophone = () => { Console.WriteLine("OnNoMicrophone"); },
-                    OnCanceledByUser = () => { Console.WriteLine("OnCanceledByUser"); }
+                    OnError = throwable => { Error?.Invoke(throwable); },
+                    OnDecoded = qr => { Decoded?.Invoke(qr); },
+                    OnLoaded = () => { Loaded?.Invoke(); },
+                    OnAccessForbidden = permissions => { AccessForbidden?.Invoke(permissions); },
+                    OnAccessGranted = () => { AccessGranted?.Invoke(); },
+                    OnHasCamera = () => { HasCamera?.Invoke(); },
+                    OnHasMicrophone = () => { HasMicrophone?.Invoke(); },
+                    OnNoCamera = () => { NoCamera?.Invoke(); },
+                    OnCanceledByUser = () => { CanceledByUser?.Invoke(); }
                 });
                 Ziggeo.StartQrScanner();
             }

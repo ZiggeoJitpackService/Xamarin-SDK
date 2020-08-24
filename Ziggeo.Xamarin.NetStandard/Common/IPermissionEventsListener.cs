@@ -5,7 +5,7 @@ namespace Ziggeo
 {
     public delegate void AccessGrantedDelegate();
 
-    public delegate void AccessForbiddenDelegate(List<string> permissions);
+    public delegate void AccessForbiddenDelegate(IList<string> permissions);
 
     public interface IPermissionEventsListener : IErrorEventsListener
     {
