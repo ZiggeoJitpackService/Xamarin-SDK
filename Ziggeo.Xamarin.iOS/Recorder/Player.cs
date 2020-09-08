@@ -48,7 +48,7 @@ namespace Ziggeo
             DismissingNow?.Invoke();
         }
 
-        public async Task Play(string videoToken)
+        public async Task StartPlayer(string videoToken)
         {
             TaskCompletionSource<int> tcs = new TaskCompletionSource<int>();
             try

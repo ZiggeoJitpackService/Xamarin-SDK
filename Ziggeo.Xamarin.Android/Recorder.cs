@@ -47,7 +47,7 @@ namespace Ziggeo
         public bool ShowAudioIndicator { get; set; }
         public bool ShowFaceOutline { get; set; }
 
-        public Task<string> Record()
+        public Task<string> StartRecorder()
         {
             var tcs = new TaskCompletionSource<string>();
             _isRecordingStarted = false;

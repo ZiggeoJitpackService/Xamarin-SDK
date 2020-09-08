@@ -18,7 +18,7 @@ namespace Ziggeo
 
         public IZiggeoApplication Application { get; private set; }
 
-        public Task Play(string videoToken)
+        public Task StartPlayer(string videoToken)
         {
             TaskCompletionSource<int> tcs = new TaskCompletionSource<int>();
             try

@@ -36,7 +36,7 @@ namespace Ziggeo
         event AudioMeterDelegate AudioLevelUpdated;
         event FaceDetectorDelegate FaceDetected;
 
-        Task<string> Record();
+        Task<string> StartRecorder();
 
         bool CoverSelectorEnabled
         {

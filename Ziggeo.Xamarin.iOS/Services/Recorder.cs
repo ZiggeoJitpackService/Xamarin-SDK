@@ -500,7 +500,7 @@ namespace Ziggeo
             SwitchCamera();
         }
 
-        public Task<string> Record()
+        public Task<string> StartRecorder()
         {
             TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
             try

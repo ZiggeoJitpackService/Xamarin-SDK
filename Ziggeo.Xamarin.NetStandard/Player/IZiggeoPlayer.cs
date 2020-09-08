@@ -4,6 +4,6 @@ namespace Ziggeo
 {
     public interface IZiggeoPlayer
     {
-        Task Play(string videoToken);
+        Task StartPlayer(string videoToken);
     }
 }
