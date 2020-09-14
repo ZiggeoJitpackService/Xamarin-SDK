@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace Ziggeo
 {
-    public interface IZiggeoQrScanner: IQrScannerEventsListener
+    public class FileSelectorConfig : BaseConfig, IFileSelectorEventsListener
     {
-        Task StartQrScanner();
+    
     }
 }
