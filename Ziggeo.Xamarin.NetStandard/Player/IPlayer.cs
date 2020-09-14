@@ -2,7 +2,7 @@
 
 namespace Ziggeo
 {
-    public interface IZiggeoPlayer
+    public interface IPlayer
     {
         Task StartPlayer(string videoToken);
     }

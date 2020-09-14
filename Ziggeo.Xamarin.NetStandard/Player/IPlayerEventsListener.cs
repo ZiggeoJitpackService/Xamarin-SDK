@@ -12,11 +12,17 @@ namespace Ziggeo
 
     public delegate void ReadyToPlayDelegate();
 
-    public interface IPlayerEventsListener : ICommonEventsListener, IPermissionEventsListener{
+    public interface IPlayerEventsListener : ICommonEventsListener, IPermissionEventsListener
+    {
         event PlayingDelegate Playing;
+        void InvokePlaying();
         event PausedDelegate Paused;
+        void InvokePaused();
         event EndedDelegate Ended;
+        void InvokeEnded();
         event SeekDelegate Seek;
+        void InvokeSeek(int millis);
         event ReadyToPlayDelegate ReadyToPlay;
+        void InvokeReadyToPlay();
     }
 }
