@@ -15,9 +15,14 @@ namespace Ziggeo
     public interface IHardwareEventsListener : IErrorEventsListener
     {
         event NoMicrophoneDelegate NoMicrophone;
+        void InvokeNoMicrophone();
         event HasMicrophoneDelegate HasMicrophone;
+        void InvokeHasMicrophone();
         event HasCameraDelegate HasCamera;
+        void InvokeHasCamera();
         event NoCameraDelegate NoCamera;
+        void InvokeNoCamera();
         event MicrophoneHealthDelegate MicrophoneHealth;
+        void InvokeMicrophoneHealth(int value);
     }
 }

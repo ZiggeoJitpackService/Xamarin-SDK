@@ -7,5 +7,6 @@ namespace Ziggeo
     public interface IErrorEventsListener
     {
         event ErrorDelegate Error;
+        void InvokeError(Exception e);
     }
 }

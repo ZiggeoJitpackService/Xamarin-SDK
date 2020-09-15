@@ -9,76 +9,71 @@ namespace Ziggeo
 {
     public class QrScannerCallback : Com.Ziggeo.Androidsdk.QR.QrScannerCallback
     {
-        public Action<Throwable> OnError;
-        public Action OnLoaded;
-        public Action OnCanceledByUser;
-        public Action OnAccessGranted;
-        public Action<IList<string>> OnAccessForbidden;
-        public Action OnNoMicrophone;
-        public Action OnHasMicrophone;
-        public Action OnHasCamera;
-        public Action OnNoCamera;
-        public Action<int> OnMicrophoneHealth;
-        public Action<string> OnDecoded;
+        public QrScannerConfig Config;
+
+        public QrScannerCallback(QrScannerConfig config)
+        {
+            Config = config;
+        }
 
         public override void AccessForbidden(IList<string> permissions)
         {
             base.AccessForbidden(permissions);
-            OnAccessForbidden?.Invoke(permissions);
+            Config.InvokeAccessForbidden(permissions);
         }
 
         public override void AccessGranted()
         {
             base.AccessGranted();
-            OnAccessGranted?.Invoke();
+            Config.InvokeAccessGranted();
         }
 
         public override void CanceledByUser()
         {
             base.CanceledByUser();
-            OnCanceledByUser?.Invoke();
+            Config.InvokeCancelledByUser();
         }
 
         public override void Error(Throwable throwable)
         {
             base.Error(throwable);
-            OnError?.Invoke(throwable);
+            Config.InvokeError(throwable);
         }
 
         public override void HasCamera()
         {
             base.HasCamera();
-            OnHasCamera?.Invoke();
+            Config.InvokeHasCamera();
         }
 
         public override void HasMicrophone()
         {
             base.HasMicrophone();
-            OnHasMicrophone?.Invoke();
+            Config.InvokeHasMicrophone();
         }
 
         public override void Loaded()
         {
             base.Loaded();
-            OnLoaded?.Invoke();
+            Config.InvokeLoaded();
         }
 
         public override void NoCamera()
         {
             base.NoCamera();
-            OnNoCamera?.Invoke();
+            Config.InvokeNoCamera();
         }
 
         public override void NoMicrophone()
         {
             base.NoMicrophone();
-            OnNoMicrophone?.Invoke();
+            Config.InvokeNoMicrophone();
         }
 
         public override void OnQrDecoded(string value)
         {
             base.OnQrDecoded(value);
-            OnDecoded?.Invoke(value);
+            Config.InvokeDecoded(value);
         }
     }
 }

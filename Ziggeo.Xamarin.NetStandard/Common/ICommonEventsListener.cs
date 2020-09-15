@@ -9,6 +9,8 @@ namespace Ziggeo
     public interface ICommonEventsListener : IErrorEventsListener
     {
         event LoadedDelegate Loaded;
+        void InvokeLoaded();
         event CanceledByUserDelegate CanceledByUser;
+        void InvokeCancelledByUser();
     }
 }

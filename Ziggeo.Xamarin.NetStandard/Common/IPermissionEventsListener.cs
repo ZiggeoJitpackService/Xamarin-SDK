@@ -10,6 +10,8 @@ namespace Ziggeo
     public interface IPermissionEventsListener : IErrorEventsListener
     {
         event AccessGrantedDelegate AccessGranted;
+        void InvokeAccessGranted();
         event AccessForbiddenDelegate AccessForbidden;
+        void InvokeAccessForbidden(IList<string> permissions);
     }
 }

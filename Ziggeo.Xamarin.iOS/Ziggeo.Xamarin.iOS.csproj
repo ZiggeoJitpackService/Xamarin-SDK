@@ -51,11 +51,10 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="QrScanner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\BaseService.cs" />
     <Compile Include="Services\ZiggeoStreamsService.cs" />
-    <Compile Include="ZiggeoConfig.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="ZiggeoConnect.cs" />
     <Compile Include="ZiggeoConnectImpl.cs" />
     <Compile Include="Recorder\CaptureSession.cs" />
@@ -83,9 +82,9 @@
       <DependentUpon>Player.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\ZiggeoVideosService.cs" />
-    <Compile Include="Services\Recorder.cs" />
-    <Compile Include="Services\Recorder.designer.cs">
-      <DependentUpon>Recorder.cs</DependentUpon>
+    <Compile Include="Services\CameraRecorder.cs" />
+    <Compile Include="Services\CameraRecorder.designer.cs">
+      <DependentUpon>CameraRecorder.cs</DependentUpon>
     </Compile>
     <Compile Include="Recorder\Controls\AudioLevelView.cs" />
     <Compile Include="Recorder\Controls\AudioLevelView.designer.cs">
