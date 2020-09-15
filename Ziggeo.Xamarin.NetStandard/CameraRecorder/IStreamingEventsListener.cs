@@ -10,6 +10,8 @@ namespace Ziggeo
     public interface IStreamingEventsListener : IErrorEventsListener
     {
         event StreamingStartedDelegate StreamingStarted;
+        void InvokeStreamingStarted();
         event StreamingStoppedDelegate StreamingStopped;
+        void InvokeStreamingStopped();
     }
 }

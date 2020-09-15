@@ -9,7 +9,7 @@ namespace Ziggeo
 {
     public class QrScannerCallback : Com.Ziggeo.Androidsdk.QR.QrScannerCallback
     {
-        public QrScannerConfig Config;
+        public QrScannerConfig Config { get; set; }
 
         public QrScannerCallback(QrScannerConfig config)
         {

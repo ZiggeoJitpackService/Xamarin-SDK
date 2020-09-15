@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Ziggeo
 {
-    public enum ZiggeoVideoDevice: uint
+    public enum VideoDevice: uint
     {
         Rear = 0,
         Front
@@ -24,7 +24,7 @@ namespace Ziggeo
     public delegate void LuxMeterDelegate(double luminosity);
     public delegate void AudioMeterDelegate(double audioLevel);
     public delegate void FaceDetectorDelegate(int faceID, double x, double y, double width, double height);
-    public interface IZiggeoRecorder
+    public interface ICameraRecorder
     {
         event RecorderDelegate RecordingStarted;
         event RecorderDelegate RecordingStopped;
@@ -36,7 +36,7 @@ namespace Ziggeo
         event AudioMeterDelegate AudioLevelUpdated;
         event FaceDetectorDelegate FaceDetected;
 
-        Task<string> StartRecorder();
+        void StartRecorder();
 
         bool CoverSelectorEnabled
         {
@@ -56,7 +56,7 @@ namespace Ziggeo
             set;
         }
 
-        ZiggeoVideoDevice VideoDevice
+        VideoDevice VideoDevice
         {
             get;
             set;

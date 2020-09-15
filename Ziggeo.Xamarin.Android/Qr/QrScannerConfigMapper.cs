@@ -1,6 +1,6 @@
 namespace Ziggeo
 {
-    public class QrScannerConfigMapper
+    public static class QrScannerConfigMapper
     {
         public static Com.Ziggeo.Androidsdk.QR.QrScannerConfig map(QrScannerConfig config)
         {

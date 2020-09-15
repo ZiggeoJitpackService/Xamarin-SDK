@@ -10,7 +10,7 @@ namespace Ziggeo
 
     public delegate void NoCameraDelegate();
 
-    public delegate void MicrophoneHealthDelegate(int value);
+    public delegate void MicrophoneHealthDelegate(string value);
 
     public interface IHardwareEventsListener : IErrorEventsListener
     {
@@ -23,6 +23,6 @@ namespace Ziggeo
         event NoCameraDelegate NoCamera;
         void InvokeNoCamera();
         event MicrophoneHealthDelegate MicrophoneHealth;
-        void InvokeMicrophoneHealth(int value);
+        void InvokeMicrophoneHealth(string value);
     }
 }
