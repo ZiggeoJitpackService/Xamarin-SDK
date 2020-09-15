@@ -5,7 +5,7 @@ namespace Ziggeo
 {
     public class QrScannerConfig : BaseConfig, IQrScannerEventsListener
     {
-        public bool ShouldCloseAfterSuccessfulScan = true;
+        public bool ShouldCloseAfterSuccessfulScan { get; set; } = true;
         public event ErrorDelegate Error;
         public event LoadedDelegate Loaded;
         public event CanceledByUserDelegate CanceledByUser;
@@ -16,6 +16,12 @@ namespace Ziggeo
         public event HasCameraDelegate HasCamera;
         public event NoCameraDelegate NoCamera;
         public event MicrophoneHealthDelegate MicrophoneHealth;
+
+        public void InvokeMicrophoneHealth(string value)
+        {
+            MicrophoneHealth?.Invoke(value);
+        }
+
         public event DecodedDelegate Decoded;
 
         public void InvokeError(Exception e)
@@ -61,11 +67,6 @@ namespace Ziggeo
         public void InvokeNoCamera()
         {
             NoCamera?.Invoke();
-        }
-
-        public void InvokeMicrophoneHealth(int value)
-        {
-            MicrophoneHealth?.Invoke(value);
         }
 
         public void InvokeDecoded(string value)

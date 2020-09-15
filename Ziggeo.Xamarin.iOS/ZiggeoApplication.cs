@@ -6,34 +6,60 @@ namespace Ziggeo
 {
     public class ZiggeoApplication : IZiggeoApplication
     {
+        private readonly ICameraRecorder _cameraRecorder;
+
         public ZiggeoApplication(string token)
         {
-            this.Token = token;
+            this.AppToken = token;
             Connect = new ZiggeoConnectImpl(token);
             this.Streams = new ZiggeoStreamsService(Connect);
             this.Videos = new ZiggeoVideosService(Connect, Streams);
 
-            this.Recorder = new Recorder(this);
+            this._cameraRecorder = new CameraRecorder(this);
             this.Player = new Player(this, Connect);
-            this.QrScanner = new QrScanner(this);
 
             AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord,
                 AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
         }
 
-        public string Token { get; private set; }
+        public string AppToken { get; private set; }
 
         public ZiggeoConnect Connect { get; set; }
 
-        public IZiggeoVideos Videos { get; private set; }
+        public IVideos Videos { get; private set; }
 
-        public IZiggeoStreams Streams { get; private set; }
+        public IStreams Streams { get; private set; }
 
-        public IZiggeoPlayer Player { get; }
+        public IPlayer Player { get; }
+        public void StartCameraRecorder()
+        {
+            _cameraRecorder.StartRecorder();
+        }
 
-        public IZiggeoRecorder Recorder { get; }
+        public void StartQrScanner()
+        {
+            throw new NotImplementedException();
+        }
 
-        public IZiggeoQrScanner QrScanner { get; }
+        public CameraRecorderConfig CameraRecorderConfig { get; set; }
+        public QrScannerConfig QrScannerConfig { get; set; }
+        public ScreenRecorderConfig ScreenRecorderConfig { get; set; }
+        public void StartScreenRecorder()
+        {
+            throw new NotImplementedException();
+        }
+
+        public PlayerConfig PlayerConfig { get; set; }
+        public void StartPlayer(string videoToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FileSelectorConfig FileSelectorConfig { get; set; }
+        public void StartFileSelector()
+        {
+            throw new NotImplementedException();
+        }
 
         public string ServerAuthToken
         {
@@ -46,5 +72,6 @@ namespace Ziggeo
             get => Connect.ClientAuthToken;
             set => Connect.ClientAuthToken = value;
         }
+
     }
 }

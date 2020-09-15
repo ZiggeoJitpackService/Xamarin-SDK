@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoVideosService : BaseService, IZiggeoVideos
+    public class ZiggeoVideosService : BaseService, IVideos
     {
         public event VideoFileDelegate UploadStarted;
         //public event VideoTokenFileDelegate TokenAssigned;
@@ -14,7 +14,7 @@ namespace Ziggeo.Services
         public event VideoTokenFileDelegate UploadComplete;
         public event VideoFileErrorDelegate UploadFailed;
 
-        public ZiggeoVideosService(ZiggeoConnect connection, IZiggeoStreams streams) : base(connection)
+        public ZiggeoVideosService(ZiggeoConnect connection, IStreams streams) : base(connection)
         {
             this.Streams = streams;
             connection.UploadProgressChanged += (string token, string filename, long bytesSent, long totalBytes) => {
@@ -22,7 +22,7 @@ namespace Ziggeo.Services
             };
         }
 
-        public IZiggeoStreams Streams
+        public IStreams Streams
         {
             get;
             private set;

@@ -7,7 +7,7 @@ namespace Ziggeo
 {
     public class ZiggeoConnectImpl : ZiggeoConnect
     {
-        public ZiggeoConnectImpl(string token) : base(token, new ZiggeoConfig(token))
+        public ZiggeoConnectImpl(string token) : base(token, new Config(token))
         {
         }
 

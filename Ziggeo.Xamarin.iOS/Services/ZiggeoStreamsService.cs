@@ -4,7 +4,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoStreamsService : BaseService, IZiggeoStreams
+    public class ZiggeoStreamsService : BaseService, IStreams
     {
         public ZiggeoStreamsService(ZiggeoConnect connection) : base(connection)
         {

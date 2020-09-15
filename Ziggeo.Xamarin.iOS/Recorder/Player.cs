@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ziggeo
 {
-    public partial class Player : AVPlayerViewController, IZiggeoPlayer
+    public partial class Player : AVPlayerViewController, IPlayer
     {
         delegate void PlayerDelegate();
         event PlayerDelegate DismissingNow = null;

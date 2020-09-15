@@ -19,13 +19,13 @@ namespace Ziggeo
             PUT
         }
 
-        public ZiggeoConnect(string token, ZiggeoConfig config)
+        public ZiggeoConnect(string token, Config config)
         {
             Config = config;
             Token = token;
         }
 
-        protected ZiggeoConfig Config { get; private set; }
+        protected Config Config { get; private set; }
 
         protected string Token { get; private set; }
 

@@ -5,7 +5,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Ziggeo
 {
-    public interface IZiggeoStreams
+    public interface IStreams
     {
 
         Task<JObject> Create(string tokenOrKey);

@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Ziggeo
 {
-    public partial class Recorder : UIViewController, IZiggeoRecorder
+    public partial class CameraRecorder : UIViewController, ICameraRecorder
     {
         public event RecorderDelegate RecordingStarted;
         public event RecorderDelegate RecordingStopped;
@@ -21,7 +21,7 @@ namespace Ziggeo
         public event AudioMeterDelegate AudioLevelUpdated;
         public event FaceDetectorDelegate FaceDetected;
 
-        public Recorder(IZiggeoApplication ziggeoApplication) : base("Recorder", null)
+        public CameraRecorder(IZiggeoApplication ziggeoApplication) : base("Recorder", null)
         {
 			this.BackgroundRecordingID = UIApplication.BackgroundTaskInvalid;
             this.ZiggeoApplication = ziggeoApplication;
@@ -86,7 +86,7 @@ namespace Ziggeo
                 CaptureSession = new CaptureSession(PreviewView);
                 CaptureSession.MaxDuration = MaxRecordingDurationSeconds;
                 CaptureSession.Quality = VideoQuality;
-                CaptureSession.CaptureDevicePosition = (VideoDevice == ZiggeoVideoDevice.Front ? AVCaptureDevicePosition.Front : AVCaptureDevicePosition.Back);
+                CaptureSession.CaptureDevicePosition = (VideoDevice == Ziggeo.VideoDevice.Front ? AVCaptureDevicePosition.Front : AVCaptureDevicePosition.Back);
                 CaptureSession.ConfigurationFailed += (session) =>
                 {
                     UpdateUIFailedState();
@@ -393,7 +393,7 @@ namespace Ziggeo
             set;
         }
 
-        public ZiggeoVideoDevice VideoDevice 
+        public VideoDevice VideoDevice 
         { 
             get;
             set;
@@ -500,7 +500,7 @@ namespace Ziggeo
             SwitchCamera();
         }
 
-        public Task<string> StartRecorder()
+        public void StartRecorder()
         {
             TaskCompletionSource<string> tcs = new TaskCompletionSource<string>();
             try
@@ -514,7 +514,6 @@ namespace Ziggeo
             {
                 tcs.TrySetException(ex);
             }
-            return tcs.Task;
         }
     }
 }

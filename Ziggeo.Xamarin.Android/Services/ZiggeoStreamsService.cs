@@ -8,7 +8,7 @@ using File = Java.IO.File;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoStreamsService : IZiggeoStreams
+    public class ZiggeoStreamsService : IStreams
     {
         public ZiggeoStreamsService(IZiggeo ziggeo)
         {

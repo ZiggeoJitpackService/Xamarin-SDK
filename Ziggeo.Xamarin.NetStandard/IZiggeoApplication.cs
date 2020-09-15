@@ -4,21 +4,29 @@ namespace Ziggeo
 {
     public interface IZiggeoApplication
     {
-        string Token { get; }
+        string AppToken { get; }
 
         string ServerAuthToken { get; set; }
 
         string ClientAuthToken { get; set; }
 
-        IZiggeoVideos Videos { get; }
+        IVideos Videos { get; }
 
-        IZiggeoStreams Streams { get; }
+        IStreams Streams { get; }
 
-        IZiggeoPlayer Player { get; }
+        CameraRecorderConfig CameraRecorderConfig { get; set; }
+        void StartCameraRecorder();
 
-        IZiggeoRecorder Recorder { get; }
-        
-        IZiggeoQrScanner QrScanner { get; }
+        QrScannerConfig QrScannerConfig { get; set; }
+        void StartQrScanner();
 
+        ScreenRecorderConfig ScreenRecorderConfig { get; set; }
+        void StartScreenRecorder();
+
+        PlayerConfig PlayerConfig { get; set; }
+        void StartPlayer(string videoToken);
+
+        FileSelectorConfig FileSelectorConfig { get; set; }
+        void StartFileSelector();
     }
 }

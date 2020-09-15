@@ -50,10 +50,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityLifecycleCallbacks.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="Qr\QrScanner.cs" />
+    <Compile Include="CameraRecorder\CameraRecorderConfigMapper.cs" />
+    <Compile Include="CameraRecorder\CameraRecorderCallback.cs" />
     <Compile Include="Qr\QrScannerCallback.cs" />
-    <Compile Include="Recorder.cs" />
+    <Compile Include="CameraRecorder.cs" />
+    <Compile Include="Qr\QrScannerConfigMapper.cs" />
     <Compile Include="RecorderCallback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Callback.cs" />
@@ -76,11 +77,11 @@
     <PackageReference Include="Xamarin.Android.ReactiveStreams" Version="1.0.2" />
     <PackageReference Include="Xamarin.Android.ReactiveX.RxAndroid" Version="2.1.1" />
     <PackageReference Include="Xamarin.Android.ReactiveX.RxJava" Version="2.2.7" />
-    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.1.0.1" />
-    <PackageReference Include="Xamarin.AndroidX.ConstraintLayout" Version="1.1.3.1" />
-    <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.1.0.1" />
-    <PackageReference Include="Xamarin.AndroidX.Room.Runtime" Version="2.2.5.1" />
-    <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.3.4.3" />
+    <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.2.0.2" />
+    <PackageReference Include="Xamarin.AndroidX.ConstraintLayout" Version="2.0.0.1-beta6" />
+    <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.1.0.3" />
+    <PackageReference Include="Xamarin.AndroidX.Room.Runtime" Version="2.2.5.3" />
+    <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.3.4.4" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
     <PackageReference Include="Xamarin.Google.ZXing.Core" Version="3.3.3" />
     <ProjectReference Include="..\Ziggeo.Xamarin.Android.Binding\Ziggeo.Xamarin.Android.Binding.csproj">

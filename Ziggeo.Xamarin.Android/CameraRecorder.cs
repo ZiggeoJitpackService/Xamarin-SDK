@@ -8,7 +8,7 @@ using Com.Ziggeo.Androidsdk.UI.Activities;
 
 namespace Ziggeo
 {
-    public partial class Recorder : IZiggeoRecorder
+    public partial class CameraRecorder : ICameraRecorder
     {
         public event RecorderDelegate RecordingStarted;
         public event RecorderDelegate RecordingStopped;
@@ -20,7 +20,7 @@ namespace Ziggeo
         public event AudioMeterDelegate AudioLevelUpdated;
         public event FaceDetectorDelegate FaceDetected;
 
-        public Recorder(IZiggeoApplication ziggeoApplication)
+        public CameraRecorder(IZiggeoApplication ziggeoApplication)
         {
             this.ZiggeoApplication = ziggeoApplication;
             this._ziggeo = ((ZiggeoApplication) ZiggeoApplication).Ziggeo;
@@ -38,7 +38,7 @@ namespace Ziggeo
 
         public bool CameraFlipButtonVisible { get; set; }
 
-        public ZiggeoVideoDevice VideoDevice { get; set; }
+        public VideoDevice VideoDevice { get; set; }
 
         public VideoQuality VideoQuality { get; set; }
 
@@ -47,7 +47,7 @@ namespace Ziggeo
         public bool ShowAudioIndicator { get; set; }
         public bool ShowFaceOutline { get; set; }
 
-        public Task<string> StartRecorder()
+        public void StartRecorder()
         {
             var tcs = new TaskCompletionSource<string>();
             _isRecordingStarted = false;
@@ -72,7 +72,7 @@ namespace Ziggeo
                         RecordingFinishedUploadDone?.Invoke(token);
                     }
                 };
-                _ziggeo.RecorderConfig = new RecorderConfig.Builder(Application.Context)
+                _ziggeo.RecorderConfig = new RecorderConfig.Builder(Android.App.Application.Context)
                     .ShouldDisableCameraSwitch(!CameraFlipButtonVisible)
                     .Facing((int) VideoDevice)
                     .ExtraArgs(AdditionalParameters)
@@ -96,7 +96,7 @@ namespace Ziggeo
                             }
                         }
                     };
-                    ((Application) Application.Context.ApplicationContext)?.RegisterActivityLifecycleCallbacks(
+                    ((Android.App.Application) Android.App.Application.Context.ApplicationContext)?.RegisterActivityLifecycleCallbacks(
                         _callbacks);
                 }
 
@@ -107,8 +107,6 @@ namespace Ziggeo
                 RecordingError?.Invoke(ex);
                 tcs.TrySetException(ex);
             }
-
-            return tcs.Task;
         }
     }
 }

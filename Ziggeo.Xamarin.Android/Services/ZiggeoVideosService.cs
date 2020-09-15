@@ -14,7 +14,7 @@ using File = Java.IO.File;
 
 namespace Ziggeo.Services
 {
-    public class ZiggeoVideosService : IZiggeoVideos
+    public class ZiggeoVideosService : IVideos
     {
         public event VideoFileDelegate UploadStarted;
         public event VideoTokenFileProgressDelegate UploadProgressChanged;
