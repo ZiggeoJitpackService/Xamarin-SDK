@@ -7,13 +7,19 @@ namespace Ziggeo
     public class CameraRecorderConfig : BaseConfig, IRecorderEventsListener
     {
         public const int DefaultStartDelay = 3; // seconds
-        
-        public const int QualityHigh = 0;
-        public const int QualityMedium = 1;
-        public const int QualityLow = 2;
 
-        public const int FacingBack = 0;
-        public const int FacingFront = 1;
+        public enum CameraFacing : uint
+        {
+            Rear = 0,
+            Front
+        }
+
+        public enum Quality : uint
+        {
+            High = 0,
+            Medium,
+            Low
+        }
 
         public event ErrorDelegate Error;
         public event LoadedDelegate Loaded;

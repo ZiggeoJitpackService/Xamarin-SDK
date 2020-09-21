@@ -53,7 +53,6 @@
     <Compile Include="CameraRecorder\CameraRecorderConfigMapper.cs" />
     <Compile Include="CameraRecorder\CameraRecorderCallback.cs" />
     <Compile Include="Qr\QrScannerCallback.cs" />
-    <Compile Include="CameraRecorder.cs" />
     <Compile Include="Qr\QrScannerConfigMapper.cs" />
     <Compile Include="RecorderCallback.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

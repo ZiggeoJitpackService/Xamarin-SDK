@@ -16,8 +16,7 @@ namespace Ziggeo
     public delegate void CountdownDelegate(int secondsLeft);
 
     public interface IRecorderEventsListener : ICommonEventsListener, IPermissionEventsListener,
-        IHardwareEventsListener,
-        IStreamingEventsListener
+        IMicHardwareEventsListener, ICameraHardwareEventsListener, IStreamingEventsListener
     {
         event RecordingStoppedDelegate RecordingStopped;
         void InvokeRecordingStopped(string path);

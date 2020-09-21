@@ -163,7 +163,7 @@ namespace Ziggeo
             set;
         }
 
-        public double Duration
+        public long Duration
         {
             get;
             set;
@@ -187,7 +187,7 @@ namespace Ziggeo
             set;
         }
 
-        public VideoQuality Quality
+        public int Quality
         {
             get;
             set;
@@ -506,7 +506,7 @@ namespace Ziggeo
                             StopRecording();
                         }
                     }
-                    Duration = currentTimestamp - FirstSampleTimestamp;
+                    Duration = (long) (currentTimestamp - FirstSampleTimestamp);
                     RecordingDurationChanged?.Invoke(this);
                 }
             }

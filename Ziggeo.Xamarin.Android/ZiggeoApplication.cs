@@ -7,7 +7,6 @@ namespace Ziggeo
 {
     public class ZiggeoApplication : IZiggeoApplication
     {
-        private readonly ICameraRecorder _cameraRecorder;
 
         public ZiggeoApplication(string token)
         {
@@ -15,7 +14,6 @@ namespace Ziggeo
             this.Ziggeo = new Com.Ziggeo.Androidsdk.Ziggeo(token, Android.App.Application.Context);
             this.Videos = new ZiggeoVideosService(Ziggeo);
             this.Streams = new ZiggeoStreamsService(Ziggeo);
-            this._cameraRecorder = new CameraRecorder(this);
         }
 
         public string AppToken { get; private set; }

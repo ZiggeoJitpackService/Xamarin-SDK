@@ -6,17 +6,17 @@ namespace Ziggeo
 {
     public class ZiggeoApplication : IZiggeoApplication
     {
-        private readonly ICameraRecorder _cameraRecorder;
+        private readonly CameraRecorder _cameraRecorder;
 
         public ZiggeoApplication(string token)
         {
-            this.AppToken = token;
+            AppToken = token;
             Connect = new ZiggeoConnectImpl(token);
-            this.Streams = new ZiggeoStreamsService(Connect);
-            this.Videos = new ZiggeoVideosService(Connect, Streams);
+            Streams = new ZiggeoStreamsService(Connect);
+            Videos = new ZiggeoVideosService(Connect, Streams);
 
-            this._cameraRecorder = new CameraRecorder(this);
-            this.Player = new Player(this, Connect);
+            _cameraRecorder = new CameraRecorder(this);
+            Player = new Player(this, Connect);
 
             AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord,
                 AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
@@ -31,6 +31,7 @@ namespace Ziggeo
         public IStreams Streams { get; private set; }
 
         public IPlayer Player { get; }
+
         public void StartCameraRecorder()
         {
             _cameraRecorder.StartRecorder();
@@ -44,18 +45,21 @@ namespace Ziggeo
         public CameraRecorderConfig CameraRecorderConfig { get; set; }
         public QrScannerConfig QrScannerConfig { get; set; }
         public ScreenRecorderConfig ScreenRecorderConfig { get; set; }
+
         public void StartScreenRecorder()
         {
             throw new NotImplementedException();
         }
 
         public PlayerConfig PlayerConfig { get; set; }
+
         public void StartPlayer(string videoToken)
         {
             throw new NotImplementedException();
         }
 
         public FileSelectorConfig FileSelectorConfig { get; set; }
+
         public void StartFileSelector()
         {
             throw new NotImplementedException();
@@ -72,6 +76,5 @@ namespace Ziggeo
             get => Connect.ClientAuthToken;
             set => Connect.ClientAuthToken = value;
         }
-
     }
 }
