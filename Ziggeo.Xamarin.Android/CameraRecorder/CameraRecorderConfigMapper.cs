@@ -21,7 +21,7 @@ namespace Ziggeo
                     .MaxDuration(config.MaxDuration)
                     .ShouldEnableCoverShot(config.ShouldEnableCoverShot)
                     .ShouldConfirmStopRecording(config.ShouldConfirmStopRecording)
-                    .Callback(new CameraRecorderCallback(config))
+                    .Callback(new RecorderCallback(config))
                     .Build();
             }
 

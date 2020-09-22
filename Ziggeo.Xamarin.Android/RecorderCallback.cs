@@ -1,52 +1,124 @@
-﻿using System;
-using Java.IO;
+﻿using System.Collections.Generic;
+using Com.Ziggeo.Androidsdk.Recorder;
 using Java.Lang;
 
 namespace Ziggeo
 {
     public class RecorderCallback : Com.Ziggeo.Androidsdk.Callbacks.RecorderCallback
     {
-        public Action<Throwable> _onError = null;
-        public Action _onRecordingStarted = null;
-        public Action<string> _onRecordingStopped = null;
-        public Action<string> _onUploadingStarted = null;
-        public Action<string, string> _onUploadingFinished = null;
-        public Action<string, File, long, long> _onUploadingProgress = null;
+        public IRecorderEventsListener Listener { get; set; }
 
-        // public override void UploadingStarted(string path)
-        // {
-        //     base.UploadingStarted(path);
-        //     _onUploadingStarted?.Invoke(path);
-        // }
-        //
-        // public override void UploadProgress(string token, File file, long sent, long total)
-        // {
-        //     base.UploadProgress(token, file, sent, total);
-        //     _onUploadingProgress?.Invoke(token, file, sent, total);
-        // }
-        //
-        // public override void Uploaded(string path, string token)
-        // {
-        //     base.Uploaded(path, token);
-        //     _onUploadingFinished?.Invoke(path, token);
-        // }
-
-        public override void Error(Throwable exception)
+        public RecorderCallback(IRecorderEventsListener listener)
         {
-            base.Error(exception);
-            _onError?.Invoke(exception);
+            Listener = listener;
+        }
+
+        public override void AccessForbidden(IList<string> permissions)
+        {
+            base.AccessForbidden(permissions);
+            Listener.InvokeAccessForbidden(permissions);
+        }
+
+        public override void AccessGranted()
+        {
+            base.AccessGranted();
+            Listener.InvokeAccessGranted();
+        }
+
+        public override void CanceledByUser()
+        {
+            base.CanceledByUser();
+            Listener.InvokeCancelledByUser();
+        }
+
+        public override void Error(Throwable throwable)
+        {
+            base.Error(throwable);
+            Listener.InvokeError(throwable);
+        }
+
+        public override void HasCamera()
+        {
+            base.HasCamera();
+            Listener.InvokeHasCamera();
+        }
+
+        public override void HasMicrophone()
+        {
+            base.HasMicrophone();
+            Listener.InvokeHasMicrophone();
+        }
+
+        public override void Loaded()
+        {
+            base.Loaded();
+            Listener.InvokeLoaded();
+        }
+
+        public override void NoCamera()
+        {
+            base.NoCamera();
+            Listener.InvokeNoCamera();
+        }
+
+        public override void NoMicrophone()
+        {
+            base.NoMicrophone();
+            Listener.InvokeNoMicrophone();
+        }
+
+        public override void Countdown(int timeLeft)
+        {
+            base.Countdown(timeLeft);
+            Listener.InvokeCountdown(timeLeft);
+        }
+
+        public override void ManuallySubmitted()
+        {
+            base.ManuallySubmitted();
+            Listener.InvokeManuallySubmitted();
+        }
+
+        public override void MicrophoneHealth(MicSoundLevel micStatus)
+        {
+            base.MicrophoneHealth(micStatus);
+            Listener.InvokeMicrophoneHealth(micStatus.ToString());
+        }
+
+        public override void ReadyToRecord()
+        {
+            base.ReadyToRecord();
+            Listener.InvokeReadyToRecord();
+        }
+
+        public override void RecordingProgress(long time)
+        {
+            base.RecordingProgress(time);
+            Listener.InvokeRecordingProgress(time);
         }
 
         public override void RecordingStarted()
         {
             base.RecordingStarted();
-            _onRecordingStarted?.Invoke();
+            Listener.InvokeRecordingStarted();
         }
 
         public override void RecordingStopped(string path)
         {
             base.RecordingStopped(path);
-            _onRecordingStopped?.Invoke(path);
+            Listener.InvokeRecordingStopped(path);
+        }
+
+        public override void StreamingStarted()
+        {
+            base.StreamingStarted();
+            Listener.InvokeStreamingStarted();
+        }
+
+        public override void StreamingStopped()
+        {
+            base.StreamingStopped();
+            Listener.InvokeStreamingStopped();
         }
     }
 }

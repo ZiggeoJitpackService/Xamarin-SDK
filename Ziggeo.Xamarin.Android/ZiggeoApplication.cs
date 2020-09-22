@@ -58,6 +58,7 @@ namespace Ziggeo
 
         public void StartScreenRecorder()
         {
+            Ziggeo.RecorderConfig = CameraRecorderConfigMapper.map(CameraRecorderConfig);
             Ziggeo.StartScreenRecorder(null);
         }
 
