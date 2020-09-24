@@ -4,7 +4,7 @@ namespace Ziggeo
 {
     public static class ScreenRecorderConfigMapper
     {
-        public static Com.Ziggeo.Androidsdk.Recorder.RecorderConfig map(ScreenRecorderConfig config)
+        public static Com.Ziggeo.Androidsdk.Recorder.RecorderConfig Map(ScreenRecorderConfig config)
         {
             Com.Ziggeo.Androidsdk.Recorder.RecorderConfig nativeConfig = null;
             if (config != null)

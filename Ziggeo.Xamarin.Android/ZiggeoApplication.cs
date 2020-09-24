@@ -7,7 +7,6 @@ namespace Ziggeo
 {
     public class ZiggeoApplication : IZiggeoApplication
     {
-
         public ZiggeoApplication(string token)
         {
             this.AppToken = token;
@@ -28,6 +27,7 @@ namespace Ziggeo
 
         public void StartPlayer(string videoToken)
         {
+            _initConfigs();
             Ziggeo.StartPlayer(videoToken);
         }
 
@@ -35,6 +35,7 @@ namespace Ziggeo
 
         public void StartFileSelector()
         {
+            _initConfigs();
             Ziggeo.StartFileSelector();
         }
 
@@ -42,7 +43,7 @@ namespace Ziggeo
 
         public void StartCameraRecorder()
         {
-            Ziggeo.RecorderConfig = CameraRecorderConfigMapper.map(CameraRecorderConfig);
+            _initConfigs();
             Ziggeo.StartCameraRecorder();
         }
 
@@ -50,7 +51,7 @@ namespace Ziggeo
 
         public void StartQrScanner()
         {
-            Ziggeo.QrScannerConfig = QrScannerConfigMapper.map(QrScannerConfig);
+            _initConfigs();
             Ziggeo.StartQrScanner();
         }
 
@@ -58,7 +59,7 @@ namespace Ziggeo
 
         public void StartScreenRecorder()
         {
-            Ziggeo.RecorderConfig = ScreenRecorderConfigMapper.map(ScreenRecorderConfig);
+            _initConfigs();
             Ziggeo.StartScreenRecorder(null);
         }
 
@@ -72,6 +73,15 @@ namespace Ziggeo
         {
             get => Ziggeo.ClientAuthToken;
             set => Ziggeo.ClientAuthToken = value;
+        }
+
+        private void _initConfigs()
+        {
+            Ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);
+            Ziggeo.QrScannerConfig = QrScannerConfigMapper.Map(QrScannerConfig);
+            Ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
+            Ziggeo.RecorderConfig = CameraRecorderConfigMapper.Map(CameraRecorderConfig);
+            Ziggeo.PlayerConfig = PlayerConfigMapper.Map(PlayerConfig);
         }
     }
 }
