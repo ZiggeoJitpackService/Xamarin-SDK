@@ -68,6 +68,8 @@
     <Compile Include="Services\ProgressCallback.cs" />
     <Compile Include="Services\ZiggeoStreamsService.cs" />
     <Compile Include="Services\ZiggeoVideosService.cs" />
+    <Compile Include="Uploader\UploaderCallback.cs" />
+    <Compile Include="Uploader\UploaderConfigMapper.cs" />
     <Compile Include="ZiggeoApplication.cs" />
   </ItemGroup>
   <ItemGroup>

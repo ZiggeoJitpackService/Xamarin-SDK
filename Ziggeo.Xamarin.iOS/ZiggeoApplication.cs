@@ -81,6 +81,8 @@ namespace Ziggeo
             set => Connect.ClientAuthToken = value;
         }
 
+        public UploaderConfig UploaderConfig { get; set; }
+
         private void _init()
         {
             Connect = new ZiggeoConnectImpl(_appToken);

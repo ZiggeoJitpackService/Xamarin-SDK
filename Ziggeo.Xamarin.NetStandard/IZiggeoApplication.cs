@@ -28,5 +28,7 @@ namespace Ziggeo
 
         FileSelectorConfig FileSelectorConfig { get; set; }
         void StartFileSelector();
+       
+        UploaderConfig UploaderConfig { get; set; }
     }
 }

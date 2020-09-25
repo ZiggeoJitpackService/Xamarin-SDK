@@ -87,6 +87,8 @@ namespace Ziggeo
             set => Ziggeo.ClientAuthToken = value;
         }
 
+        public UploaderConfig UploaderConfig { get; set; }
+
         private void _initConfigs()
         {
             Ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);
@@ -94,6 +96,7 @@ namespace Ziggeo
             Ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
             Ziggeo.RecorderConfig = CameraRecorderConfigMapper.Map(CameraRecorderConfig);
             Ziggeo.PlayerConfig = PlayerConfigMapper.Map(PlayerConfig);
+            Ziggeo.UploadingConfig = UploaderConfigMapper.Map(UploaderConfig);
         }
 
         private void _init()
