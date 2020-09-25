@@ -4,7 +4,7 @@ namespace Ziggeo
 {
     public interface IZiggeoApplication
     {
-        string AppToken { get; }
+        string AppToken { get; set; }
 
         string ServerAuthToken { get; set; }
 

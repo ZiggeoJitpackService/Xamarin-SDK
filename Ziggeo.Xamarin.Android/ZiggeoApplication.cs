@@ -7,15 +7,27 @@ namespace Ziggeo
 {
     public class ZiggeoApplication : IZiggeoApplication
     {
-        public ZiggeoApplication(string token)
+        private string _appToken;
+
+        public ZiggeoApplication()
         {
-            this.AppToken = token;
-            this.Ziggeo = new Com.Ziggeo.Androidsdk.Ziggeo(token, Android.App.Application.Context);
-            this.Videos = new ZiggeoVideosService(Ziggeo);
-            this.Streams = new ZiggeoStreamsService(Ziggeo);
         }
 
-        public string AppToken { get; private set; }
+        public ZiggeoApplication(string token)
+        {
+            AppToken = token;
+        }
+
+
+        public string AppToken
+        {
+            get => _appToken;
+            set
+            {
+                _appToken = value;
+                _init();
+            }
+        }
 
         public IZiggeo Ziggeo { get; private set; }
 
@@ -82,6 +94,13 @@ namespace Ziggeo
             Ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
             Ziggeo.RecorderConfig = CameraRecorderConfigMapper.Map(CameraRecorderConfig);
             Ziggeo.PlayerConfig = PlayerConfigMapper.Map(PlayerConfig);
+        }
+
+        private void _init()
+        {
+            Ziggeo = new Com.Ziggeo.Androidsdk.Ziggeo(_appToken, Android.App.Application.Context);
+            Videos = new ZiggeoVideosService(Ziggeo);
+            Streams = new ZiggeoStreamsService(Ziggeo);
         }
     }
 }

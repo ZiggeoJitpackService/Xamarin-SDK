@@ -6,23 +6,27 @@ namespace Ziggeo
 {
     public class ZiggeoApplication : IZiggeoApplication
     {
-        private readonly CameraRecorder _cameraRecorder;
+        private CameraRecorder _cameraRecorder;
+        private string _appToken;
+
+        public ZiggeoApplication()
+        {
+        }
 
         public ZiggeoApplication(string token)
         {
             AppToken = token;
-            Connect = new ZiggeoConnectImpl(token);
-            Streams = new ZiggeoStreamsService(Connect);
-            Videos = new ZiggeoVideosService(Connect, Streams);
-
-            _cameraRecorder = new CameraRecorder(this);
-            Player = new Player(this, Connect);
-
-            AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord,
-                AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
         }
 
-        public string AppToken { get; private set; }
+        public string AppToken
+        {
+            get => _appToken;
+            set
+            {
+                _appToken = value;
+                _init();
+            }
+        }
 
         public ZiggeoConnect Connect { get; set; }
 
@@ -30,7 +34,7 @@ namespace Ziggeo
 
         public IStreams Streams { get; private set; }
 
-        public IPlayer Player { get; }
+        public IPlayer Player { get; private set; }
 
         public void StartCameraRecorder()
         {
@@ -75,6 +79,19 @@ namespace Ziggeo
         {
             get => Connect.ClientAuthToken;
             set => Connect.ClientAuthToken = value;
+        }
+
+        private void _init()
+        {
+            Connect = new ZiggeoConnectImpl(_appToken);
+            Streams = new ZiggeoStreamsService(Connect);
+            Videos = new ZiggeoVideosService(Connect, Streams);
+
+            _cameraRecorder = new CameraRecorder(this);
+            Player = new Player(this, Connect);
+
+            AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord,
+                AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
         }
     }
 }
