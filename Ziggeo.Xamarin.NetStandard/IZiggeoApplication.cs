@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Ziggeo
 {
@@ -28,7 +29,11 @@ namespace Ziggeo
 
         FileSelectorConfig FileSelectorConfig { get; set; }
         void StartFileSelector();
-       
+
         UploaderConfig UploaderConfig { get; set; }
+
+        void SendReport(IList<LogModel> logModels);
+        
+        void SendEmailToSupport();
     }
 }

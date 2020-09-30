@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Ziggeo.Services;
 using AVFoundation;
 
@@ -82,6 +83,16 @@ namespace Ziggeo
         }
 
         public UploaderConfig UploaderConfig { get; set; }
+        
+        public void SendReport(IList<LogModel> logModels)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SendEmailToSupport()
+        {
+            throw new NotImplementedException();
+        }
 
         private void _init()
         {

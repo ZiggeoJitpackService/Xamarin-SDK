@@ -1,5 +1,5 @@
 ﻿using System;
-using Android.Content;
+using System.Collections.Generic;
 using Com.Ziggeo.Androidsdk;
 using Ziggeo.Services;
 
@@ -88,6 +88,16 @@ namespace Ziggeo
         }
 
         public UploaderConfig UploaderConfig { get; set; }
+
+        public void SendReport(IList<LogModel> logModels)
+        {
+            Ziggeo.SendReport(LogModelMapper.Map(logModels));
+        }
+
+        public void SendEmailToSupport()
+        {
+            Ziggeo.SendEmailToSupport();
+        }
 
         private void _initConfigs()
         {
