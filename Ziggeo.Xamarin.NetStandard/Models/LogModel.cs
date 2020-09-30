@@ -1,18 +1,25 @@
-﻿using System.Collections.Generic;
+﻿﻿using System;
 
 namespace Ziggeo
 {
     public class LogModel
     {
-        public long Timestamp { get; }
-        public string Name { get; }
-        public string Details { get; }
+        public readonly DateTime Timestamp;
+        public readonly string Reason;
+        public readonly string Details;
 
-        public LogModel(long timestamp, string name, string details = null)
+        public LogModel(string reason, string details)
         {
-            Timestamp = timestamp;
-            Name = name;
+            Timestamp = DateTime.Now;
+            Reason = reason;
             Details = details;
         }
+
+        public override string ToString()
+        {
+            return FormattedOutput;
+        }
+
+        public string FormattedOutput => $"[{Timestamp:dd.MM.yyyy HH:mm:ss}] {Reason} {Details}";
     }
 }

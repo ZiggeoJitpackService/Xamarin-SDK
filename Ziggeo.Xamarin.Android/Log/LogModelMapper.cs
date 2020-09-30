@@ -10,7 +10,7 @@ namespace Ziggeo
             foreach (LogModel logModel in logModels)
             {
                 nativeLogsList.Add(new Com.Ziggeo.Androidsdk.Log.LogModel(
-                    logModel.Timestamp, logModel.Name, logModel.Details
+                    logModel.Timestamp.Ticks, logModel.Reason, logModel.Details
                 ));
             }
 
