@@ -94,11 +94,6 @@ namespace Ziggeo
             Ziggeo.SendReport(LogModelMapper.Map(logModels));
         }
 
-        public void SendEmailToSupport()
-        {
-            Ziggeo.SendEmailToSupport();
-        }
-
         private void _initConfigs()
         {
             Ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);

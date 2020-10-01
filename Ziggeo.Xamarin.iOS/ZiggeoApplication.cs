@@ -89,11 +89,6 @@ namespace Ziggeo
             throw new NotImplementedException();
         }
 
-        public void SendEmailToSupport()
-        {
-            throw new NotImplementedException();
-        }
-
         private void _init()
         {
             Connect = new ZiggeoConnectImpl(_appToken);

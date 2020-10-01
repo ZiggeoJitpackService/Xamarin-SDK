@@ -33,7 +33,5 @@ namespace Ziggeo
         UploaderConfig UploaderConfig { get; set; }
 
         void SendReport(IList<LogModel> logModels);
-        
-        void SendEmailToSupport();
     }
 }
