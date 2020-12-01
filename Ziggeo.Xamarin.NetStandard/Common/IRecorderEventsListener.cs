@@ -7,6 +7,8 @@ namespace Ziggeo
 
     public delegate void ReadyToRecordDelegate();
 
+    public delegate void RerecordDelegate();
+
     public delegate void RecordingStartedDelegate();
 
     public delegate void RecordingProgressDelegate(long timePassed);
@@ -28,6 +30,8 @@ namespace Ziggeo
         void InvokeRecordingProgress(long timePassed);
         event ManuallySubmittedDelegate ManuallySubmitted;
         void InvokeManuallySubmitted();
+        event RerecordDelegate Rerecord;
+        void InvokeRerecord();
         event CountdownDelegate Countdown;
         void InvokeCountdown(int secondsLeft);
     }

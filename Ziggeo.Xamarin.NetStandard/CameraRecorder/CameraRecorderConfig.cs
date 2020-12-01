@@ -35,6 +35,7 @@ namespace Ziggeo
         public event StreamingStoppedDelegate StreamingStopped;
         public event RecordingStoppedDelegate RecordingStopped;
         public event ReadyToRecordDelegate ReadyToRecord;
+        public event RerecordDelegate Rerecord;
         public event RecordingStartedDelegate RecordingStarted;
         public event RecordingProgressDelegate RecordingProgress;
         public event ManuallySubmittedDelegate ManuallySubmitted;
@@ -120,6 +121,11 @@ namespace Ziggeo
         public void InvokeReadyToRecord()
         {
             ReadyToRecord?.Invoke();
+        }
+
+        public void InvokeRerecord()
+        {
+            Rerecord?.Invoke();
         }
 
         public void InvokeRecordingStarted()
