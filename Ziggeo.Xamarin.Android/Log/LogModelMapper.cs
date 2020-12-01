@@ -4,14 +4,12 @@ namespace Ziggeo
 {
     public static class LogModelMapper
     {
-        public static IList<Com.Ziggeo.Androidsdk.Log.LogModel> Map(IList<LogModel> logModels)
+        public static IList<string> Map(IList<LogModel> logModels)
         {
-            IList<Com.Ziggeo.Androidsdk.Log.LogModel> nativeLogsList = new List<Com.Ziggeo.Androidsdk.Log.LogModel>();
+            IList<string> nativeLogsList = new List<string>();
             foreach (LogModel logModel in logModels)
             {
-                nativeLogsList.Add(new Com.Ziggeo.Androidsdk.Log.LogModel(
-                    logModel.Timestamp.Ticks, logModel.Reason, logModel.Details
-                ));
+                nativeLogsList.Add(logModel.FormattedOutput);
             }
 
             return nativeLogsList;

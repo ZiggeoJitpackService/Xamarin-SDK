@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Com.Ziggeo.Androidsdk;
-using Com.Ziggeo.Androidsdk.QR;
+﻿using System.Collections.Generic;
 using Java.Lang;
 
 namespace Ziggeo
@@ -70,9 +66,9 @@ namespace Ziggeo
             Config.InvokeNoMicrophone();
         }
 
-        public override void OnQrDecoded(string value)
+        public override void OnDecoded(string value)
         {
-            base.OnQrDecoded(value);
+            base.OnDecoded(value);
             Config.InvokeDecoded(value);
         }
     }

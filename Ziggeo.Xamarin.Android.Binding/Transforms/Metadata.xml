@@ -39,6 +39,7 @@
     </method>
   </add-node>
 
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector.filter']/class[@name='FilterAdapter']" />
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector']/class[@name='FileAdapter']" />
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector']/class[@name='FolderAdapter']" />
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.videoeditor']/class[@name='FramesAdapter']" />

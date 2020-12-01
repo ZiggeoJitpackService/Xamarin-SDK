@@ -7,8 +7,10 @@ namespace Ziggeo
             Com.Ziggeo.Androidsdk.QR.QrScannerConfig nativeConfig = null;
             if (config != null)
             {
-                nativeConfig = new Com.Ziggeo.Androidsdk.QR.QrScannerConfig(config.ShouldCloseAfterSuccessfulScan,
-                    new QrScannerCallback(config));
+                nativeConfig = new Com.Ziggeo.Androidsdk.QR.QrScannerConfig.Builder()
+                    .ShouldCloseAfterSuccessfulScan(config.ShouldCloseAfterSuccessfulScan)
+                    .Callback(new QrScannerCallback(config))
+                    .Build();
             }
 
             return nativeConfig;

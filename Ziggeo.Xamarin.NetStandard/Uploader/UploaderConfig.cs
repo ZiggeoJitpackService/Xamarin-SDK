@@ -6,6 +6,10 @@ namespace Ziggeo
 {
     public class UploaderConfig : BaseConfig, IUploaderEventsListener
     {
+        public bool ShouldTurnOffUploader { get; set; } = false;
+        public bool ShouldUseWifiOnly { get; set; } = false;
+        public bool ShouldStartAsForeground { get; set; } = false;
+
         public event ErrorDelegate Error;
 
         public void InvokeError(Exception e)
