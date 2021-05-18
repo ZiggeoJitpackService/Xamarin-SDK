@@ -24,6 +24,7 @@ namespace Ziggeo
         public event RecordingProgressDelegate RecordingProgress;
         public event ManuallySubmittedDelegate ManuallySubmitted;
         public event CountdownDelegate Countdown;
+        public event RerecordDelegate Rerecord;
 
         public void InvokeError(Exception e)
         {
@@ -113,6 +114,11 @@ namespace Ziggeo
         public void InvokeCountdown(int secondsLeft)
         {
             Countdown?.Invoke(secondsLeft);
+        }
+
+        public void InvokeRerecord()
+        {
+            Rerecord?.Invoke();
         }
     }
 }

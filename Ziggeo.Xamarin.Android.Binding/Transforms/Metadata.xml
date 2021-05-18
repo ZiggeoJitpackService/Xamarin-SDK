@@ -49,6 +49,7 @@
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='AudioRecorderFragment']" />
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='CameraRecorderFragment']" />
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='ScreenRecorderFragment']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='BaseFragment']" />
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector']/class[@name='FileSelectorFragment']" />
   <add-node path="/api/package[@name='com.ziggeo.androidsdk.db.impl.room']/class[@name='RoomDb']" />
 

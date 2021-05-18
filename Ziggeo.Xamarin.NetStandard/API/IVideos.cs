@@ -20,13 +20,9 @@ namespace Ziggeo
 
         Task<JObject> Get(string tokenOrKey);
 
-        Task<System.IO.Stream> DownloadVideo(string tokenOrKey);
-
-        Uri GetVideoUrl(string tokenOrKey);
-
-        Task<System.IO.Stream> DownloadImage(string tokenOrKey);
-
-        Task<JObject> ApplyEffect(string tokenOrKey, Dictionary<string, string> data);
+        Task<String> GetVideoUrl(string tokenOrKey);
+       
+        Task<String> GetImageUrl(string tokenOrKey);
 
         Task<JObject> Update(string tokenOrKey, Dictionary<string, string> data);
         

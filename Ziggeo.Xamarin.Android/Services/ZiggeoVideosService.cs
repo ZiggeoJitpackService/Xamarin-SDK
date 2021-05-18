@@ -77,60 +77,17 @@ namespace Ziggeo.Services
             return await source.Task;
         }
 
-        public async Task<Stream> DownloadVideo(string tokenOrKey)
+        public async Task<String> GetVideoUrl(string tokenOrKey)
         {
-            var source = new TaskCompletionSource<Stream>();
-            Videos.DownloadVideo(tokenOrKey, new Callback(
-                (call, response) =>
-                {
-                    if (response.IsSuccessful)
-                    {
-                        source.TrySetResult(response.Body().ByteStream());
-                    }
-                    else
-                    {
-                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
-                    }
-                },
-                (call, exception) => { source.TrySetException(exception); }));
+            var source = new TaskCompletionSource<String>();
+            source.SetResult((string) Videos.GetVideoUrl(tokenOrKey).Call());
             return await source.Task;
         }
-
-        public async Task<Stream> DownloadImage(string tokenOrKey)
+        
+        public async Task<String> GetImageUrl(string tokenOrKey)
         {
-            var source = new TaskCompletionSource<Stream>();
-            Videos.DownloadImage(tokenOrKey, new Callback(
-                (call, response) =>
-                {
-                    if (response.IsSuccessful)
-                    {
-                        source.TrySetResult(response.Body().ByteStream());
-                    }
-                    else
-                    {
-                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
-                    }
-                },
-                (call, exception) => { source.TrySetException(exception); }));
-            return await source.Task;
-        }
-
-        public async Task<JObject> ApplyEffect(string tokenOrKey, Dictionary<string, string> data)
-        {
-            var source = new TaskCompletionSource<JObject>();
-            Videos.ApplyEffect(tokenOrKey, data, new Callback(
-                (call, response) =>
-                {
-                    if (response.IsSuccessful)
-                    {
-                        source.TrySetResult(JObject.Parse(response.Body().String()));
-                    }
-                    else
-                    {
-                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
-                    }
-                },
-                (call, exception) => { source.TrySetException(exception); }));
+            var source = new TaskCompletionSource<String>();
+            source.SetResult((string) Videos.GetImageUrl(tokenOrKey).Call());
             return await source.Task;
         }
 
@@ -210,11 +167,6 @@ namespace Ziggeo.Services
                 (call, exception) => { source.TrySetException(exception); }));
 
             return await source.Task;
-        }
-
-        public Uri GetVideoUrl(string tokenOrKey)
-        {
-            return new Uri(ZUrlHelper.PrepareDownloadVideoUrl(_ziggeoInstance.AppToken, tokenOrKey).Build().ToString());
         }
     }
 }

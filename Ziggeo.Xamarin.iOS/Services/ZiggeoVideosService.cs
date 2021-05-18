@@ -9,6 +9,7 @@ namespace Ziggeo.Services
     public class ZiggeoVideosService : BaseService, IVideos
     {
         public event VideoFileDelegate UploadStarted;
+
         //public event VideoTokenFileDelegate TokenAssigned;
         public event VideoTokenFileProgressDelegate UploadProgressChanged;
         public event VideoTokenFileDelegate UploadComplete;
@@ -17,16 +18,13 @@ namespace Ziggeo.Services
         public ZiggeoVideosService(ZiggeoConnect connection, IStreams streams) : base(connection)
         {
             this.Streams = streams;
-            connection.UploadProgressChanged += (string token, string filename, long bytesSent, long totalBytes) => {
+            connection.UploadProgressChanged += (string token, string filename, long bytesSent, long totalBytes) =>
+            {
                 UploadProgressChanged?.Invoke(token, filename, bytesSent, totalBytes);
             };
         }
 
-        public IStreams Streams
-        {
-            get;
-            private set;
-        }
+        public IStreams Streams { get; private set; }
 
         public async Task<JArray> Index(Dictionary<string, string> data)
         {
@@ -37,24 +35,6 @@ namespace Ziggeo.Services
         {
             return await Connection.RequestJSON(ZiggeoConnect.Method.GET, "/videos/" + tokenOrKey + "",
                 null);
-        }
-
-        public async Task<Stream> DownloadVideo(string tokenOrKey)
-        {
-            //not needed in current implementation
-            throw new NotImplementedException();
-        }
-
-        public async Task<Stream> DownloadImage(string tokenOrKey)
-        {
-            byte[] data = await Connection.RequestDataAsync(ZiggeoConnect.Method.GET, "/videos/" + tokenOrKey + "/image", null);
-            return new System.IO.MemoryStream(data);
-        }
-
-        public async Task<JObject> ApplyEffect(string tokenOrKey, Dictionary<string, string> data)
-        {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.POST,
-                "/videos/" + tokenOrKey + "/effect", data);
         }
 
         public async Task<JObject> Update(string tokenOrKey, Dictionary<string, string> data)
@@ -93,17 +73,21 @@ namespace Ziggeo.Services
                 UploadComplete?.Invoke(videoToken, filePath);
                 return result;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 UploadFailed?.Invoke(filePath, ex);
                 throw ex;
             }
         }
 
-        public Uri GetVideoUrl(string tokenOrKey)
+        public Task<String> GetVideoUrl(string tokenOrKey)
         {
-            
-            return new Uri(Connection.GetServerURL("/videos/" + tokenOrKey + "/video.mp4"));
+            return Task.FromResult(Connection.GetServerURL("/videos/" + tokenOrKey + "/video.mp4"));
+        }
+
+        public Task<String> GetImageUrl(string tokenOrKey)
+        {
+            return Task.FromResult(Connection.GetServerURL("/videos/" + tokenOrKey + "/image"));
         }
     }
 }
