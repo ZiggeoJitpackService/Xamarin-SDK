@@ -1,5 +1,6 @@
 ﻿using System;
 using Com.Ziggeo.Androidsdk.Net.Callbacks;
+using Com.Ziggeo.Androidsdk.Net.Models.Common;
 using Java.IO;
 using Square.OkHttp3;
 using IOException = Java.IO.IOException;
@@ -29,6 +30,11 @@ namespace Ziggeo.Services
         public void OnResponse(ICall call, Response response)
         {
             _onResponse?.Invoke(call, response);
+        }
+
+        public void OnProgressUpdate(MediaRequest mediaRequest, string token, File file, long sent, long total)
+        {
+            _onProgress?.Invoke(token, file, sent, total);
         }
 
         public void OnProgressUpdate(string token, File file, long sent, long total)
