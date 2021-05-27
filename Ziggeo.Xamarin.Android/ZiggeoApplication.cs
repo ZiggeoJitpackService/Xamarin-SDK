@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Com.Ziggeo.Androidsdk;
 using Ziggeo.Services;
+using Ziggeo.Xamarin.Android.Services;
 
 namespace Ziggeo
 {
@@ -32,6 +33,10 @@ namespace Ziggeo
         public IZiggeo Ziggeo { get; private set; }
 
         public IVideos Videos { get; private set; }
+
+        public IAudios Audios { get; private set; }
+        
+        public IImages Images { get; private set; }
 
         public IStreams Streams { get; private set; }
 
@@ -108,6 +113,8 @@ namespace Ziggeo
         {
             Ziggeo = new Com.Ziggeo.Androidsdk.Ziggeo(_appToken, Android.App.Application.Context);
             Videos = new ZiggeoVideosService(Ziggeo);
+            Audios = new ZiggeoAudioService(Ziggeo);
+            Images = new ZiggeoImageService(Ziggeo);
             Streams = new ZiggeoStreamsService(Ziggeo);
         }
     }

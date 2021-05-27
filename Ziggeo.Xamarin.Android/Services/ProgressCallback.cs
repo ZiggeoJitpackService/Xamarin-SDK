@@ -32,7 +32,7 @@ namespace Ziggeo.Services
             _onResponse?.Invoke(call, response);
         }
 
-        public void OnProgressUpdate(MediaRequest mediaRequest, string token, File file, long sent, long total)
+        public void OnProgressUpdate(MediaRequest request, string token, File file, long sent, long total)
         {
             _onProgress?.Invoke(token, file, sent, total);
         }

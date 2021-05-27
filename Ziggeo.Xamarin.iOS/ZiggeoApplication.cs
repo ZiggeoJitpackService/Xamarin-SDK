@@ -83,7 +83,11 @@ namespace Ziggeo
         }
 
         public UploaderConfig UploaderConfig { get; set; }
-        
+
+        public IAudios Audios => throw new NotImplementedException();
+
+        public IImages Images => throw new NotImplementedException();
+
         public void SendReport(IList<LogModel> logModels)
         {
             throw new NotImplementedException();

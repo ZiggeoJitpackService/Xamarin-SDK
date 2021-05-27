@@ -287,6 +287,10 @@
     <BundleResource Include="Resources\sun-50.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Ziggeo.Xamarin.Android\Ziggeo.Xamarin.Android.csproj">
+      <Project>{0cad5c12-dde7-461b-bf18-9277ff4a5979}</Project>
+      <Name>Ziggeo.Xamarin.Android</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj">
       <Project>{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}</Project>
       <Name>Ziggeo.Xamarin.NetStandard</Name>

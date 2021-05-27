@@ -17,9 +17,9 @@
     <Deterministic>True</Deterministic>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidUseAapt2>true</AndroidUseAapt2>
+    <ReleaseVersion>0.1.12</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -67,11 +67,13 @@
     <Compile Include="Services\NativeDelegates\NVideoTokenFileDelegate.cs" />
     <Compile Include="Services\NativeDelegates\NVideoTokenFileProgressDelegatecs.cs" />
     <Compile Include="Services\ProgressCallback.cs" />
+    <Compile Include="Services\ZiggeoImageService.cs" />
     <Compile Include="Services\ZiggeoStreamsService.cs" />
     <Compile Include="Services\ZiggeoVideosService.cs" />
     <Compile Include="Uploader\UploaderCallback.cs" />
     <Compile Include="Uploader\UploaderConfigMapper.cs" />
     <Compile Include="ZiggeoApplication.cs" />
+    <Compile Include="Services\ZiggeoAudioService.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="GoogleGson" Version="2.8.5" />

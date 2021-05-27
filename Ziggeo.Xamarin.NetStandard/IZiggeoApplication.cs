@@ -13,6 +13,10 @@ namespace Ziggeo
 
         IVideos Videos { get; }
 
+        IAudios Audios { get; }
+
+        IImages Images { get; }
+
         IStreams Streams { get; }
 
         CameraRecorderConfig CameraRecorderConfig { get; set; }
