@@ -41,6 +41,22 @@ namespace Ziggeo
         {
             _cameraRecorder.StartRecorder();
         }
+        
+        public void StartAudio(string mediaToken, string mediaPath)
+        {
+        }
+        
+        public void OpenImage(string mediaToken)
+        {
+        }
+        
+        public void StartAudioRecorder()
+        {
+        }
+        
+        public void StartImageRecorder()
+        {
+        }
 
         public void StartQrScanner()
         {

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Ziggeo
 {
@@ -30,6 +29,14 @@ namespace Ziggeo
 
         PlayerConfig PlayerConfig { get; set; }
         void StartPlayer(string videoToken);
+
+        void StartAudio(string mediaToken, string mediaPath);
+
+        void OpenImage(string mediaToken);
+
+        void StartAudioRecorder();
+
+        void StartImageRecorder();
 
         FileSelectorConfig FileSelectorConfig { get; set; }
         void StartFileSelector();

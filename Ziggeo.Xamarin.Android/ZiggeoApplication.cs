@@ -47,6 +47,26 @@ namespace Ziggeo
             _initConfigs();
             Ziggeo.StartPlayer(videoToken);
         }
+        
+        public void StartAudio(string mediaToken, string mediaPath)
+        {
+            Ziggeo.StartAudioPlayer(mediaToken, mediaPath);
+        }
+        
+        public void OpenImage(string mediaToken)
+        {
+            Ziggeo.ShowImage(mediaToken);
+        }
+        
+        public void StartAudioRecorder()
+        {
+            Ziggeo.StartAudioRecorder();
+        }
+        
+        public void StartImageRecorder()
+        {
+            Ziggeo.StartImageRecorder();
+        }
 
         public FileSelectorConfig FileSelectorConfig { get; set; }
 
