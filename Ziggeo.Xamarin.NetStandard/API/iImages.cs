@@ -22,7 +22,7 @@ Task<JArray> Index(Dictionary<string, string> data);
 
         Task<JObject> Create(string filePath, Dictionary<string, string> data);
 
-        Task<JObject> GetImageUrl(string tokenOrKey);
+        Task<string> GetImageUrl(string tokenOrKey);
 
     }
 }

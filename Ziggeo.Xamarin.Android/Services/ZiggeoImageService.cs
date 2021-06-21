@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Android.Util;
 using Com.Ziggeo.Androidsdk;
 using Com.Ziggeo.Androidsdk.Net.Exceptions;
 using Com.Ziggeo.Androidsdk.Net.Services.Images;
@@ -22,15 +23,15 @@ namespace Ziggeo.Xamarin.Android.Services
         {
             Images = ziggeo.Images();
             _ziggeoInstance = ziggeo;
-            ((ImagesService)ziggeo.Images()).UploadStartedDelegate =
-            new NVideoFileDelegate(fileName => UploadStarted?.Invoke(fileName));
-            ((ImagesService)ziggeo.Images()).UploadCompleteDelegate =
-            new NVideoNVideoTokenFileDelegate((token, fileName) => UploadComplete?.Invoke(token, fileName));
-            ((ImagesService)ziggeo.Images()).UploadFailedDelegate =
-            new NVideoFileErrorDelegate((fileName, exception) => UploadFailed?.Invoke(fileName, exception));
-            ((ImagesService)ziggeo.Images()).UploadProgressChangedDelegate =
-            new NVideoTokenFileProgressDelegate((token, fileName, sent, total) =>
-            UploadProgressChanged?.Invoke(token, fileName, sent, total));
+            ((ImagesService) ziggeo.Images()).UploadStartedDelegate =
+                new NVideoFileDelegate(fileName => UploadStarted?.Invoke(fileName));
+            ((ImagesService) ziggeo.Images()).UploadCompleteDelegate =
+                new NVideoNVideoTokenFileDelegate((token, fileName) => UploadComplete?.Invoke(token, fileName));
+            ((ImagesService) ziggeo.Images()).UploadFailedDelegate =
+                new NVideoFileErrorDelegate((fileName, exception) => UploadFailed?.Invoke(fileName, exception));
+            ((ImagesService) ziggeo.Images()).UploadProgressChangedDelegate =
+                new NVideoTokenFileProgressDelegate((token, fileName, sent, total) =>
+                    UploadProgressChanged?.Invoke(token, fileName, sent, total));
         }
 
         private readonly IZiggeo _ziggeoInstance;
@@ -143,10 +144,11 @@ namespace Ziggeo.Xamarin.Android.Services
             return await source.Task;
         }
 
-        public Task<JObject> GetImageUrl(string tokenOrKey)
+        public async Task<string> GetImageUrl(string tokenOrKey)
         {
-            throw new NotImplementedException();
+            var source = new TaskCompletionSource<string>();
+            source.SetResult((string) Images.GetImageUrl(tokenOrKey).Call());
+            return await source.Task;
         }
     }
 }
-
