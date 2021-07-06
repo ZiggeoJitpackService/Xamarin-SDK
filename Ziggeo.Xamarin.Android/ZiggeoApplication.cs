@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Android.App;
 using Com.Ziggeo.Androidsdk;
 using Ziggeo.Services;
 
@@ -106,7 +106,8 @@ namespace Ziggeo
 
         private void _init()
         {
-            Ziggeo = new Com.Ziggeo.Androidsdk.Ziggeo(_appToken, Android.App.Application.Context);
+            Ziggeo = Com.Ziggeo.Androidsdk.Ziggeo.GetInstance(Application.Context);
+            Ziggeo.AppToken = _appToken;
             Videos = new ZiggeoVideosService(Ziggeo);
             Streams = new ZiggeoStreamsService(Ziggeo);
         }
