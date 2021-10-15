@@ -41,6 +41,22 @@ namespace Ziggeo
         {
             _cameraRecorder.StartRecorder();
         }
+        
+        public void StartAudio(string mediaToken, string mediaPath)
+        {
+        }
+        
+        public void OpenImage(string mediaToken)
+        {
+        }
+        
+        public void StartAudioRecorder()
+        {
+        }
+        
+        public void StartImageRecorder()
+        {
+        }
 
         public void StartQrScanner()
         {
@@ -83,7 +99,11 @@ namespace Ziggeo
         }
 
         public UploaderConfig UploaderConfig { get; set; }
-        
+
+        public IAudios Audios => throw new NotImplementedException();
+
+        public IImages Images => throw new NotImplementedException();
+
         public void SendReport(IList<LogModel> logModels)
         {
             throw new NotImplementedException();

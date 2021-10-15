@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Threading;
 using System.Threading.Tasks;
 using Com.Ziggeo.Androidsdk;
-using Com.Ziggeo.Androidsdk.Net;
 using Com.Ziggeo.Androidsdk.Net.Exceptions;
-using Com.Ziggeo.Androidsdk.Net.Models.Auth;
 using Com.Ziggeo.Androidsdk.Net.Services.Videos;
 using Newtonsoft.Json.Linq;
+using Ziggeo.Services;
 using Ziggeo.Services.NativeDelegates;
 using File = Java.IO.File;
 
-namespace Ziggeo.Services
+namespace Ziggeo.Xamarin.Android.Services
 {
     public class ZiggeoVideosService : IVideos
     {

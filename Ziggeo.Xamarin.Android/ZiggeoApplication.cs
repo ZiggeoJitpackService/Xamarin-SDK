@@ -2,6 +2,7 @@
 using Android.App;
 using Com.Ziggeo.Androidsdk;
 using Ziggeo.Services;
+using Ziggeo.Xamarin.Android.Services;
 
 namespace Ziggeo
 {
@@ -33,6 +34,10 @@ namespace Ziggeo
 
         public IVideos Videos { get; private set; }
 
+        public IAudios Audios { get; private set; }
+        
+        public IImages Images { get; private set; }
+
         public IStreams Streams { get; private set; }
 
         public PlayerConfig PlayerConfig { get; set; }
@@ -41,6 +46,26 @@ namespace Ziggeo
         {
             _initConfigs();
             Ziggeo.StartPlayer(videoToken);
+        }
+        
+        public void StartAudio(string mediaToken, string mediaPath)
+        {
+            Ziggeo.StartAudioPlayer(mediaToken, mediaPath);
+        }
+        
+        public void OpenImage(string mediaToken)
+        {
+            Ziggeo.ShowImage(mediaToken);
+        }
+        
+        public void StartAudioRecorder()
+        {
+            Ziggeo.StartAudioRecorder();
+        }
+        
+        public void StartImageRecorder()
+        {
+            Ziggeo.StartImageRecorder();
         }
 
         public FileSelectorConfig FileSelectorConfig { get; set; }
@@ -109,6 +134,8 @@ namespace Ziggeo
             Ziggeo = Com.Ziggeo.Androidsdk.Ziggeo.GetInstance(Application.Context);
             Ziggeo.AppToken = _appToken;
             Videos = new ZiggeoVideosService(Ziggeo);
+            Audios = new ZiggeoAudioService(Ziggeo);
+            Images = new ZiggeoImageService(Ziggeo);
             Streams = new ZiggeoStreamsService(Ziggeo);
         }
     }
