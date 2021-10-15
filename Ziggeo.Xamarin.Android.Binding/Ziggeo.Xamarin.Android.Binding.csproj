@@ -70,7 +70,7 @@
     <PackageReference Include="Xamarin.Google.ZXing.Core" Version="3.3.3" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\ziggeo-android-sdk-xamarinRelease-v2.4.1-20211015161924.aar" />
+    <LibraryProjectZip Include="Jars\ziggeo-android-sdk-xamarinRelease-v2.4.1-20211015163149.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
 </Project>

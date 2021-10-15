@@ -43,6 +43,12 @@ namespace Ziggeo
 
         UploaderConfig UploaderConfig { get; set; }
 
+        void Cancel(bool deleteFile);
+
+        void Cancel(string path, bool deleteFile);
+
+        void Cancel(string path);
+
         void SendReport(IList<LogModel> logModels);
     }
 }

@@ -35,7 +35,7 @@ namespace Ziggeo
         public IVideos Videos { get; private set; }
 
         public IAudios Audios { get; private set; }
-        
+
         public IImages Images { get; private set; }
 
         public IStreams Streams { get; private set; }
@@ -47,22 +47,22 @@ namespace Ziggeo
             _initConfigs();
             Ziggeo.StartPlayer(videoToken);
         }
-        
+
         public void StartAudio(string mediaToken, string mediaPath)
         {
             Ziggeo.StartAudioPlayer(mediaToken, mediaPath);
         }
-        
+
         public void OpenImage(string mediaToken)
         {
             Ziggeo.ShowImage(mediaToken);
         }
-        
+
         public void StartAudioRecorder()
         {
             Ziggeo.StartAudioRecorder();
         }
-        
+
         public void StartImageRecorder()
         {
             Ziggeo.StartImageRecorder();
@@ -113,6 +113,21 @@ namespace Ziggeo
         }
 
         public UploaderConfig UploaderConfig { get; set; }
+
+        public void Cancel(bool deleteFile)
+        {
+            Ziggeo.Cancel(deleteFile);
+        }
+
+        public void Cancel(string path, bool deleteFile)
+        {
+            Ziggeo.Cancel(path, deleteFile);
+        }
+
+        public void Cancel(string path)
+        {
+            Ziggeo.Cancel(path);
+        }
 
         public void SendReport(IList<LogModel> logModels)
         {

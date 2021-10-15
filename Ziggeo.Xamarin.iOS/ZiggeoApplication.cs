@@ -109,6 +109,21 @@ namespace Ziggeo
             throw new NotImplementedException();
         }
 
+        public void Cancel(bool deleteFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Cancel(string path, bool deleteFile)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Cancel(string path)
+        {
+            throw new NotImplementedException();
+        }
+
         private void _init()
         {
             Connect = new ZiggeoConnectImpl(_appToken);
