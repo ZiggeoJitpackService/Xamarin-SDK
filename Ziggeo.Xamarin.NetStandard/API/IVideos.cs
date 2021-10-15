@@ -6,9 +6,13 @@ using Newtonsoft.Json.Linq;
 namespace Ziggeo
 {
     public delegate void VideoFileDelegate(string filename);
+
     public delegate void VideoTokenFileDelegate(string token, string filename);
+
     public delegate void VideoTokenFileProgressDelegate(string token, string filename, long bytesSent, long totalBytes);
+
     public delegate void VideoFileErrorDelegate(string filename, Exception error);
+
     public interface IVideos
     {
         event VideoFileDelegate UploadStarted;
@@ -21,11 +25,11 @@ namespace Ziggeo
         Task<JObject> Get(string tokenOrKey);
 
         Task<String> GetVideoUrl(string tokenOrKey);
-       
+
         Task<String> GetImageUrl(string tokenOrKey);
 
         Task<JObject> Update(string tokenOrKey, Dictionary<string, string> data);
-        
+
         Task Destroy(string tokenOrKey);
 
         Task<JObject> Create(Dictionary<string, string> data);

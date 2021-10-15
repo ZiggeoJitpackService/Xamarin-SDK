@@ -5,10 +5,8 @@ using Newtonsoft.Json.Linq;
 
 namespace Ziggeo
 {
-    public interface IAudios
-
-{
-
+    public interface IImages
+    {
         Task<JArray> Index(Dictionary<string, string> data);
 
         Task<JObject> Get(string tokenOrKey);
@@ -22,6 +20,7 @@ namespace Ziggeo
         Task<JObject> Create(Dictionary<string, string> data);
 
         Task<JObject> Create(string filePath, Dictionary<string, string> data);
-   
+
+        Task<string> GetImageUrl(string tokenOrKey);
     }
 }
