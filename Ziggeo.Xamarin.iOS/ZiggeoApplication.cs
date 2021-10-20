@@ -109,17 +109,17 @@ namespace Ziggeo
             throw new NotImplementedException();
         }
 
-        public void Cancel(bool deleteFile)
+        public void CancelUpload(bool deleteFile)
         {
             throw new NotImplementedException();
         }
 
-        public void Cancel(string path, bool deleteFile)
+        public void CancelUpload(string path, bool deleteFile)
         {
             throw new NotImplementedException();
         }
 
-        public void Cancel(string path)
+        public void CancelUpload(string path)
         {
             throw new NotImplementedException();
         }

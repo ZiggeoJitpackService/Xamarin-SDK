@@ -114,19 +114,19 @@ namespace Ziggeo
 
         public UploaderConfig UploaderConfig { get; set; }
 
-        public void Cancel(bool deleteFile)
+        public void CancelUpload(bool deleteFile)
         {
-            Ziggeo.Cancel(deleteFile);
+            Ziggeo.CancelUpload(deleteFile);
         }
 
-        public void Cancel(string path, bool deleteFile)
+        public void CancelUpload(string path, bool deleteFile)
         {
-            Ziggeo.Cancel(path, deleteFile);
+            Ziggeo.CancelUpload(path, deleteFile);
         }
 
-        public void Cancel(string path)
+        public void CancelUpload(string path)
         {
-            Ziggeo.Cancel(path);
+            Ziggeo.CancelUpload(path);
         }
 
         public void SendReport(IList<LogModel> logModels)
