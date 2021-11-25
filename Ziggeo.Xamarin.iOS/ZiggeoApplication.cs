@@ -45,7 +45,12 @@ namespace Ziggeo
         public void StartAudio(string mediaToken, string mediaPath)
         {
         }
-        
+
+        public void StartAudioWithPath(string mediaPath)
+        {
+            throw new NotImplementedException();
+        }
+
         public void OpenImage(string mediaToken)
         {
         }
@@ -75,6 +80,11 @@ namespace Ziggeo
         public PlayerConfig PlayerConfig { get; set; }
 
         public void StartPlayer(string videoToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartAudioWithToken(string mediaToken)
         {
             throw new NotImplementedException();
         }

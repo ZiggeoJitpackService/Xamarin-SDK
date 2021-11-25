@@ -48,9 +48,14 @@ namespace Ziggeo
             Ziggeo.StartPlayer(videoToken);
         }
 
-        public void StartAudio(string mediaToken, string mediaPath)
+        public void StartAudioWithToken(string mediaToken)
         {
-            Ziggeo.StartAudioPlayer(mediaToken, mediaPath);
+            Ziggeo.StartAudioPlayer(mediaToken);
+        }
+        
+        public void StartAudioWithPath(string mediaPath)
+        {
+            Ziggeo.StartAudioPlayer(mediaPath);
         }
 
         public void OpenImage(string mediaToken)
@@ -116,17 +121,18 @@ namespace Ziggeo
 
         public void CancelUpload(bool deleteFile)
         {
-            Ziggeo.CancelUpload(deleteFile);
+            Ziggeo.CancelCurrentUpload(deleteFile);
         }
 
         public void CancelUpload(string path, bool deleteFile)
         {
-            Ziggeo.CancelUpload(path, deleteFile);
+            Ziggeo.CancelUploadByPath(path, deleteFile);
         }
 
         public void CancelUpload(string path)
         {
-            Ziggeo.CancelUpload(path);
+            //todo true?
+            Ziggeo.CancelUploadByPath(path, true);
         }
 
         public void SendReport(IList<LogModel> logModels)
