@@ -52,7 +52,7 @@ namespace Ziggeo
         {
             Ziggeo.StartAudioPlayer(mediaToken);
         }
-        
+
         public void StartAudioWithPath(string mediaPath)
         {
             Ziggeo.StartAudioPlayer(mediaPath);
@@ -142,6 +142,10 @@ namespace Ziggeo
 
         private void _initConfigs()
         {
+            if (Ziggeo == null)
+            {
+                Ziggeo = Com.Ziggeo.Androidsdk.Ziggeo.GetInstance(Application.Context);
+            }
             Ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);
             Ziggeo.QrScannerConfig = QrScannerConfigMapper.Map(QrScannerConfig);
             Ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
@@ -152,7 +156,10 @@ namespace Ziggeo
 
         private void _init()
         {
-            Ziggeo = Com.Ziggeo.Androidsdk.Ziggeo.GetInstance(Application.Context);
+            if (Ziggeo == null)
+            {
+                Ziggeo = Com.Ziggeo.Androidsdk.Ziggeo.GetInstance(Application.Context);
+            }
             Ziggeo.AppToken = _appToken;
             Videos = new ZiggeoVideosService(Ziggeo);
             Audios = new ZiggeoAudioService(Ziggeo);

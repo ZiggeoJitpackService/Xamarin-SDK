@@ -14,6 +14,7 @@ namespace Ziggeo
                     .IsLiveStreaming(config.IsLiveStreaming)
                     .ShouldAutoStartRecording(config.ShouldAutoStartRecording)
                     .StartDelay(config.StartDelay)
+                    .BlurMode(config.BlurMode)
                     .ShouldSendImmediately(config.ShouldSendImmediately)
                     .ShouldDisableCameraSwitch(config.ShouldDisableCameraSwitch)
                     .Quality(config.VideoQuality)

@@ -45,6 +45,7 @@ namespace Ziggeo
         public bool IsLiveStreaming { get; set; }
         public bool ShouldAutoStartRecording { get; set; }
         public int StartDelay { get; set; } = DefaultStartDelay;
+        public bool BlurMode { get; set; } = false;
         public bool ShouldSendImmediately { get; set; } = true;
         public bool ShouldDisableCameraSwitch { get; set; }
         public int VideoQuality { get; set; }

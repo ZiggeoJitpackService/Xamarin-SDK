@@ -18,6 +18,18 @@
     Java.Lang.Object
   </attr>
 
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']">
+    <class abstract="true" deprecated="not deprecated" final="false" name="PreviewImpl" static="false" visibility="public" extends="java.lang.Object">
+    </class>
+  </add-node>
+
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/class[@name='CameraView']">
+    <method name="setBlurPreview" return="void" abstract="false" native="false" synchronized="false"
+            static="false" final="false" deprecated="not deprecated" visibility="protected">
+      <parameter name="callbacks" type="com.ziggeo.androidsdk.widgets.cameraview.BaseCameraView.CallbackBridge"/>
+    </method>
+  </add-node>
+
   <add-node path="/api/package[@name='com.ziggeo.androidsdk.db.impl']/class[@name='RecordingInfoDao']">
     <method name="update" return="io.reactivex.Completable" abstract="false" native="false" synchronized="false"
             static="false" final="false" deprecated="not deprecated" visibility="public">
@@ -52,6 +64,7 @@
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='BaseFragment']" />
   <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector']/class[@name='FileSelectorFragment']" />
   <add-node path="/api/package[@name='com.ziggeo.androidsdk.db.impl.room']/class[@name='RoomDb']" />
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/class[@name='PreviewImpl']" />
 
 
 </metadata>
