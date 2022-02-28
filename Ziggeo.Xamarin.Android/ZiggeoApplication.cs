@@ -48,12 +48,12 @@ namespace Ziggeo
             Ziggeo.StartPlayer(videoToken);
         }
 
-        public void StartAudioWithToken(string mediaToken)
+        public void StartAudioWithToken(string[] mediaToken)
         {
             Ziggeo.StartAudioPlayer(mediaToken);
         }
 
-        public void StartAudioWithPath(string mediaPath)
+        public void StartAudioWithPath(string[] mediaPath)
         {
             Ziggeo.StartAudioPlayer(mediaPath);
         }
@@ -61,6 +61,11 @@ namespace Ziggeo
         public void OpenImage(string mediaToken)
         {
             Ziggeo.ShowImage(mediaToken);
+        }
+        
+        public void OpenImageWithPath(string mediaPath)
+        {
+            Ziggeo.ShowImage(mediaPath);
         }
 
         public void StartAudioRecorder()

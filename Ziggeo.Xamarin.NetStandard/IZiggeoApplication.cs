@@ -30,9 +30,9 @@ namespace Ziggeo
         PlayerConfig PlayerConfig { get; set; }
         void StartPlayer(string videoToken);
 
-        void StartAudioWithToken(string mediaToken);
+        void StartAudioWithToken(string[] mediaToken);
 
-        void StartAudioWithPath(string mediaPath);
+        void StartAudioWithPath(string[] mediaPath);
 
         void OpenImage(string mediaToken);
 

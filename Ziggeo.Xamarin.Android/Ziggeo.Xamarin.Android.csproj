@@ -99,7 +99,7 @@
     <PackageReference Include="Xamarin.AndroidX.ConstraintLayout" Version="2.0.0.1-beta6" />
     <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.1.0.3" />
     <PackageReference Include="Xamarin.AndroidX.Room.Runtime" Version="2.2.5.3" />
-    <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.3.4.4" />
+    <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.7.1.2" Exclude="Xamarin.Google.Guava.ListenableFuture" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
     <PackageReference Include="Xamarin.Google.ZXing.Core" Version="3.3.3" />
     <ProjectReference Include="..\Ziggeo.Xamarin.Android.Binding\Ziggeo.Xamarin.Android.Binding.csproj">

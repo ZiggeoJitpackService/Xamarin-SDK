@@ -46,7 +46,12 @@ namespace Ziggeo
         {
         }
 
-        public void StartAudioWithPath(string mediaPath)
+        public void StartAudioWithPath(string[] mediaPath)
+        {
+            throw new NotImplementedException();
+        }
+        
+        public void StartAudioWithToken(string[] mediaToken)
         {
             throw new NotImplementedException();
         }
