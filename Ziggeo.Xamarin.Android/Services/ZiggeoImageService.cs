@@ -147,7 +147,7 @@ namespace Ziggeo.Xamarin.Android.Services
         public async Task<string> GetImageUrl(string tokenOrKey)
         {
             var source = new TaskCompletionSource<string>();
-            source.TrySetResult((string) Images.GetImageUrl(tokenOrKey).Call());
+            source.SetResult((string) Images.GetImageUrl(tokenOrKey).Call());
             return await source.Task;
         }
     }

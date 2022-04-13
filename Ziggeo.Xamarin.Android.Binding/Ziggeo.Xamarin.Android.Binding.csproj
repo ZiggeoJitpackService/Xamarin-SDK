@@ -67,7 +67,7 @@
     <PackageReference Include="Xamarin.AndroidX.ConstraintLayout" Version="2.0.4" />
     <PackageReference Include="Xamarin.AndroidX.RecyclerView" Version="1.2.1" />
     <PackageReference Include="Xamarin.AndroidX.Room.Runtime" Version="2.3.0" />
-    <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.7.1.2" Exclude=" Xamarin.Google.Guava.ListenableFuture" />
+    <PackageReference Include="Xamarin.AndroidX.Work.Runtime" Version="2.7.0" Exclude=" Xamarin.Google.Guava.ListenableFuture" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0.1" />
     <PackageReference Include="Xamarin.Google.Guava" Version="27.1.0.1" />
     <PackageReference Include="Xamarin.Google.MLKit.MediaPipe.Internal" Version="116.0.0.3" />
@@ -87,7 +87,7 @@
     <EmbeddedReferenceJar Include="Jars\flogger-system-backend-0.7.4.jar" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\Android-SDK-2.5.5-xamarinblur.aar" />
+    <LibraryProjectZip Include="Jars\Android-SDK-2.5.8-xamarinblur.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
 </Project>

@@ -7,6 +7,8 @@ namespace Ziggeo
     {
         public bool ShouldShowSubtitles;
         public bool IsMuted;
+        
+        public PlayerStyle PlayerStyle { get; set; }
 
         public event ErrorDelegate Error;
         public event LoadedDelegate Loaded;
