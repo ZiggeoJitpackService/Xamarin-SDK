@@ -19,6 +19,9 @@ namespace Ziggeo
         IStreams Streams { get; }
 
         CameraRecorderConfig CameraRecorderConfig { get; set; }
+        
+        void SetSensorManager(ISensorManagerEventsListener callback);
+        
         void StartCameraRecorder();
 
         QrScannerConfig QrScannerConfig { get; set; }

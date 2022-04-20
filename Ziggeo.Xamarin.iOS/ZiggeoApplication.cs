@@ -37,6 +37,11 @@ namespace Ziggeo
 
         public IPlayer Player { get; private set; }
 
+        public void SetSensorManager(ISensorManagerEventsListener callback)
+        {
+            throw new NotImplementedException();
+        }
+
         public void StartCameraRecorder()
         {
             _cameraRecorder.StartRecorder();

@@ -42,6 +42,11 @@ namespace Ziggeo
 
         public PlayerConfig PlayerConfig { get; set; }
 
+        public void SetSensorManager(ISensorManagerEventsListener listener)
+        {
+            Ziggeo.SetSensorCallback(new SensorManagerCallback(listener));
+        }
+
         public void StartPlayer(string videoToken)
         {
             _initConfigs();
@@ -62,7 +67,7 @@ namespace Ziggeo
         {
             Ziggeo.ShowImage(mediaToken);
         }
-        
+
         public void OpenImageWithPath(string mediaPath)
         {
             Ziggeo.ShowImage(mediaPath);
@@ -151,6 +156,7 @@ namespace Ziggeo
             {
                 Ziggeo = Com.Ziggeo.Androidsdk.Ziggeo.GetInstance(Application.Context);
             }
+
             Ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);
             Ziggeo.QrScannerConfig = QrScannerConfigMapper.Map(QrScannerConfig);
             Ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
@@ -165,6 +171,7 @@ namespace Ziggeo
             {
                 Ziggeo = Com.Ziggeo.Androidsdk.Ziggeo.GetInstance(Application.Context);
             }
+
             Ziggeo.AppToken = _appToken;
             Videos = new ZiggeoVideosService(Ziggeo);
             Audios = new ZiggeoAudioService(Ziggeo);

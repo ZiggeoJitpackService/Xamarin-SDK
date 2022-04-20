@@ -64,6 +64,7 @@
     <Compile Include="Recorder\CameraRecorder\StopRecordingConfirmationDialogConfigMapper.cs" />
     <Compile Include="Recorder\RecorderCallback.cs" />
     <Compile Include="Recorder\ScreenRecorder\ScreenRecorderConfigMapper.cs" />
+    <Compile Include="SensorManager\SensorManagerCallback.cs" />
     <Compile Include="Services\Callback.cs" />
     <Compile Include="Services\NativeDelegates\NVideoFileDelegate.cs" />
     <Compile Include="Services\NativeDelegates\NVideoFileErrorDelegate.cs" />
