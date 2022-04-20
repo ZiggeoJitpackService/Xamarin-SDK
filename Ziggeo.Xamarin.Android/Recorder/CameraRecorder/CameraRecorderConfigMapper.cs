@@ -23,6 +23,7 @@ namespace Ziggeo
                     .ShouldEnableCoverShot(config.ShouldEnableCoverShot)
                     .ShouldConfirmStopRecording(config.ShouldConfirmStopRecording)
                     .Callback(new RecorderCallback(config))
+                    .ConfigureStopRecordingConfirmationDialog(StopRecordingConfirmationDialogConfigMapper.Map(config.StopRecordingConfirmationDialogConfig))
                     .Build();
             }
 

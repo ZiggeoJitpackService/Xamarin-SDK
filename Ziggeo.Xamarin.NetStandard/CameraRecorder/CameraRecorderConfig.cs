@@ -53,6 +53,7 @@ namespace Ziggeo
         public long MaxDuration { get; set; }
         public bool ShouldEnableCoverShot { get; set; } = true;
         public bool ShouldConfirmStopRecording { get; set; }
+        public StopRecordingConfirmationDialogConfig StopRecordingConfirmationDialogConfig { get; set; }
 
         public void InvokeError(Exception e)
         {
