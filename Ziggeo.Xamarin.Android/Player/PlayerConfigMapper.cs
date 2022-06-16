@@ -28,6 +28,8 @@ namespace Ziggeo
 
                 nativeConfig = new Com.Ziggeo.Androidsdk.Player.PlayerConfig.Builder(Application.Context)
                     .Callback(new PlayerCallback(config))
+                    .IsMuted(config.IsMuted)
+                    .ShowSubtitles(config.ShouldShowSubtitles)
                     .Style(nativeStyle)
                     .Build();
             }
