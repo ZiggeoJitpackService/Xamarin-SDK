@@ -9,6 +9,8 @@
     <Authors>Ziggeo</Authors>
     <Description>ZiggeoXamarinSDK</Description>
     <PackageReleaseNotes>new release</PackageReleaseNotes>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.19.4" />
