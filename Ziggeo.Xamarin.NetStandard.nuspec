@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Ziggeo.XamarinSDK.Netstandard</id>
+    <version>1.3.7</version>
+    <authors>Ziggeo</authors>
+    <owners>Ziggeo</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://raw.github.com/Ziggeo/ZiggeoCSharpSDK/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://raw.github.com/Ziggeo/ZiggeoCSharpSDK</projectUrl>
+    <iconUrl>https://ziggeo.com/assets/images/logo.png</iconUrl>
+    <description>Ziggeo API (https://ziggeo.com) allows you to integrate video recording and playback with only several lines of code in your app.</description>
+    <language>en-US</language>
+    <tags>Ziggeo, video recording, playback, Android, iOs</tags>
+     <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
+      </group>
+      <group targetFramework="MonoAndroid">
+        <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
+        <dependency id="Karamunting.Android.Karumi.Dexter" version="6.2.0" />
+        <dependency id="GoogleGson" version="2.8.6" />
+    	<dependency id="Naxam.SquareUp.OkHttp3.LoggingInterceptor" version="3.11.0" />
+    	<dependency id="Square.OkHttp3" version="3.12.6" />
+    	<dependency id="Xam.Plugins.Android.ExoPlayer" version="2.11.8" />
+    	<dependency id="Xamarin.AndroidX.AppCompat" version="1.3.0" />
+    	<dependency id="Xamarin.AndroidX.ConstraintLayout" version="2.0.4" />
+    	<dependency id="Xamarin.AndroidX.RecyclerView" version="1.2.1" />
+    	<dependency id="Xamarin.AndroidX.Room.Runtime" version="2.3.0" />
+    	<dependency id="Xamarin.AndroidX.Work.Runtime" version="2.7.1.2" exclude="Build,Analyzers" />
+        <dependency id="Xamarin.Google.MLKit.MediaPipe.Internal" version="116.0.0.3" />
+    	<dependency id="Xamarin.Google.Android.Material" version="1.0.0.1" />
+    	<dependency id="Xamarin.Google.ZXing.Core" version="3.3.3" />
+        <dependency id="Xamarin.Android.ReactiveX.RxJava" version="2.2.9"/>
+        <dependency id="Xamarin.Google.Guava" version="27.1.0.1"/>
+        <dependency id="Xamarin.Android.ReactiveX.RxAndroid" version="2.1.1"/>
+        <dependency id="Xamarin.Android.ReactiveStreams" version="1.0.2"/>
+
+      </group>
+      <group targetFramework="Xamarin.iOS1.0">
+        <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
+        <dependency id="Microsoft.CSharp" version="4.5.0" />
+        <dependency id="Microsoft.NETCore.Platforms" version="2.1.0" />
+        <dependency id="Microsoft.Win32.Primitives" version="4.3.0" />
+        <dependency id="NETStandard.Library" version="2.0.3" />
+        <dependency id="System.AppContext" version="4.3.0" />
+        <dependency id="System.Collections" version="4.3.0" />
+        <dependency id="System.Collections.Concurrent" version="4.3.0" />
+        <dependency id="System.ComponentModel.TypeConverter" version="4.3.0" />
+        <dependency id="System.Console" version="4.3.1" />
+        <dependency id="System.Diagnostics.Debug" version="4.3.0" />
+        <dependency id="System.Diagnostics.Tools" version="4.3.0" />
+        <dependency id="System.Diagnostics.Tracing" version="4.3.0" />
+        <dependency id="System.Globalization" version="4.3.0" />
+        <dependency id="System.Globalization.Calendars" version="4.3.0" />
+        <dependency id="System.IO" version="4.3.0" />
+        <dependency id="System.IO.Compression" version="4.3.0" />
+        <dependency id="System.IO.Compression.ZipFile" version="4.3.0" />
+        <dependency id="System.IO.FileSystem" version="4.3.0" />
+        <dependency id="System.IO.FileSystem.Primitives" version="4.3.0" />
+        <dependency id="System.Linq" version="4.3.0" />
+        <dependency id="System.Linq.Expressions" version="4.3.0" />
+        <dependency id="System.Net.Http" version="4.3.3" />
+        <dependency id="System.Net.Primitives" version="4.3.0" />
+        <dependency id="System.Net.Sockets" version="4.3.0" />
+        <dependency id="System.ObjectModel" version="4.3.0" />
+        <dependency id="System.Reflection" version="4.3.0" />
+        <dependency id="System.Reflection.Extensions" version="4.3.0" />
+        <dependency id="System.Reflection.Primitives" version="4.3.0" />
+        <dependency id="System.Resources.ResourceManager" version="4.3.0" />
+        <dependency id="System.Runtime" version="4.3.0" />
+        <dependency id="System.Runtime.Extensions" version="4.3.0" />
+        <dependency id="System.Runtime.Handles" version="4.3.0" />
+        <dependency id="System.Runtime.InteropServices" version="4.3.0" />
+        <dependency id="System.Runtime.InteropServices.RuntimeInformation" version="4.3.0" />
+        <dependency id="System.Runtime.Numerics" version="4.3.0" />
+        <dependency id="System.Runtime.Serialization.Formatters" version="4.3.0" />
+        <dependency id="System.Runtime.Serialization.Primitives" version="4.3.0" />
+        <dependency id="System.Security.Cryptography.Algorithms" version="4.3.1" />
+        <dependency id="System.Security.Cryptography.Encoding" version="4.3.0" />
+        <dependency id="System.Security.Cryptography.Primitives" version="4.3.0" />
+        <dependency id="System.Security.Cryptography.X509Certificates" version="4.3.2" />
+        <dependency id="System.Text.Encoding" version="4.3.0" />
+        <dependency id="System.Text.Encoding.Extensions" version="4.3.0" />
+        <dependency id="System.Text.RegularExpressions" version="4.3.0" />
+        <dependency id="System.Threading" version="4.3.0" />
+        <dependency id="System.Threading.Tasks" version="4.3.0" />
+        <dependency id="System.Threading.Timer" version="4.3.0" />
+        <dependency id="System.Xml.ReaderWriter" version="4.3.1" />
+        <dependency id="System.Xml.XDocument" version="4.3.0" />
+        <dependency id="System.Xml.XmlDocument" version="4.3.0" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="Java.Interop" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="Mono.Android" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="System.Core" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="System" targetFramework="MonoAndroid" />
+      <frameworkAssembly assemblyName="System.Xml" targetFramework="MonoAndroid" />
+    </frameworkAssemblies>
+  </metadata>
+  <files>
+    <!-- NetStandard -->
+    <file src="Ziggeo.Xamarin.NetStandard/bin/Release/netstandard2.0/Ziggeo.Xamarin.NetStandard.dll"  target="lib/netstandard2.0/Ziggeo.Xamarin.NetStandard.dll" />
+    <file src="Ziggeo.Xamarin.NetStandard/bin/Release/netstandard2.0/Ziggeo.Xamarin.NetStandard.pdb"  target="lib/netstandard2.0/Ziggeo.Xamarin.NetStandard.pdb" />
+
+    <!-- Xamarin.iOS -->
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.dll"                     target="lib/Xamarin.iOS10/Ziggeo.dll" />
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.pdb"                     target="lib/Xamarin.iOS10/Ziggeo.pdb" />
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.Xamarin.NetStandard.dll" target="lib/Xamarin.iOS10/Ziggeo.Xamarin.NetStandard.dll" />
+    <file src="Ziggeo.Xamarin.iOS/bin/Release/Ziggeo.Xamarin.NetStandard.pdb" target="lib/Xamarin.iOS10/Ziggeo.Xamarin.NetStandard.pdb" />
+  
+    <!-- Xamarin.Android -->
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.dll"         target="lib/MonoAndroid/Ziggeo.Xamarin.Android.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.pdb"         target="lib/MonoAndroid/Ziggeo.Xamarin.Android.pdb" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.dll"     target="lib/MonoAndroid/Ziggeo.Xamarin.NetStandard.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.NetStandard.pdb"     target="lib/MonoAndroid/Ziggeo.Xamarin.NetStandard.pdb" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.dll" target="lib/MonoAndroid/Ziggeo.Xamarin.Android.Binding.dll" />
+    <file src="Ziggeo.Xamarin.Android/bin/Release/Ziggeo.Xamarin.Android.Binding.pdb" target="lib/MonoAndroid/Ziggeo.Xamarin.Android.Binding.pdb" />
+  
+  </files>
+</package>

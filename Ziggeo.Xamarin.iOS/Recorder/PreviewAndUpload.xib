@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreviewAndUpload">
+            <connections>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="Root" destination="2" id="name-outlet-2"/>
+                <outlet property="VideoPlaceholder" destination="294" id="name-outlet-294"/>
+                <outlet property="cancelButton" destination="432" id="name-outlet-432"/>
+                <outlet property="playPauseButton" destination="437" id="name-outlet-437"/>
+                <outlet property="uploadButton" destination="443" id="name-outlet-443"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" customColorSpace="sRGB" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+            <subviews>
+                <view contentMode="scaleToFill" id="294" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                </view>
+                <view contentMode="scaleToFill" id="430" translatesAutoresizingMaskIntoConstraints="NO" alpha="0.15">
+                    <rect key="frame" x="0.0" y="664" width="414" height="72"/>
+                    <color key="backgroundColor" colorSpace="calibratedRGB" red="0" green="0" blue="0" alpha="1"/>
+                    <subviews/>
+                    <constraints>
+                        <constraint id="431" firstItem="430" firstAttribute="height" constant="72"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="432" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="8" y="664" width="72" height="72"/>
+                    <state key="normal" image="trash-50.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <constraints>
+                        <constraint id="435" firstItem="432" firstAttribute="width" constant="72"/>
+                        <constraint id="436" firstItem="432" firstAttribute="height" constant="72"/>
+                    </constraints>
+                    <connections>
+                        <action selector="CancelButton_TouchUpInside:" destination="434" id="433" eventType="touchUpInside"/>
+                        <action selector="CancelButton_TouchUpInside:" destination="-1" id="2433" eventType="touchUpInside"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="437" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="171" y="664" width="72" height="72"/>
+                    <state key="normal" image="Play-50.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <constraints>
+                        <constraint id="441" firstItem="437" firstAttribute="width" constant="72"/>
+                        <constraint id="442" firstItem="437" firstAttribute="height" constant="72"/>
+                    </constraints>
+                    <connections>
+                        <action selector="CancelButton_TouchUpInside:" destination="439" id="438" eventType="touchUpInside"/>
+                        <action selector="RecordButton_TouchUpInside:" destination="434" id="440" eventType="touchUpInside"/>
+                        <action selector="PlayPauseButton_TouchUpInside:" destination="-1" id="2489" eventType="touchUpInside"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="443" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="334" y="664" width="72" height="72"/>
+                    <state key="normal" image="upload-50.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <constraints>
+                        <constraint id="447" firstItem="443" firstAttribute="width" constant="72"/>
+                        <constraint id="448" firstItem="443" firstAttribute="height" constant="72"/>
+                    </constraints>
+                    <connections>
+                        <action selector="CancelButton_TouchUpInside:" destination="445" id="444" eventType="touchUpInside"/>
+                        <action selector="CameraButton_TouchUpInside:" destination="434" id="446" eventType="touchUpInside"/>
+                        <action selector="UploadButton_TouchUpInside:" destination="-1" id="2461" eventType="touchUpInside"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint id="1213" firstItem="294" firstAttribute="centerX" secondItem="2" secondAttribute="centerX"/>
+                <constraint id="1296" firstItem="2" firstAttribute="centerY" secondItem="294" secondAttribute="centerY"/>
+                <constraint id="1324" firstItem="294" firstAttribute="width" secondItem="2" secondAttribute="width"/>
+                <constraint id="1352" firstItem="294" firstAttribute="height" secondItem="2" secondAttribute="height"/>
+                <constraint id="1839" firstItem="430" firstAttribute="centerX" secondItem="294" secondAttribute="centerX"/>
+                <constraint id="1867" firstItem="430" firstAttribute="bottom" secondItem="294" secondAttribute="bottom"/>
+                <constraint id="1922" firstItem="430" firstAttribute="width" secondItem="294" secondAttribute="width"/>
+                <constraint id="1950" firstItem="437" firstAttribute="centerX" secondItem="430" secondAttribute="centerX"/>
+                <constraint id="1978" firstItem="437" firstAttribute="bottom" secondItem="430" secondAttribute="bottom"/>
+                <constraint id="2006" firstItem="443" firstAttribute="centerY" secondItem="430" secondAttribute="centerY"/>
+                <constraint id="2034" firstItem="430" firstAttribute="trailing" secondItem="443" secondAttribute="trailing" constant="8"/>
+                <constraint id="2062" firstItem="432" firstAttribute="centerY" secondItem="430" secondAttribute="centerY"/>
+                <constraint id="2090" firstItem="432" firstAttribute="leading" secondItem="430" secondAttribute="leading" constant="8"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="Play-50.png" width="50" height="50"/>
+        <image name="trash-50.png" width="50" height="50"/>
+        <image name="upload-50.png" width="50" height="50"/>
+    </resources>
+</document>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ReleaseVersion>0.1.12</ReleaseVersion>
+    <IsPackable>false</IsPackable>
+    <PackageId>ZiggeoXamarinSDK</PackageId>
+    <PackageVersion>1.2.10</PackageVersion>
+    <Authors>Ziggeo</Authors>
+    <Description>ZiggeoXamarinSDK</Description>
+    <PackageReleaseNotes>new release</PackageReleaseNotes>
+    <GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.19.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+</Project>

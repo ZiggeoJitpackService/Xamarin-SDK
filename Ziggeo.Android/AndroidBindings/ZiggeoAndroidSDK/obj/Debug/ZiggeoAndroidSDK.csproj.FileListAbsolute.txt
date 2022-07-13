@@ -1,6 +1,0 @@
-C:\workspace\Android\Ziggeo\Xamarin-SDK\Ziggeo.Android\AndroidBindings\ZiggeoAndroidSDK\bin\Debug\ZiggeoAndroidSDK.dll
-C:\workspace\Android\Ziggeo\Xamarin-SDK\Ziggeo.Android\AndroidBindings\ZiggeoAndroidSDK\bin\Debug\ZiggeoAndroidSDK.pdb
-C:\workspace\Android\Ziggeo\Xamarin-SDK\Ziggeo.Android\AndroidBindings\ZiggeoAndroidSDK\obj\Debug\ZiggeoAndroidSDK.csprojResolveAssemblyReference.cache
-C:\workspace\Android\Ziggeo\Xamarin-SDK\Ziggeo.Android\AndroidBindings\ZiggeoAndroidSDK\obj\Debug\ZiggeoAndroidSDK.csproj.CoreCompileInputs.cache
-C:\workspace\Android\Ziggeo\Xamarin-SDK\Ziggeo.Android\AndroidBindings\ZiggeoAndroidSDK\obj\Debug\ZiggeoAndroidSDK.dll
-C:\workspace\Android\Ziggeo\Xamarin-SDK\Ziggeo.Android\AndroidBindings\ZiggeoAndroidSDK\obj\Debug\ZiggeoAndroidSDK.pdb

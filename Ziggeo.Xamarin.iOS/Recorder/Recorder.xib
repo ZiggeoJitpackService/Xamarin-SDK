@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Recorder">
+            <connections>
+                <outlet property="PreviewView" destination="662" id="name-outlet-662"/>
+                <outlet property="Root" destination="2" id="name-outlet-2"/>
+                <outlet property="cameraButton" destination="1588" id="name-outlet-1588"/>
+                <outlet property="cancelButton" destination="833" id="name-outlet-833"/>
+                <outlet property="recordButton" destination="1558" id="name-outlet-1558"/>
+                <outlet property="view" destination="2" id="RRd-Eg-VrN"/>
+                <outlet property="durationLabel" destination="1828" id="name-outlet-1828"/>
+                <outlet property="audioLevelView" destination="2289" id="name-outlet-2289"/>
+                <outlet property="luxMeter" destination="3032" id="name-outlet-3032"/>
+                <outlet property="faceOutlineView" destination="3377" id="name-outlet-3377"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="2">
+            <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="662" customClass="CapturePreviewView">
+                    <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="1823" translatesAutoresizingMaskIntoConstraints="NO" alpha="0.15">
+                            <rect key="frame" x="0.0" y="306" width="736" height="36"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <constraints>
+                                <constraint id="1827" firstAttribute="height" constant="36"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1828" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="0.0" y="306" width="736" height="36"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                            <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                            <nil key="highlightedColor"/>
+                            <constraints>
+                                <constraint id="1829" firstAttribute="height" constant="36"/>
+                            </constraints>
+                        </label>
+                        <view contentMode="scaleToFill" id="2289" customClass="AudioLevelView" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="0.0" y="337" width="736" height="5"/>
+                            <constraints>
+                                <constraint id="2300" firstAttribute="height" constant="5"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" id="3032" customClass="LuxMeterView" translatesAutoresizingMaskIntoConstraints="NO">
+                            <rect key="frame" x="29" y="309" width="30" height="30"/>
+                            <constraints>
+                                <constraint id="3045" firstAttribute="height" constant="30"/>
+                                <constraint id="3058" firstAttribute="width" secondItem="3032" secondAttribute="height" multiplier="1:1"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint id="1824" firstAttribute="trailing" secondItem="1823" secondAttribute="trailing"/>
+                        <constraint id="1825" firstItem="1823" firstAttribute="leading" secondItem="662" secondAttribute="leading"/>
+                        <constraint id="1826" firstAttribute="bottom" secondItem="1823" secondAttribute="bottom" constant="72"/>
+                        <constraint id="1830" firstItem="1828" firstAttribute="leading" secondItem="662" secondAttribute="leading"/>
+                        <constraint id="1831" firstAttribute="trailing" secondItem="1828" secondAttribute="trailing"/>
+                        <constraint id="1832" firstItem="1823" firstAttribute="bottom" secondItem="1828" secondAttribute="bottom"/>
+                        <constraint id="2311" firstItem="2289" firstAttribute="leading" secondItem="1828" secondAttribute="leading"/>
+                        <constraint id="2540" firstItem="1828" firstAttribute="trailing" secondItem="2289" secondAttribute="trailing"/>
+                        <constraint id="2546" firstItem="1828" firstAttribute="bottom" secondItem="2289" secondAttribute="bottom"/>
+                        <constraint id="3084" firstItem="1828" firstAttribute="centerY" secondItem="3032" secondAttribute="centerY"/>
+                        <constraint id="3097" firstItem="3032" firstAttribute="centerX" secondItem="1828" secondAttribute="leading" constant="44"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="3377" translatesAutoresizingMaskIntoConstraints="NO" customClass="FaceOutlineView" opaque="NO">
+                    <rect key="frame" x="0.0" y="0.0" width="736" height="414"/>
+                </view>
+                <view alpha="0.14999999999999999" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="680">
+                    <rect key="frame" x="0.0" y="342" width="736" height="72"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="72" id="681"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="833">
+                    <rect key="frame" x="8" y="342" width="72" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="72" id="1005"/>
+                        <constraint firstAttribute="height" constant="72" id="1007"/>
+                    </constraints>
+                    <state key="normal" image="Delete-50">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="CancelButton_TouchUpInside:" destination="-1" eventType="touchUpInside" id="1195"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1558">
+                    <rect key="frame" x="332" y="342" width="72" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="72" id="1561"/>
+                        <constraint firstAttribute="height" constant="72" id="1562"/>
+                    </constraints>
+                    <state key="normal" image="Record-100">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="RecordButton_TouchUpInside:" destination="-1" eventType="touchUpInside" id="1596"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1588">
+                    <rect key="frame" x="656" y="342" width="72" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="72" id="1591"/>
+                        <constraint firstAttribute="height" constant="72" id="1592"/>
+                    </constraints>
+                    <state key="normal" image="SwitchCamera-50">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="CameraButton_TouchUpInside:" destination="-1" eventType="touchUpInside" id="1597"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="662" firstAttribute="centerY" secondItem="2" secondAttribute="centerY" id="663"/>
+                <constraint firstItem="662" firstAttribute="height" secondItem="2" secondAttribute="height" id="666"/>
+                <constraint firstItem="662" firstAttribute="width" secondItem="2" secondAttribute="width" id="667"/>
+                <constraint firstItem="662" firstAttribute="centerX" secondItem="2" secondAttribute="centerX" id="672"/>
+                <constraint firstItem="680" firstAttribute="width" secondItem="662" secondAttribute="width" id="682"/>
+                <constraint firstItem="680" firstAttribute="bottom" secondItem="662" secondAttribute="bottom" id="684"/>
+                <constraint firstItem="680" firstAttribute="leading" secondItem="662" secondAttribute="leading" id="685"/>
+                <constraint firstItem="833" firstAttribute="leading" secondItem="680" secondAttribute="leading" constant="8" id="1008"/>
+                <constraint firstItem="833" firstAttribute="top" secondItem="680" secondAttribute="top" id="1009"/>
+                <constraint firstItem="1558" firstAttribute="centerY" secondItem="680" secondAttribute="centerY" id="1563"/>
+                <constraint firstItem="1558" firstAttribute="centerX" secondItem="680" secondAttribute="centerX" id="1564"/>
+                <constraint firstItem="1588" firstAttribute="centerY" secondItem="680" secondAttribute="centerY" id="1593"/>
+                <constraint firstItem="1588" firstAttribute="trailing" secondItem="680" secondAttribute="trailing" constant="-8" id="1594"/>
+                <constraint firstItem="1558" firstAttribute="centerY" secondItem="680" secondAttribute="centerY" id="1595"/>
+                <constraint id="3077" firstItem="833" firstAttribute="centerY" secondItem="680" secondAttribute="centerY"/>
+                <constraint id="6722" firstItem="3377" firstAttribute="centerY" secondItem="662" secondAttribute="centerY"/>
+                <constraint id="6723" firstItem="3377" firstAttribute="centerX" secondItem="662" secondAttribute="centerX"/>
+                <constraint id="6724" firstItem="3377" firstAttribute="height" secondItem="662" secondAttribute="height"/>
+                <constraint id="6725" firstItem="3377" firstAttribute="width" secondItem="662" secondAttribute="width"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

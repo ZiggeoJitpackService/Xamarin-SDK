@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ziggeo.Xamarin.NetStandard", "Ziggeo.Xamarin.NetStandard\Ziggeo.Xamarin.NetStandard.csproj", "{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggeo.Xamarin.iOS", "Ziggeo.Xamarin.iOS\Ziggeo.Xamarin.iOS.csproj", "{7E6DE777-DA24-4276-ABC8-025075D41ED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggeo.Xamarin.Android", "Ziggeo.Xamarin.Android\Ziggeo.Xamarin.Android.csproj", "{0CAD5C12-DDE7-461B-BF18-9277FF4A5979}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ziggeo.Xamarin.Android.Binding", "Ziggeo.Xamarin.Android.Binding\Ziggeo.Xamarin.Android.Binding.csproj", "{10334DF5-389D-4E31-83B4-B3E02A40B668}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6ED4A52-2857-410A-8A78-4E5A83E64DB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E6DE777-DA24-4276-ABC8-025075D41ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E6DE777-DA24-4276-ABC8-025075D41ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E6DE777-DA24-4276-ABC8-025075D41ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E6DE777-DA24-4276-ABC8-025075D41ED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CAD5C12-DDE7-461B-BF18-9277FF4A5979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CAD5C12-DDE7-461B-BF18-9277FF4A5979}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CAD5C12-DDE7-461B-BF18-9277FF4A5979}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CAD5C12-DDE7-461B-BF18-9277FF4A5979}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10334DF5-389D-4E31-83B4-B3E02A40B668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10334DF5-389D-4E31-83B4-B3E02A40B668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10334DF5-389D-4E31-83B4-B3E02A40B668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10334DF5-389D-4E31-83B4-B3E02A40B668}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1922BE4D-0D6D-4B94-9D7C-C4B579922493}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		Policies = $0
+		$0.DotNetNamingPolicy = $1
+		$1.DirectoryNamespaceAssociation = PrefixedHierarchical
+		$0.TextStylePolicy = $2
+		$2.FileWidth = 80
+		$2.TabsToSpaces = True
+		$2.scope = text/plain
+		$0.VersionControlPolicy = $3
+		version = 0.1.12
+	EndGlobalSection
+EndGlobal

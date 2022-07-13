@@ -1,0 +1,70 @@
+﻿<metadata>
+
+  <attr
+          path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/
+    class[@name='AspectRatio']/
+    method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.ziggeo.androidsdk.widgets.cameraview.AspectRatio']]
+    /parameter[1]"
+          name="managedType">
+    Java.Lang.Object
+  </attr>
+
+  <attr
+          path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/
+    class[@name='Size']/
+    method[@name='compareTo' and count(parameter)=1 and parameter[1][@type='com.ziggeo.androidsdk.widgets.cameraview.Size']]/
+    parameter[1]"
+          name="managedType">
+    Java.Lang.Object
+  </attr>
+
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']">
+    <class abstract="true" deprecated="not deprecated" final="false" name="PreviewImpl" static="false" visibility="public" extends="java.lang.Object">
+    </class>
+  </add-node>
+
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/class[@name='CameraView']">
+    <method name="setBlurPreview" return="void" abstract="false" native="false" synchronized="false"
+            static="false" final="false" deprecated="not deprecated" visibility="protected">
+      <parameter name="callbacks" type="com.ziggeo.androidsdk.widgets.cameraview.BaseCameraView.CallbackBridge"/>
+    </method>
+  </add-node>
+
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.db.impl']/class[@name='RecordingInfoDao']">
+    <method name="update" return="io.reactivex.Completable" abstract="false" native="false" synchronized="false"
+            static="false" final="false" deprecated="not deprecated" visibility="public">
+      <parameter name="p0" type="java.lang.Object"/>
+    </method>
+  </add-node>
+
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.db.impl']/class[@name='RecordingInfoDao']">
+    <method name="add" return="io.reactivex.Completable" abstract="false" native="false" synchronized="false"
+            static="false" final="false" deprecated="not deprecated" visibility="public">
+      <parameter name="p0" type="java.lang.Object"/>
+    </method>
+  </add-node>
+
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.db.impl']/class[@name='RecordingInfoDao']">
+    <method name="delete" return="io.reactivex.Completable" abstract="false" native="false" synchronized="false"
+            static="false" final="false" deprecated="not deprecated" visibility="public">
+      <parameter name="p0" type="java.lang.Object"/>
+    </method>
+  </add-node>
+
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector.filter']/class[@name='FilterAdapter']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector']/class[@name='FileAdapter']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector']/class[@name='FolderAdapter']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.videoeditor']/class[@name='FramesAdapter']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.dialogs']/class[@name='CoverShotAdapter']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.videoeditor']/class[@name='VideoEditorFragment']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='QrScannerFragment']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='AudioRecorderFragment']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='CameraRecorderFragment']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='ScreenRecorderFragment']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.ui.fragments']/class[@name='BaseFragment']" />
+  <remove-node path="/api/package[@name='com.ziggeo.androidsdk.fileselector']/class[@name='FileSelectorFragment']" />
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.db.impl.room']/class[@name='RoomDb']" />
+  <add-node path="/api/package[@name='com.ziggeo.androidsdk.widgets.cameraview']/class[@name='PreviewImpl']" />
+
+
+</metadata>
