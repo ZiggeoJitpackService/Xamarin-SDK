@@ -1,11 +1,10 @@
 ﻿using System;
+using Com.Ziggeo.Androidsdk;
 using Java.Interop;
-using System.Collections.Generic;
-using Java.Lang;
 
 namespace Ziggeo
 {
-    public class SensorManagerCallback : Com.Ziggeo.Androidsdk.SensorManager.ICallback
+    public class SensorManagerCallback : Java.Lang.Object, SensorManager.ICallback
     {
         public ISensorManagerEventsListener EventsListener { get; set; }
 

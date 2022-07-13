@@ -25,6 +25,7 @@ namespace Ziggeo
                     .Callback(new RecorderCallback(config))
                     .ConfigureStopRecordingConfirmationDialog(StopRecordingConfirmationDialogConfigMapper.Map(config.StopRecordingConfirmationDialogConfig))
                     .Build();
+                nativeConfig.IsPausedMode = config.PausedMode;
             }
 
             return nativeConfig;
