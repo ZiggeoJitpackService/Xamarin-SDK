@@ -52,6 +52,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivityLifecycleCallbacks.cs" />
+    <Compile Include="CustomViews\ZCameraView.cs" />
+    <Compile Include="CustomViews\ZVideoView.cs" />
     <Compile Include="FileSelector\FileSelectorConfigMapper.cs" />
     <Compile Include="FileSelector\FileSelectorCallback.cs" />
     <Compile Include="Log\LogModelMapper.cs" />

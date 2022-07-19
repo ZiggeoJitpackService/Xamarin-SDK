@@ -87,7 +87,7 @@
     <EmbeddedReferenceJar Include="Jars\flogger-system-backend-0.7.4.jar" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\Android-SDK-2.6.3-xamarinblur.aar" />
+    <LibraryProjectZip Include="Jars\Android-SDK-2.6.4-xamarinblur.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
 </Project>
