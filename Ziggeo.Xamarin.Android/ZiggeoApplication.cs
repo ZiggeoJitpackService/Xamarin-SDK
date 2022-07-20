@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using Android.App;
-using Com.Ziggeo.Androidsdk;
+using Android.Content;
 using Ziggeo.Services;
+using Ziggeo.Xamarin.Android.CustomViews;
 using Ziggeo.Xamarin.Android.Services;
+using Ziggeo.Xamarin.NetStandard.CustomViews;
 
 namespace Ziggeo
 {
@@ -18,8 +20,7 @@ namespace Ziggeo
         {
             AppToken = token;
         }
-
-
+        
         public string AppToken
         {
             get => _appToken;
@@ -39,6 +40,10 @@ namespace Ziggeo
         public IImages Images { get; private set; }
 
         public IStreams Streams { get; private set; }
+
+        public IZVideoView ZVideoView { get; private set; }
+
+        public IZCameraView ZCameraView  { get; private set; }
 
         public PlayerConfig PlayerConfig { get; set; }
 
@@ -176,7 +181,9 @@ namespace Ziggeo
             Videos = new ZiggeoVideosService(Ziggeo);
             Audios = new ZiggeoAudioService(Ziggeo);
             Images = new ZiggeoImageService(Ziggeo);
-            Streams = new ZiggeoStreamsService(Ziggeo);
+            Streams = new ZiggeoStreamsService(Ziggeo); 
+            ZVideoView = new ZVideoView(Application.Context); 
+            ZCameraView = new ZCameraView(Application.Context, this);
         }
     }
 }

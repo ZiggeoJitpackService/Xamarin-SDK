@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Ziggeo.Services;
 using AVFoundation;
+using Ziggeo.Xamarin.NetStandard.CustomViews;
 
 namespace Ziggeo
 {
@@ -34,6 +35,10 @@ namespace Ziggeo
         public IVideos Videos { get; private set; }
 
         public IStreams Streams { get; private set; }
+        
+        public IZVideoView ZVideoView { get; }
+        
+        public IZCameraView ZCameraView { get; }
 
         public IPlayer Player { get; private set; }
 

@@ -2,57 +2,62 @@ using System.Collections.Generic;
 using Android.Content;
 using Android.Net;
 using Android.Util;
-using Com.Ziggeo.Androidsdk.Callbacks;
+using Android.Views;
 
 namespace Ziggeo.Xamarin.Android.CustomViews
 {
-    public class ZVideoView : Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView
+    public class ZVideoView : View, Ziggeo.Xamarin.NetStandard.CustomViews.IZVideoView
     {
+        private Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView _videoView;
+
         public ZVideoView(Context context) : base(context)
         {
+            _videoView = new Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView(context: context);
         }
 
         public ZVideoView(Context context, IAttributeSet attrs) : base(context, attrs)
         {
+            _videoView = new Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView(context: context, attrs: attrs);
         }
 
         public ZVideoView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
         {
+            _videoView = new Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView(context: context, attrs: attrs, defStyleAttr: defStyleAttr);
         }
 
         public void OnResume()
         {
-            base.OnResume();
+            _videoView.OnResume();
         }
 
         public void OnPause()
         {
-            base.OnPause();
+            _videoView.OnPause();
         }
 
         public void InitViews()
         {
-            base.InitViews();
+            _videoView.InitViews();
         }
 
         public void PrepareQueueAndStartPlaying()
         {
-            base.PrepareQueueAndStartPlaying();
+            _videoView.PrepareQueueAndStartPlaying();
         }
 
         public void SetVideoTokens(List<string> videoToken)
         {
-            base.VideoTokens = videoToken;
+            _videoView.VideoTokens = videoToken;
         }
 
         public void SetVideoUris(List<Uri> videoPath)
         {
-            base.VideoUris = videoPath;
+            _videoView.VideoUris = videoPath;
         }
 
         public void LoadConfigs()
         {
-            base.LoadConfigs();
+            _videoView.LoadConfigs();
         }
     }
 }

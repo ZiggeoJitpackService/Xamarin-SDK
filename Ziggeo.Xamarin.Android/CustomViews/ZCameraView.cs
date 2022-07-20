@@ -1,28 +1,41 @@
 using Android.Content;
 using Android.Util;
+using Android.Views;
 using Java.IO;
 using Java.Text;
 using Java.Util;
 
 namespace Ziggeo.Xamarin.Android.CustomViews
 {
-    public class ZCameraView : Com.Ziggeo.Androidsdk.Widgets.Cameraview.CameraView
+    public class ZCameraView : View, Ziggeo.Xamarin.NetStandard.CustomViews.IZCameraView
     {
+        private Com.Ziggeo.Androidsdk.Widgets.Cameraview.CameraView _cameraView;
         private CameraRecorderConfig _config;
-        private File _recordedFile = null;
+        private File _recordedFile;
         private ZiggeoApplication _ziggeo;
 
+        public ZCameraView(Context context, ZiggeoApplication ziggeo) : base(context)
+        {
+            _ziggeo = ziggeo;
+            init();
+            _cameraView = new Com.Ziggeo.Androidsdk.Widgets.Cameraview.CameraView(context: context);
+        }
         public ZCameraView(Context context) : base(context)
         {
             init();
+            _cameraView = new Com.Ziggeo.Androidsdk.Widgets.Cameraview.CameraView(context: context);
         }
 
         public ZCameraView(Context context, IAttributeSet attrs) : base(context, attrs)
         {
+            _cameraView = new Com.Ziggeo.Androidsdk.Widgets.Cameraview.CameraView(context: context, attrs: attrs);
         }
 
         public ZCameraView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
         {
+            _cameraView =
+                new Com.Ziggeo.Androidsdk.Widgets.Cameraview.CameraView(context: context, attrs: attrs,
+                    defStyleAttr: defStyleAttr);
         }
 
         private void init()
@@ -32,7 +45,7 @@ namespace Ziggeo.Xamarin.Android.CustomViews
 
         public bool IsRecording()
         {
-            return base.IsRecording;
+            return _cameraView.IsRecording;
         }
 
         public string GetRecordedFile()
@@ -42,12 +55,12 @@ namespace Ziggeo.Xamarin.Android.CustomViews
 
         public void Start()
         {
-            base.Start();
+            _cameraView.Start();
         }
 
         public void Stop()
         {
-            base.Stop();
+            _cameraView.Stop();
         }
 
         public void StartRecording()
@@ -67,9 +80,9 @@ namespace Ziggeo.Xamarin.Android.CustomViews
                 defaultPath.Mkdir();
             }
 
-            _recordedFile = new File(defaultPath, getVideoFileName());
+            _recordedFile = new File(defaultPath, GetVideoFileName());
 
-            base.StartRecording(_recordedFile.Path, (int)_config.MaxDuration);
+            _cameraView.StartRecording(_recordedFile.Path, (int)_config.MaxDuration);
         }
 
         public void StopRecording()
@@ -79,23 +92,23 @@ namespace Ziggeo.Xamarin.Android.CustomViews
                 _config.InvokeRecordingStopped(_recordedFile.Path);
             }
 
-            base.StopRecording();
+            _cameraView.StopRecording();
         }
 
         public void SwitchCamera()
         {
             var isFacingBack = _config.Facing == (int)CameraRecorderConfig.CameraFacing.Rear;
-            base.Facing = isFacingBack
+            _cameraView.Facing = isFacingBack
                 ? (int)CameraRecorderConfig.CameraFacing.Front
                 : (int)CameraRecorderConfig.CameraFacing.Rear;
         }
 
-        private string getVideoFileName()
+        private string GetVideoFileName()
         {
-            return ("Rec_" + formatDate() + ".mp4");
+            return ("Rec_" + FormatDate() + ".mp4");
         }
 
-        private string formatDate()
+        private string FormatDate()
         {
             return new SimpleDateFormat("dd.MM.yyyy_HH.mm.ss").Format(new Date());
         }
