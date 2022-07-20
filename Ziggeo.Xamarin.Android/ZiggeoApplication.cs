@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Android.App;
-using Android.Content;
 using Com.Ziggeo.Androidsdk;
 using Ziggeo.Services;
 using Ziggeo.Xamarin.Android.CustomViews;

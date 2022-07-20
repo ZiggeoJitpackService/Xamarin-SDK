@@ -36,9 +36,9 @@ namespace Ziggeo
 
         public IStreams Streams { get; private set; }
         
-        public IZVideoView ZVideoView { get; }
+        public IZVideoView ZVideoView => throw new NotImplementedException();
         
-        public IZCameraView ZCameraView { get; }
+        public IZCameraView ZCameraView => throw new NotImplementedException();
 
         public IPlayer Player { get; private set; }
 

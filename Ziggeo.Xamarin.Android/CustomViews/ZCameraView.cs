@@ -103,6 +103,28 @@ namespace Ziggeo.Xamarin.Android.CustomViews
                 : (int)CameraRecorderConfig.CameraFacing.Rear;
         }
 
+        public void LoadConfig()
+        {
+            if (_ziggeo.Ziggeo.RecorderConfig.Callback != null)
+            {
+                _config.InvokeLoaded();
+            }
+
+            //
+            // var analyticsManager = _ziggeo.AnalyticsManager;
+            //         analyticsManager.addEmbeddingRecorderLoadedEvent()
+            //
+            
+            _cameraView.SetResolution(_ziggeo.Ziggeo.RecorderConfig.Resolution);
+            _cameraView.SetVideoBitrate(_ziggeo.Ziggeo.RecorderConfig.VideoBitrate);
+            _cameraView.SetAudioBitrate(_ziggeo.Ziggeo.RecorderConfig.AudioBitrate);
+            _cameraView.SetAudioSampleRate(_ziggeo.Ziggeo.RecorderConfig.AudioSampleRate);
+            _cameraView.Quality = _ziggeo.Ziggeo.RecorderConfig.VideoQuality;
+            _cameraView.Facing = _ziggeo.Ziggeo.RecorderConfig.Facing;
+            _cameraView.SetCameraCallback(new CameraCallback(_config));
+            _cameraView.SetRecorderCallback(new RecorderCallback(_config));
+        }
+
         private string GetVideoFileName()
         {
             return ("Rec_" + FormatDate() + ".mp4");
