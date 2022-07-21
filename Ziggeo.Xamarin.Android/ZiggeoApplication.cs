@@ -40,6 +40,8 @@ namespace Ziggeo
         public IImages Images { get; private set; }
 
         public IStreams Streams { get; private set; }
+        
+        public string TestData { get; private set; }
 
         public IZVideoView ZVideoView { get; private set; }
 
@@ -184,6 +186,7 @@ namespace Ziggeo
             Streams = new ZiggeoStreamsService(Ziggeo); 
             ZVideoView = new ZVideoView(Application.Context); 
             ZCameraView = new ZCameraView(Application.Context, this);
+            TestData = "TESTTESTTEST";
         }
     }
 }

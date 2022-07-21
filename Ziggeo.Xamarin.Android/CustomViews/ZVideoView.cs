@@ -1,4 +1,6 @@
+
 using System.Collections.Generic;
+using System.Linq;
 using Android.Content;
 using Android.Net;
 using Android.Util;
@@ -50,9 +52,10 @@ namespace Ziggeo.Xamarin.Android.CustomViews
             _videoView.VideoTokens = videoToken;
         }
 
-        public void SetVideoUris(List<Uri> videoPath)
+        public void SetVideoUris(List<string> videoPath)
         {
-            _videoView.VideoUris = videoPath;
+            IList<Uri> videoUris = videoPath.Select(Uri.Parse).ToList();
+            _videoView.VideoUris = videoUris;
         }
 
         public void LoadConfigs()
