@@ -35,8 +35,6 @@ namespace Ziggeo
         public IVideos Videos { get; private set; }
 
         public IStreams Streams { get; private set; }
-        
-        public string TestData  => throw new NotImplementedException();
 
         public IZVideoView ZVideoView => throw new NotImplementedException();
         

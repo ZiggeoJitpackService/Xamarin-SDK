@@ -19,8 +19,6 @@ namespace Ziggeo
 
         IStreams Streams { get; }
         
-        string TestData { get; }
-        
         IZVideoView ZVideoView { get; }
         
         IZCameraView ZCameraView{ get; }
