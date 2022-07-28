@@ -1,67 +1,58 @@
-
 using System.Collections.Generic;
 using System.Linq;
 using Android.Content;
 using Android.Net;
 using Android.Util;
-using Android.Views;
 using Ziggeo.Xamarin.NetStandard.CustomViews;
 
 namespace Ziggeo.Xamarin.Android.CustomViews
 {
-    public class ZVideoView : View, IZVideoView
+    public class ZVideoView : Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView, IZVideoView
     {
-        private Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView _videoView;
+        private List<string> _videoToken;
+        private List<Uri> _videoPath;
+        public ZVideoViewCallback ZCallback;
 
         public ZVideoView(Context context) : base(context)
         {
-            _videoView = new Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView(context: context, attrs: null);
         }
 
         public ZVideoView(Context context, IAttributeSet attrs) : base(context, attrs)
         {
-            _videoView = new Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView(context: context, attrs: attrs, defStyleAttr:0);
         }
 
         public ZVideoView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
         {
-            _videoView = new Com.Ziggeo.Androidsdk.Widgets.Videoview.ZVideoView(context: context, attrs: attrs, defStyleAttr: defStyleAttr);
-        }
-
-        public void OnResume()
-        {
-            _videoView.OnResume();
-        }
-
-        public void OnPause()
-        {
-            _videoView.OnPause();
-        }
-
-        public void InitViews()
-        {
-            _videoView.InitViews();
-        }
-
-        public void PrepareQueueAndStartPlaying()
-        {
-            _videoView.PrepareQueueAndStartPlaying();
         }
 
         public void SetVideoTokens(List<string> videoToken)
         {
-            _videoView.VideoTokens = videoToken;
+            base.VideoTokens = videoToken;
+            _videoToken = videoToken;
         }
 
         public void SetVideoUris(List<string> videoPath)
         {
-            IList<Uri> videoUris = videoPath.Select(Uri.Parse).ToList();
-            _videoView.VideoUris = videoUris;
+            var videoUris = videoPath.Select(Uri.Parse).ToList();
+            base.VideoUris = videoUris;
+            _videoPath = videoUris;
         }
 
-        public void LoadConfigs()
+        public void StartView()
         {
-            _videoView.LoadConfigs();
+            base.LoadConfigs();
+            base.InitViews();
+            if (_videoToken != null)
+            {
+                base.VideoTokens = _videoToken;
+            }
+
+            if (_videoPath != null)
+            {
+                base.VideoUris = _videoPath;
+            }
+
+            base.PrepareQueueAndStartPlaying();
         }
     }
 }

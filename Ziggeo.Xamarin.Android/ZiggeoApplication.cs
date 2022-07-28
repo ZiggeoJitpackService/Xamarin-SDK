@@ -182,8 +182,8 @@ namespace Ziggeo
             Audios = new ZiggeoAudioService(Ziggeo);
             Images = new ZiggeoImageService(Ziggeo);
             Streams = new ZiggeoStreamsService(Ziggeo); 
-            // ZVideoView = new ZVideoView(Application.Context); 
-            // ZCameraView = new ZCameraView(Application.Context, this);
+            ZVideoView = new ZVideoView(Application.Context); 
+            ZCameraView = new ZCameraView(Application.Context, this);
         }
     }
 }
