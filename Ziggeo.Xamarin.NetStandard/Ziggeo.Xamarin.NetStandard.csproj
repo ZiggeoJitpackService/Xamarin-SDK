@@ -16,7 +16,4 @@
     <PackageReference Include="Google.Protobuf" Version="3.19.4" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Ziggeo.Xamarin.Android.Binding\Ziggeo.Xamarin.Android.Binding.csproj" />
-  </ItemGroup>
 </Project>

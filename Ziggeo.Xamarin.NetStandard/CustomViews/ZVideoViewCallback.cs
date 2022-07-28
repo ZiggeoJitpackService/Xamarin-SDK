@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Com.Ziggeo.Androidsdk.Widgets.Videoview;
 
 namespace Ziggeo.Xamarin.NetStandard.CustomViews
 {
@@ -13,58 +12,58 @@ namespace Ziggeo.Xamarin.NetStandard.CustomViews
             ZVideoView = videoView;
         }
 
-        public Action<ZVideoView, List<string>> SetVideoUris { get; set; }
-        public Action<ZVideoView, List<string>> SetVideoToken = null;
-        public Action<ZVideoView> OnPaused = null;
-        public Action<ZVideoView> OnResumed = null;
-        public Action<ZVideoView> LoadConfigs = null;
-        public Action<ZVideoView> InitViews = null;
-        public Action<ZVideoView> PrepareQueueAndStartPlaying = null;
-        public Action<ZVideoView> StartView = null;
+        public Action<IZVideoView, List<string>> SetVideoUris { get; set; }
+        public Action<IZVideoView, List<string>> SetVideoToken = null;
+        public Action<IZVideoView> OnPaused = null;
+        public Action<IZVideoView> OnResumed = null;
+        public Action<IZVideoView> LoadConfigs = null;
+        public Action<IZVideoView> InitViews = null;
+        public Action<IZVideoView> PrepareQueueAndStartPlaying = null;
+        public Action<IZVideoView> StartView = null;
 
-        public void SetVideoPaths(ZVideoView view, List<string> videoPath)
+        public void SetVideoPaths(IZVideoView view, List<string> videoPath)
         {
             SetVideoUris?.Invoke(view, videoPath);
             ZVideoView.SetVideoUris (videoPath);
         }
 
-        public void SetVideoTokens(ZVideoView view, List<string> videoTokens)
+        public void SetVideoTokens(IZVideoView view, List<string> videoTokens)
         {
             SetVideoToken?.Invoke(view, videoTokens);
             ZVideoView.SetVideoTokens(videoTokens);
         }
 
-        public void OnPlayerPaused(ZVideoView view)
+        public void OnPlayerPaused(IZVideoView view)
         {
             OnPaused?.Invoke(view);
             ZVideoView.OnPause();
         }
 
-        public void OnPlayerResumed(ZVideoView view)
+        public void OnPlayerResumed(IZVideoView view)
         {
             OnResumed?.Invoke(view);
             ZVideoView.OnResume();
         }
 
-        public void LoadPlayerConfigs(ZVideoView activity)
+        public void LoadPlayerConfigs(IZVideoView activity)
         {
             LoadConfigs?.Invoke(activity);
             ZVideoView.LoadConfigs();
         }
 
-        public void InitPlayerViews(ZVideoView activity)
+        public void InitPlayerViews(IZVideoView activity)
         {
             InitViews?.Invoke(activity);
             ZVideoView.InitViews();
         }
 
-        public void PrepareAndStartPlaying(ZVideoView activity)
+        public void PrepareAndStartPlaying(IZVideoView activity)
         {
             PrepareQueueAndStartPlaying?.Invoke(activity);
             ZVideoView.PrepareQueueAndStartPlaying();
         }
 
-        public void StartPlayerView(ZVideoView activity)
+        public void StartPlayerView(IZVideoView activity)
         {
             StartView?.Invoke(activity);
         }
