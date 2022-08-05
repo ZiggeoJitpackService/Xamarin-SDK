@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Android.App;
+using Android.Net;
 using Com.Ziggeo.Androidsdk;
 using Ziggeo.Services;
-using Ziggeo.Xamarin.Android.CustomViews;
 using Ziggeo.Xamarin.Android.Services;
-using Ziggeo.Xamarin.NetStandard.CustomViews;
 
 namespace Ziggeo
 {
@@ -40,11 +40,7 @@ namespace Ziggeo
         public IImages Images { get; private set; }
 
         public IStreams Streams { get; private set; }
-
-        public IZVideoView ZVideoView { get; private set; }
-
-        public IZCameraView ZCameraView  { get; private set; }
-
+        
         public PlayerConfig PlayerConfig { get; set; }
 
         public void SetSensorManager(ISensorManagerEventsListener listener)
@@ -56,6 +52,13 @@ namespace Ziggeo
         {
             _initConfigs();
             Ziggeo.StartPlayer(videoToken);
+        }
+
+        public void StartPlayerWithPath(string[] videoPath)
+        {
+            _initConfigs();
+            var videoUris = videoPath.Select(Uri.Parse).ToArray();
+            Ziggeo.StartPlayer(videoUris);
         }
 
         public void StartAudioWithToken(string[] mediaToken)
@@ -182,8 +185,6 @@ namespace Ziggeo
             Audios = new ZiggeoAudioService(Ziggeo);
             Images = new ZiggeoImageService(Ziggeo);
             Streams = new ZiggeoStreamsService(Ziggeo); 
-            ZVideoView = new ZVideoView(Application.Context); 
-            ZCameraView = new ZCameraView(Application.Context, this);
         }
     }
 }

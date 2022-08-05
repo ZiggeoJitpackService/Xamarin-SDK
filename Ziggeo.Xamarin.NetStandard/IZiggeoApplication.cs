@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using Ziggeo.Xamarin.NetStandard.CustomViews;
 
 namespace Ziggeo
 {
@@ -18,10 +17,6 @@ namespace Ziggeo
         IImages Images { get; }
 
         IStreams Streams { get; }
-        
-        IZVideoView ZVideoView { get; }
-        
-        IZCameraView ZCameraView{ get; }
 
         CameraRecorderConfig CameraRecorderConfig { get; set; }
         
@@ -37,6 +32,8 @@ namespace Ziggeo
 
         PlayerConfig PlayerConfig { get; set; }
         void StartPlayer(string videoToken);
+        
+        void StartPlayerWithPath(string[] videoPath);
 
         void StartAudioWithToken(string[] mediaToken);
 

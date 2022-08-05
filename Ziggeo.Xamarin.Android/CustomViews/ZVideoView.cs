@@ -11,7 +11,6 @@ namespace Ziggeo.Xamarin.Android.CustomViews
     {
         private List<string> _videoToken;
         private List<Uri> _videoPath;
-        public ZVideoViewCallback ZCallback;
 
         public ZVideoView(Context context) : base(context)
         {

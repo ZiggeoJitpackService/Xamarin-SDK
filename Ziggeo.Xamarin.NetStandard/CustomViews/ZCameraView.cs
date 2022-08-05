@@ -2,6 +2,7 @@ namespace Ziggeo.Xamarin.NetStandard.CustomViews
 {
     public interface IZCameraView
     {
+        void SetZiggeo(IZiggeoApplication Ziggeo);
         bool IsRecording();
 
         string GetRecordedFile();
@@ -9,6 +10,10 @@ namespace Ziggeo.Xamarin.NetStandard.CustomViews
         void StartRecording();
 
         void StopRecording();
+
+        void Stop();
+
+        void Start();
 
         void SwitchCamera();
 

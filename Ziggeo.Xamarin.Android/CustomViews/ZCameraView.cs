@@ -1,6 +1,7 @@
 using Android.Content;
 using Android.Util;
-using Android.Views;
+using Com.Ziggeo.Androidsdk;
+using Com.Ziggeo.Androidsdk.Widgets.Cameraview;
 using Java.IO;
 using Java.Text;
 using Java.Util;
@@ -8,34 +9,38 @@ using Ziggeo.Xamarin.NetStandard.CustomViews;
 
 namespace Ziggeo.Xamarin.Android.CustomViews
 {
-    public class ZCameraView : Com.Ziggeo.Androidsdk.Widgets.Cameraview.CameraView, Ziggeo.Xamarin.NetStandard.CustomViews.IZCameraView
+    public class ZCameraView : CameraView, IZCameraView
     {
         private CameraRecorderConfig _config;
         private File _recordedFile;
-        private ZiggeoApplication _ziggeo;
-        public ZCameraViewCallback ZCallback;
+        private IZiggeoApplication _Ziggeo;
+        private Context _context;
 
-        public ZCameraView(Context context, ZiggeoApplication ziggeo) : base(context)
+        public void SetZiggeo(IZiggeoApplication Ziggeo)
         {
-            _ziggeo = ziggeo;
+            _Ziggeo = Ziggeo;
             Init();
         }
         public ZCameraView(Context context) : base(context)
         {
-            Init();
+            _context = context;
         }
 
         public ZCameraView(Context context, IAttributeSet attrs) : base(context, attrs)
         {
+            _context = context;
+
         }
 
         public ZCameraView(Context context, IAttributeSet attrs, int defStyleAttr) : base(context, attrs, defStyleAttr)
         {
+            _context = context;
+
         }
 
         private void Init()
         {
-            _config = _ziggeo.CameraRecorderConfig;
+            _config = _Ziggeo.CameraRecorderConfig;
         }
 
         public new bool IsRecording()
@@ -53,31 +58,34 @@ namespace Ziggeo.Xamarin.Android.CustomViews
             if (_recordedFile != null)
             {
                 _recordedFile.Delete();
-                if (_ziggeo.Ziggeo.RecorderConfig.Callback != null)
-                {
-                    _config.InvokeRerecord();
-                }
+                _config?.InvokeRerecord();
             }
 
-            File defaultPath = _ziggeo.Ziggeo.RecorderConfig.CacheConfig.CacheRoot;
+            var defaultPath = CacheConfig.GetDefault(_context).CacheRoot;
             if (!defaultPath.Exists())
             {
                 defaultPath.Mkdir();
             }
 
             _recordedFile = new File(defaultPath, GetVideoFileName());
-
             base.StartRecording(_recordedFile.Path, (int)_config.MaxDuration);
         }
 
         public new void StopRecording()
         {
-            if (_ziggeo.Ziggeo.RecorderConfig.Callback != null)
-            {
-                _config.InvokeRecordingStopped(_recordedFile.Path);
-            }
+            _config?.InvokeRecordingStopped(_recordedFile.Path);
 
             base.StopRecording();
+        }
+        
+        public new void Stop()
+        {
+            base.Stop();
+        }
+        
+        public new void Start()
+        {
+            base.Start();
         }
 
         public void SwitchCamera()
@@ -90,24 +98,10 @@ namespace Ziggeo.Xamarin.Android.CustomViews
 
         public void LoadConfig()
         {
-            if (_ziggeo.Ziggeo.RecorderConfig.Callback != null)
-            {
-                _config.InvokeLoaded();
-            }
-
-            //
-            // var analyticsManager = _ziggeo.AnalyticsManager;
-            //         analyticsManager.addEmbeddingRecorderLoadedEvent()
-            //
-            
-            base.SetResolution(_ziggeo.Ziggeo.RecorderConfig.Resolution);
-            base.SetVideoBitrate(_ziggeo.Ziggeo.RecorderConfig.VideoBitrate);
-            base.SetAudioBitrate(_ziggeo.Ziggeo.RecorderConfig.AudioBitrate);
-            base.SetAudioSampleRate(_ziggeo.Ziggeo.RecorderConfig.AudioSampleRate);
-            base.Quality = _ziggeo.Ziggeo.RecorderConfig.VideoQuality;
-            base.Facing = _ziggeo.Ziggeo.RecorderConfig.Facing;
-            //todo
-            // base.SetCameraCallback(new CameraCallback(_config));
+            _config?.InvokeLoaded();
+            base.Quality = _config.VideoQuality;
+            base.Facing = _config.Facing;
+            base.SetCameraCallback(new CustomViews.CameraCallback(_config));
             base.SetRecorderCallback(new RecorderCallback(_config));
         }
 

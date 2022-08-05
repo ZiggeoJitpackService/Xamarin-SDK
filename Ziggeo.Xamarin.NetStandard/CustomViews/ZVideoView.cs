@@ -18,5 +18,8 @@ namespace Ziggeo.Xamarin.NetStandard.CustomViews
          void SetVideoUris(List<string> videoPath);
 
          void LoadConfigs();
+         
+         void StartView();
+
     }
 }

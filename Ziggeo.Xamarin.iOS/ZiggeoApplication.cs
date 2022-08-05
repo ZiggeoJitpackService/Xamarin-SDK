@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using Ziggeo.Services;
 using AVFoundation;
-using Ziggeo.Xamarin.NetStandard.CustomViews;
 
 namespace Ziggeo
 {
@@ -36,10 +35,6 @@ namespace Ziggeo
 
         public IStreams Streams { get; private set; }
 
-        public IZVideoView ZVideoView => throw new NotImplementedException();
-        
-        public IZCameraView ZCameraView => throw new NotImplementedException();
-
         public IPlayer Player { get; private set; }
 
         public void SetSensorManager(ISensorManagerEventsListener callback)
@@ -60,7 +55,12 @@ namespace Ziggeo
         {
             throw new NotImplementedException();
         }
-        
+
+        public void StartPlayerWithPath(string[] videoPath)
+        {
+            throw new NotImplementedException();
+        }
+
         public void StartAudioWithToken(string[] mediaToken)
         {
             throw new NotImplementedException();
