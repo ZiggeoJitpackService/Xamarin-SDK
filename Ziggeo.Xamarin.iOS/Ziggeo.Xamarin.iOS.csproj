@@ -282,9 +282,6 @@
     <BundleResource Include="Resources\upload-50.png" />
     <BundleResource Include="Resources\upload-50%402x.png" />
     <BundleResource Include="Resources\upload-50%403x.png" />
-    <BundleResource Include="Resources\sun-50_red.png" />
-    <BundleResource Include="Resources\sun-50_yellow.png" />
-    <BundleResource Include="Resources\sun-50.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ziggeo.Xamarin.Android\Ziggeo.Xamarin.Android.csproj">

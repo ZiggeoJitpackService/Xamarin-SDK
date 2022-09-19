@@ -11,6 +11,7 @@ namespace Ziggeo
             {
                 nativeConfig = new Com.Ziggeo.Androidsdk.Net.Uploading.UploadingConfig.Builder()
                     .TurnOffUploader(config.ShouldTurnOffUploader)
+                    .LostConnectionAction(config.LostConnectionAction)
                     .UseWifiOnly(config.ShouldUseWifiOnly)
                     .StartAsForeground(config.ShouldStartAsForeground)
                     .Callback(new UploaderCallback(config))

@@ -6921,277 +6921,280 @@ namespace Ziggeo.Xamarin.Android
 			public static int default_notification_message = 2131558458;
 			
 			// aapt resource value: 0x7F0D003B
-			public static int email_chooser_title = 2131558459;
-			
-			// aapt resource value: 0x7F0D003D
-			public static int error_occurred = 2131558461;
+			public static int delete = 2131558459;
 			
 			// aapt resource value: 0x7F0D003C
-			public static int err_permission_denied_screen_cast = 2131558460;
+			public static int email_chooser_title = 2131558460;
 			
 			// aapt resource value: 0x7F0D003E
-			public static int exo_controls_fastforward_description = 2131558462;
+			public static int error_occurred = 2131558462;
+			
+			// aapt resource value: 0x7F0D003D
+			public static int err_permission_denied_screen_cast = 2131558461;
 			
 			// aapt resource value: 0x7F0D003F
-			public static int exo_controls_fullscreen_description = 2131558463;
+			public static int exo_controls_fastforward_description = 2131558463;
 			
 			// aapt resource value: 0x7F0D0040
-			public static int exo_controls_hide = 2131558464;
+			public static int exo_controls_fullscreen_description = 2131558464;
 			
 			// aapt resource value: 0x7F0D0041
-			public static int exo_controls_next_description = 2131558465;
+			public static int exo_controls_hide = 2131558465;
 			
 			// aapt resource value: 0x7F0D0042
-			public static int exo_controls_pause_description = 2131558466;
+			public static int exo_controls_next_description = 2131558466;
 			
 			// aapt resource value: 0x7F0D0043
-			public static int exo_controls_play_description = 2131558467;
+			public static int exo_controls_pause_description = 2131558467;
 			
 			// aapt resource value: 0x7F0D0044
-			public static int exo_controls_previous_description = 2131558468;
+			public static int exo_controls_play_description = 2131558468;
 			
 			// aapt resource value: 0x7F0D0045
-			public static int exo_controls_repeat_all_description = 2131558469;
+			public static int exo_controls_previous_description = 2131558469;
 			
 			// aapt resource value: 0x7F0D0046
-			public static int exo_controls_repeat_off_description = 2131558470;
+			public static int exo_controls_repeat_all_description = 2131558470;
 			
 			// aapt resource value: 0x7F0D0047
-			public static int exo_controls_repeat_one_description = 2131558471;
+			public static int exo_controls_repeat_off_description = 2131558471;
 			
 			// aapt resource value: 0x7F0D0048
-			public static int exo_controls_rewind_description = 2131558472;
+			public static int exo_controls_repeat_one_description = 2131558472;
 			
 			// aapt resource value: 0x7F0D0049
-			public static int exo_controls_show = 2131558473;
+			public static int exo_controls_rewind_description = 2131558473;
 			
 			// aapt resource value: 0x7F0D004A
-			public static int exo_controls_shuffle_off_description = 2131558474;
+			public static int exo_controls_show = 2131558474;
 			
 			// aapt resource value: 0x7F0D004B
-			public static int exo_controls_shuffle_on_description = 2131558475;
+			public static int exo_controls_shuffle_off_description = 2131558475;
 			
 			// aapt resource value: 0x7F0D004C
-			public static int exo_controls_stop_description = 2131558476;
+			public static int exo_controls_shuffle_on_description = 2131558476;
 			
 			// aapt resource value: 0x7F0D004D
-			public static int exo_controls_vr_description = 2131558477;
+			public static int exo_controls_stop_description = 2131558477;
 			
 			// aapt resource value: 0x7F0D004E
-			public static int exo_download_completed = 2131558478;
+			public static int exo_controls_vr_description = 2131558478;
 			
 			// aapt resource value: 0x7F0D004F
-			public static int exo_download_description = 2131558479;
+			public static int exo_download_completed = 2131558479;
 			
 			// aapt resource value: 0x7F0D0050
-			public static int exo_download_downloading = 2131558480;
+			public static int exo_download_description = 2131558480;
 			
 			// aapt resource value: 0x7F0D0051
-			public static int exo_download_failed = 2131558481;
+			public static int exo_download_downloading = 2131558481;
 			
 			// aapt resource value: 0x7F0D0052
-			public static int exo_download_notification_channel_name = 2131558482;
+			public static int exo_download_failed = 2131558482;
 			
 			// aapt resource value: 0x7F0D0053
-			public static int exo_download_removing = 2131558483;
+			public static int exo_download_notification_channel_name = 2131558483;
 			
 			// aapt resource value: 0x7F0D0054
-			public static int exo_item_list = 2131558484;
+			public static int exo_download_removing = 2131558484;
 			
 			// aapt resource value: 0x7F0D0055
-			public static int exo_track_bitrate = 2131558485;
+			public static int exo_item_list = 2131558485;
 			
 			// aapt resource value: 0x7F0D0056
-			public static int exo_track_mono = 2131558486;
+			public static int exo_track_bitrate = 2131558486;
 			
 			// aapt resource value: 0x7F0D0057
-			public static int exo_track_resolution = 2131558487;
+			public static int exo_track_mono = 2131558487;
 			
 			// aapt resource value: 0x7F0D0058
-			public static int exo_track_role_alternate = 2131558488;
+			public static int exo_track_resolution = 2131558488;
 			
 			// aapt resource value: 0x7F0D0059
-			public static int exo_track_role_closed_captions = 2131558489;
+			public static int exo_track_role_alternate = 2131558489;
 			
 			// aapt resource value: 0x7F0D005A
-			public static int exo_track_role_commentary = 2131558490;
+			public static int exo_track_role_closed_captions = 2131558490;
 			
 			// aapt resource value: 0x7F0D005B
-			public static int exo_track_role_supplementary = 2131558491;
+			public static int exo_track_role_commentary = 2131558491;
 			
 			// aapt resource value: 0x7F0D005C
-			public static int exo_track_selection_auto = 2131558492;
+			public static int exo_track_role_supplementary = 2131558492;
 			
 			// aapt resource value: 0x7F0D005D
-			public static int exo_track_selection_none = 2131558493;
+			public static int exo_track_selection_auto = 2131558493;
 			
 			// aapt resource value: 0x7F0D005E
-			public static int exo_track_selection_title_audio = 2131558494;
+			public static int exo_track_selection_none = 2131558494;
 			
 			// aapt resource value: 0x7F0D005F
-			public static int exo_track_selection_title_text = 2131558495;
+			public static int exo_track_selection_title_audio = 2131558495;
 			
 			// aapt resource value: 0x7F0D0060
-			public static int exo_track_selection_title_video = 2131558496;
+			public static int exo_track_selection_title_text = 2131558496;
 			
 			// aapt resource value: 0x7F0D0061
-			public static int exo_track_stereo = 2131558497;
+			public static int exo_track_selection_title_video = 2131558497;
 			
 			// aapt resource value: 0x7F0D0062
-			public static int exo_track_surround = 2131558498;
+			public static int exo_track_stereo = 2131558498;
 			
 			// aapt resource value: 0x7F0D0063
-			public static int exo_track_surround_5_point_1 = 2131558499;
+			public static int exo_track_surround = 2131558499;
 			
 			// aapt resource value: 0x7F0D0064
-			public static int exo_track_surround_7_point_1 = 2131558500;
+			public static int exo_track_surround_5_point_1 = 2131558500;
 			
 			// aapt resource value: 0x7F0D0065
-			public static int exo_track_unknown = 2131558501;
+			public static int exo_track_surround_7_point_1 = 2131558501;
 			
 			// aapt resource value: 0x7F0D0066
-			public static int fab_transformation_scrim_behavior = 2131558502;
+			public static int exo_track_unknown = 2131558502;
 			
 			// aapt resource value: 0x7F0D0067
-			public static int fab_transformation_sheet_behavior = 2131558503;
+			public static int fab_transformation_scrim_behavior = 2131558503;
 			
 			// aapt resource value: 0x7F0D0068
-			public static int fs_duration_exceeded = 2131558504;
-			
-			// aapt resource value: 0x7F0D006C
-			public static int fs_filters_title = 2131558508;
+			public static int fab_transformation_sheet_behavior = 2131558504;
 			
 			// aapt resource value: 0x7F0D0069
-			public static int fs_filter_date = 2131558505;
-			
-			// aapt resource value: 0x7F0D006A
-			public static int fs_filter_name = 2131558506;
-			
-			// aapt resource value: 0x7F0D006B
-			public static int fs_filter_size = 2131558507;
+			public static int fs_duration_exceeded = 2131558505;
 			
 			// aapt resource value: 0x7F0D006D
-			public static int fs_header = 2131558509;
+			public static int fs_filters_title = 2131558509;
+			
+			// aapt resource value: 0x7F0D006A
+			public static int fs_filter_date = 2131558506;
+			
+			// aapt resource value: 0x7F0D006B
+			public static int fs_filter_name = 2131558507;
+			
+			// aapt resource value: 0x7F0D006C
+			public static int fs_filter_size = 2131558508;
 			
 			// aapt resource value: 0x7F0D006E
-			public static int fs_modified_prefix = 2131558510;
+			public static int fs_header = 2131558510;
 			
 			// aapt resource value: 0x7F0D006F
-			public static int fs_nothing_selected_error_message = 2131558511;
+			public static int fs_modified_prefix = 2131558511;
 			
 			// aapt resource value: 0x7F0D0070
-			public static int fs_rationale = 2131558512;
+			public static int fs_nothing_selected_error_message = 2131558512;
 			
 			// aapt resource value: 0x7F0D0071
-			public static int fs_size_prefix = 2131558513;
+			public static int fs_rationale = 2131558513;
 			
 			// aapt resource value: 0x7F0D0072
-			public static int hide_bottom_view_on_scroll_behavior = 2131558514;
+			public static int fs_size_prefix = 2131558514;
 			
 			// aapt resource value: 0x7F0D0073
-			public static int image_error = 2131558515;
+			public static int hide_bottom_view_on_scroll_behavior = 2131558515;
 			
 			// aapt resource value: 0x7F0D0074
-			public static int image_permission_rationale = 2131558516;
+			public static int image_error = 2131558516;
 			
 			// aapt resource value: 0x7F0D0075
-			public static int internal_storage = 2131558517;
+			public static int image_permission_rationale = 2131558517;
 			
 			// aapt resource value: 0x7F0D0076
-			public static int list_empty = 2131558518;
+			public static int internal_storage = 2131558518;
 			
 			// aapt resource value: 0x7F0D0077
-			public static int mtrl_chip_close_icon_content_description = 2131558519;
+			public static int list_empty = 2131558519;
 			
 			// aapt resource value: 0x7F0D0078
-			public static int notification_channel_screen_recorder = 2131558520;
+			public static int mtrl_chip_close_icon_content_description = 2131558520;
 			
 			// aapt resource value: 0x7F0D0079
-			public static int notification_channel_uploader = 2131558521;
+			public static int notification_channel_screen_recorder = 2131558521;
 			
 			// aapt resource value: 0x7F0D007A
-			public static int password_toggle_content_description = 2131558522;
+			public static int notification_channel_uploader = 2131558522;
 			
 			// aapt resource value: 0x7F0D007B
-			public static int path_password_eye = 2131558523;
+			public static int password_toggle_content_description = 2131558523;
 			
 			// aapt resource value: 0x7F0D007C
-			public static int path_password_eye_mask_strike_through = 2131558524;
+			public static int path_password_eye = 2131558524;
 			
 			// aapt resource value: 0x7F0D007D
-			public static int path_password_eye_mask_visible = 2131558525;
+			public static int path_password_eye_mask_strike_through = 2131558525;
 			
 			// aapt resource value: 0x7F0D007E
-			public static int path_password_strike_through = 2131558526;
+			public static int path_password_eye_mask_visible = 2131558526;
 			
 			// aapt resource value: 0x7F0D007F
-			public static int player_error = 2131558527;
+			public static int path_password_strike_through = 2131558527;
 			
 			// aapt resource value: 0x7F0D0080
-			public static int player_permission_rationale = 2131558528;
+			public static int player_error = 2131558528;
 			
 			// aapt resource value: 0x7F0D0081
-			public static int player_progress_stub = 2131558529;
+			public static int player_permission_rationale = 2131558529;
 			
 			// aapt resource value: 0x7F0D0082
-			public static int preparing_for_upload = 2131558530;
+			public static int player_progress_stub = 2131558530;
 			
 			// aapt resource value: 0x7F0D0083
-			public static int preparing_stream = 2131558531;
+			public static int preparing_for_upload = 2131558531;
 			
 			// aapt resource value: 0x7F0D0084
-			public static int processed = 2131558532;
+			public static int preparing_stream = 2131558532;
 			
 			// aapt resource value: 0x7F0D0085
-			public static int processing = 2131558533;
+			public static int processed = 2131558533;
 			
 			// aapt resource value: 0x7F0D0086
-			public static int qr_permission_rationale = 2131558534;
+			public static int processing = 2131558534;
 			
 			// aapt resource value: 0x7F0D0087
-			public static int recording_name_prefix = 2131558535;
+			public static int qr_permission_rationale = 2131558535;
 			
 			// aapt resource value: 0x7F0D0088
-			public static int retry = 2131558536;
+			public static int recording_name_prefix = 2131558536;
 			
 			// aapt resource value: 0x7F0D0089
-			public static int screen_record_permission_rationale = 2131558537;
+			public static int retry = 2131558537;
 			
 			// aapt resource value: 0x7F0D008A
-			public static int search_menu_title = 2131558538;
+			public static int screen_record_permission_rationale = 2131558538;
 			
 			// aapt resource value: 0x7F0D008B
-			public static int select_cover_shot_title = 2131558539;
+			public static int search_menu_title = 2131558539;
 			
 			// aapt resource value: 0x7F0D008C
-			public static int settings = 2131558540;
+			public static int select_cover_shot_title = 2131558540;
 			
 			// aapt resource value: 0x7F0D008D
-			public static int status_bar_notification_info_overflow = 2131558541;
+			public static int settings = 2131558541;
 			
 			// aapt resource value: 0x7F0D008E
-			public static int text_divider = 2131558542;
+			public static int status_bar_notification_info_overflow = 2131558542;
 			
 			// aapt resource value: 0x7F0D008F
-			public static int try_later = 2131558543;
+			public static int text_divider = 2131558543;
 			
 			// aapt resource value: 0x7F0D0090
-			public static int uploading = 2131558544;
-			
-			// aapt resource value: 0x7F0D0094
-			public static int verifying = 2131558548;
+			public static int try_later = 2131558544;
 			
 			// aapt resource value: 0x7F0D0091
-			public static int ve_btn_add_video = 2131558545;
-			
-			// aapt resource value: 0x7F0D0092
-			public static int ve_editor_permission_rationale = 2131558546;
-			
-			// aapt resource value: 0x7F0D0093
-			public static int ve_progress_text = 2131558547;
+			public static int uploading = 2131558545;
 			
 			// aapt resource value: 0x7F0D0095
-			public static int view_with = 2131558549;
+			public static int verifying = 2131558549;
+			
+			// aapt resource value: 0x7F0D0092
+			public static int ve_btn_add_video = 2131558546;
+			
+			// aapt resource value: 0x7F0D0093
+			public static int ve_editor_permission_rationale = 2131558547;
+			
+			// aapt resource value: 0x7F0D0094
+			public static int ve_progress_text = 2131558548;
+			
+			// aapt resource value: 0x7F0D0096
+			public static int view_with = 2131558550;
 			
 			static String()
 			{
