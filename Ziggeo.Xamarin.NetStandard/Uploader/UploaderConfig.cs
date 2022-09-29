@@ -6,9 +6,9 @@ namespace Ziggeo
 {
     public class UploaderConfig : BaseConfig, IUploaderEventsListener
     {
-        public static int UPLOADING_ERROR_ACTION_DELETE_VIDEO = 554;
-        public static int UPLOADING_ERROR_ACTION_ERROR_NOTIFICATION = 553;
-        public static int UPLOADING_ERROR_ACTION_RELOAD_VIDEO = 552;
+        public const int UPLOADING_ERROR_ACTION_DELETE_VIDEO = 554;
+        public const int UPLOADING_ERROR_ACTION_ERROR_NOTIFICATION = 553;
+        public const int UPLOADING_ERROR_ACTION_RELOAD_VIDEO = 552;
         public bool ShouldTurnOffUploader { get; set; } = false;
         public bool ShouldUseWifiOnly { get; set; } = false;
         public bool ShouldStartAsForeground { get; set; } = false;
