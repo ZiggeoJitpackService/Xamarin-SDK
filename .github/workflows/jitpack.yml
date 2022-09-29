@@ -20,8 +20,8 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - name: Nuget pack
-        run: dotnet pack --configuration Release
+#      - name: Nuget pack
+#        run: dotnet pack --configuration Release
 
       - name: Publish nuget package
         run: dotnet nuget push Ziggeo.XamarinSDK.Netstandard.${{ steps.package-version.outputs.current-version}}.nupkg  --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json --timeout 360
