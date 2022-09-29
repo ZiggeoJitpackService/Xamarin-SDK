@@ -33,7 +33,7 @@ jobs:
 #        shell: pwsh
 
       - name: Nuget pack
-        run: nuget pack --configuration Release
+        run: nuget pack
 
       - name: Publish nuget package
         run: dotnet nuget push Ziggeo.XamarinSDK.Netstandard.1.3.10.nupkg  --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json --timeout 360
