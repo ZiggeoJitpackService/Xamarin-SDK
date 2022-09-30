@@ -43,7 +43,7 @@ jobs:
         run: nuget install
 
       - name: Build
-        run: msbuild /Users/runner/work/Xamarin-SDK/Xamarin-SDK/Ziggeo.Xamarin.NetStandard/Ziggeo.Xamarin.NetStandard.csproj /t:Build /t:PackageForAndroid /t:Install /p:Configuration=Debug
+        run: msbuild /Users/runner/work/Xamarin-SDK/Xamarin-SDK/Ziggeo.Xamarin.NetStandard/Ziggeo.Xamarin.NetStandard.csproj /t:Build 
 
       - name: Nuget pack
         run: nuget pack
