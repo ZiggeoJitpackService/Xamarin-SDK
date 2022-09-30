@@ -37,7 +37,7 @@ jobs:
         run: dotnet restore
 
       - name: Install test dependencies
-        run: dotnet restore Ziggeo.Xamarin.NetStandard.csproj
+        run: dotnet restore /Users/runner/work/Xamarin-SDK/Xamarin-SDK/Ziggeo.Xamarin.NetStandard/Ziggeo.Xamarin.NetStandard.csproj
 
       - name: Nuget Instal
         run: nuget install
