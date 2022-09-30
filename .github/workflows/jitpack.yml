@@ -24,15 +24,26 @@ jobs:
         uses: NuGet/setup-nuget@v1.0.5
         with:
           nuget-version: '5.x'
-        
-#        //todo
-#      - name: Get Build Version
-#        run: |
-#            Import-Module .\build\GetBuildVersion.psm1
-#            Write-Host $Env:GITHUB_REF
-#            $version = GetBuildVersion -VersionString $Env:GITHUB_REF
-#            echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
-#        shell: pwsh
+      
+      #        //todo
+      #      - name: Get Build Version
+      #        run: |
+      #            Import-Module .\build\GetBuildVersion.psm1
+      #            Write-Host $Env:GITHUB_REF
+      #            $version = GetBuildVersion -VersionString $Env:GITHUB_REF
+      #            echo "BUILD_VERSION=$version" | Out-File -FilePath $Env:GITHUB_ENV -Encoding utf-8 -Append
+      #        shell: pwsh
+      - name: Install dependencies
+        run: dotnet restore
+
+      - name: Install test dependencies
+        run: dotnet restore Ziggeo.Xamarin.NetStandard.csproj
+
+      - name: Nuget Instal
+        run: nuget install
+
+      - name: Build
+        run: msbuild Ziggeo.Xamarin.NetStandard.csproj /t:Build /t:PackageForAndroid /t:Install /p:Configuration=Debug
 
       - name: Nuget pack
         run: nuget pack
