@@ -1,38 +1,92 @@
-﻿using System;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
+﻿//using System;
+//using System.Threading.Tasks;
+//using Newtonsoft.Json.Linq;
 
-namespace Ziggeo.Services
-{
-    public class ZiggeoStreamsService : BaseService, IStreams
-    {
-        public ZiggeoStreamsService(ZiggeoConnect connection) : base(connection)
-        {
-        }
+//namespace Ziggeo.Services
+//{
+//    public class ZiggeoStreamsService : IStreams
+//    {
+//        public ZiggeoStreamsService(IZiggeo ziggeo)
+//        {
+//            Streams = ziggeo.Streams();
+//        }
 
-        public async Task<JObject> Create(string tokenOrKey)
-        {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.POST,
-                string.Format("/videos/{0}/streams?create_stream=true", tokenOrKey), null);
-        }
+//        private IStreamsService Streams { get; }
 
-        public async Task AttachImage(string tokenOrKey, string streamToken, string filePath)
-        {
-            await Connection.RequestData(ZiggeoConnect.Method.POST, string.Format("/videos/{0}/streams/{1}/imageattach", tokenOrKey, streamToken), "image/jpeg", System.IO.File.ReadAllBytes(filePath));
-        }
-    
-        public async Task<JObject> Bind(string tokenOrKey, string streamToken)
-        {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.POST,
-                string.Format("/videos/{0}/streams/{1}/recordersubmit", tokenOrKey, streamToken), null);
-        }
+//        public async Task<JObject> Create(string tokenOrKey)
+//        {
+//            var source = new TaskCompletionSource<JObject>();
+//            Streams.Create(tokenOrKey, new Callback(
+//                (call, response) =>
+//                {
+//                    if (response.IsSuccessful)
+//                    {
+//                        source.TrySetResult(JObject.Parse(response.Body().String()));
+//                    }
+//                    else
+//                    {
+//                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+//                    }
+//                },
+//                (call, exception) => { source.TrySetException(exception); }));
+//            return await source.Task;
+//        }
 
-        public async Task AttachVideo(string tokenOrKey, string streamToken, string file)
-        {
-            await Connection.BackgroundUpload(
-                string.Format("/videos/{0}/streams/{1}/videoattach", tokenOrKey, streamToken),
-                "video.mp4",
-                tokenOrKey, file);
-        }
-    }
-}
+//        public async Task AttachImage(string tokenOrKey, string streamToken, string filePath)
+//        {
+//            var source = new TaskCompletionSource<string>();
+//            Streams.AttachImage(tokenOrKey, streamToken, new File(filePath), new Callback(
+//                (call, response) =>
+//                {
+//                    if (response.IsSuccessful)
+//                    {
+//                        source.TrySetResult(response.Body().String());
+//                    }
+//                    else
+//                    {
+//                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+//                    }
+//                },
+//                (call, exception) => { source.TrySetException(exception); }));
+//            await source.Task;
+//        }
+
+//        public async Task<JObject> Bind(string tokenOrKey, string streamToken)
+//        {
+//            var source = new TaskCompletionSource<JObject>();
+//            Streams.Bind(tokenOrKey, streamToken, new Callback(
+//                (call, response) =>
+//                {
+//                    if (response.IsSuccessful)
+//                    {
+//                        source.TrySetResult(JObject.Parse(response.Body().String()));
+//                    }
+//                    else
+//                    {
+//                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+//                    }
+//                },
+//                (call, exception) => { source.TrySetException(exception); }));
+//            return await source.Task;
+//        }
+
+//        public async Task AttachVideo(string tokenOrKey, string streamToken, string filePath)
+//        {
+//            var source = new TaskCompletionSource<string>();
+//            Streams.AttachVideo(tokenOrKey, streamToken, new File(filePath), new Callback(
+//                (call, response) =>
+//                {
+//                    if (response.IsSuccessful)
+//                    {
+//                        source.TrySetResult(response.Body().String());
+//                    }
+//                    else
+//                    {
+//                        source.TrySetException(new ResponseException(response.Code(), response.Message()));
+//                    }
+//                },
+//                (call, exception) => { source.TrySetException(exception); }));
+//            await source.Task;
+//        }
+//    }
+//}

@@ -1,22 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ziggeo.Services;
+using Ziggeo.Xamarin.iOS.Services;
 using AVFoundation;
+using ZiggeoMediaSDK;
+
 
 namespace Ziggeo
 {
     public class ZiggeoApplication : IZiggeoApplication
     {
-        private CameraRecorder _cameraRecorder;
         private string _appToken;
+        private ZiggeoMediaSDK.Ziggeo _ziggeo;
+        private ZiggeoConnect Connect { get; set; }
+
+        public QrScannerConfig QrScannerConfig { get; set; }
+        public FileSelectorConfig FileSelectorConfig { get; set; }
+        public PlayerConfig PlayerConfig { get; set; }
+        public UploaderConfig UploaderConfig { get; set; }
+        public CameraRecorderConfig CameraRecorderConfig { get; set; }
+        public ScreenRecorderConfig ScreenRecorderConfig { get; set; }
+
+        public IVideos Videos { get; private set; }
+        public IAudios Audios { get; private set; }
+        public IImages Images { get; private set; }
+        public IPlayer Player { get; private set; }
+        public IStreams Streams { get; private set; }
+
 
         public ZiggeoApplication()
         {
+            AppToken = "";
         }
 
         public ZiggeoApplication(string token)
         {
             AppToken = token;
+            
         }
 
         public string AppToken
@@ -29,86 +48,36 @@ namespace Ziggeo
             }
         }
 
-        public ZiggeoConnect Connect { get; set; }
-
-        public IVideos Videos { get; private set; }
-
-        public IStreams Streams { get; private set; }
-
-        public IPlayer Player { get; private set; }
-
-        public void SetSensorManager(ISensorManagerEventsListener callback)
+        private void _init()
         {
-            throw new NotImplementedException();
+            _ziggeo = new ZiggeoMediaSDK.Ziggeo(_appToken);
+
+            Connect = _ziggeo.Connect;
+            Videos = new ZiggeoVideosService(_ziggeo);
+            Audios = new ZiggeoAudioService(_ziggeo);
+            Images = new ZiggeoImageService(_ziggeo);
+            //Streams = new ZiggeoStreamsService(Ziggeo);
+
+            ServerAuthToken = "";
+            ClientAuthToken = "";          
+
+            AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord,
+                AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
         }
 
-        public void StartCameraRecorder()
+        private void _initConfigs()
         {
-            _cameraRecorder.StartRecorder();
-        }
-        
-        public void StartAudio(string mediaToken, string mediaPath)
-        {
-        }
+            if (_ziggeo == null)
+            {
+                _init();
+            }
 
-        public void StartAudioWithPath(string[] mediaPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StartPlayerWithPath(string[] videoPath)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StartAudioWithToken(string[] mediaToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void OpenImage(string mediaToken)
-        {
-        }
-        
-        public void StartAudioRecorder()
-        {
-        }
-        
-        public void StartImageRecorder()
-        {
-        }
-
-        public void StartQrScanner()
-        {
-            throw new NotImplementedException();
-        }
-
-        public CameraRecorderConfig CameraRecorderConfig { get; set; }
-        public QrScannerConfig QrScannerConfig { get; set; }
-        public ScreenRecorderConfig ScreenRecorderConfig { get; set; }
-
-        public void StartScreenRecorder()
-        {
-            throw new NotImplementedException();
-        }
-
-        public PlayerConfig PlayerConfig { get; set; }
-
-        public void StartPlayer(string videoToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void StartAudioWithToken(string mediaToken)
-        {
-            throw new NotImplementedException();
-        }
-
-        public FileSelectorConfig FileSelectorConfig { get; set; }
-
-        public void StartFileSelector()
-        {
-            throw new NotImplementedException();
+            _ziggeo.QrScannerConfig = QrScannerConfigMapper.Map(QrScannerConfig);
+            _ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
+            _ziggeo.PlayerConfig = PlayerConfigMapper.Map(PlayerConfig);
+            _ziggeo.UploadingConfig = UploaderConfigMapper.Map(UploaderConfig);
+            _ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);
+            _ziggeo.RecorderConfig = CameraRecorderConfigMapper.Map(CameraRecorderConfig);
         }
 
         public string ServerAuthToken
@@ -123,43 +92,110 @@ namespace Ziggeo
             set => Connect.ClientAuthToken = value;
         }
 
-        public UploaderConfig UploaderConfig { get; set; }
 
-        public IAudios Audios => throw new NotImplementedException();
-
-        public IImages Images => throw new NotImplementedException();
-
-        public void SendReport(IList<LogModel> logModels)
+        // QR Scanner
+        public void StartQrScanner()
         {
+            ZiggeoMediaSDK.Ziggeo qrZiggeo = new ZiggeoMediaSDK.Ziggeo();
+            qrZiggeo.QrScannerConfig = QrScannerConfigMapper.Map(QrScannerConfig);
+            qrZiggeo.SetQRScannerDelegate(new QrScannerCallback(QrScannerConfig));
+            qrZiggeo.SetHardwarePermissionDelegate(new HardwarePermissionQRScannerCallback(QrScannerConfig));
+            qrZiggeo.StartQrScanner();
+        }
+
+
+
+        public void SetSensorManager(ISensorManagerEventsListener listener)
+        {
+            //_ziggeo.SetSensorCallback(new SensorManagerCallback(listener));
             throw new NotImplementedException();
+        }
+
+        public void StartPlayer(string videoToken)
+        {
+            _initConfigs();
+            _ziggeo.SetPlayerDelegate(new PlayerCallback(PlayerConfig));
+            _ziggeo.PlayVideo(videoToken);
+        }
+
+        public void StartPlayerWithPath(string[] videoPath)
+        {
+            _initConfigs();
+            //string[] tokens = new string[1];
+            //tokens[0] = videoToken;
+            _ziggeo.PlayVideos(videoPath);
+        }
+
+        public void StartAudioWithToken(string[] mediaToken)
+        {
+            _ziggeo.PlayAudios(mediaToken);
+        }
+
+        public void StartAudioWithPath(string[] mediaPath)
+        {
+            _ziggeo.PlayAudioFromUris(mediaPath);
+        }
+
+        public void OpenImage(string mediaToken)
+        {
+            _ziggeo.ShowImage(mediaToken);
+        }
+
+        public void OpenImageWithPath(string mediaPath)
+        {
+            _ziggeo.ShowImage(mediaPath);
+        }
+
+        public void StartAudioRecorder()
+        {
+            _ziggeo.StartAudioRecorder();
+        }
+
+        public void StartImageRecorder()
+        {
+            _ziggeo.StartImageRecorder();
+        }
+
+        
+
+        public void StartFileSelector()
+        {
+            _initConfigs();
+            _ziggeo.StartFileSelector();
+        }
+
+        
+
+        public void StartCameraRecorder()
+        {
+            _initConfigs();
+            _ziggeo.Record();
+        }
+
+        public void StartScreenRecorder()
+        {
+            _initConfigs();
+            _ziggeo.StartScreenRecorderWithAppGroup("", "");
         }
 
         public void CancelUpload(bool deleteFile)
         {
-            throw new NotImplementedException();
+            _ziggeo.CancelUpload("", deleteFile);
         }
 
         public void CancelUpload(string path, bool deleteFile)
         {
-            throw new NotImplementedException();
+            _ziggeo.CancelUpload(path, deleteFile);
         }
 
         public void CancelUpload(string path)
         {
-            throw new NotImplementedException();
+            _ziggeo.CancelUpload(path, true);
         }
 
-        private void _init()
+        public void SendReport(IList<LogModel> logModels)
         {
-            Connect = new ZiggeoConnectImpl(_appToken);
-            Streams = new ZiggeoStreamsService(Connect);
-            Videos = new ZiggeoVideosService(Connect, Streams);
-
-            _cameraRecorder = new CameraRecorder(this);
-            Player = new Player(this, Connect);
-
-            AVAudioSession.SharedInstance().SetCategory(AVAudioSessionCategory.PlayAndRecord,
-                AVAudioSessionCategoryOptions.DuckOthers | AVAudioSessionCategoryOptions.DefaultToSpeaker);
+            _ziggeo.SendReport(LogModelMapper.Map(logModels));
         }
     }
 }

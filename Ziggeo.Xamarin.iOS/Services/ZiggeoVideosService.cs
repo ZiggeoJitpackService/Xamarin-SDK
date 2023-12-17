@@ -1,93 +1,252 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
+using System.Linq;
 using Newtonsoft.Json.Linq;
+using Foundation;
+using ZiggeoMediaSDK;
 
-namespace Ziggeo.Services
+namespace Ziggeo.Xamarin.iOS.Services
 {
-    public class ZiggeoVideosService : BaseService, IVideos
+    public class ZiggeoVideosService : IVideos
     {
         public event VideoFileDelegate UploadStarted;
-
-        //public event VideoTokenFileDelegate TokenAssigned;
         public event VideoTokenFileProgressDelegate UploadProgressChanged;
         public event VideoTokenFileDelegate UploadComplete;
         public event VideoFileErrorDelegate UploadFailed;
 
-        public ZiggeoVideosService(ZiggeoConnect connection, IStreams streams) : base(connection)
-        {
-            this.Streams = streams;
-            connection.UploadProgressChanged += (string token, string filename, long bytesSent, long totalBytes) =>
-            {
-                UploadProgressChanged?.Invoke(token, filename, bytesSent, totalBytes);
-            };
-        }
+        private readonly ZiggeoMediaSDK.Ziggeo _ziggeoInstance;
+        private ZiggeoVideos Videos { get; }
 
-        public IStreams Streams { get; private set; }
+        public ZiggeoVideosService(ZiggeoMediaSDK.Ziggeo ziggeo)
+        {
+            Videos = ziggeo.Videos;
+            _ziggeoInstance = ziggeo;
+        }       
 
         public async Task<JArray> Index(Dictionary<string, string> data)
         {
-            return await Connection.RequestJSONArray(ZiggeoConnect.Method.GET, "/videos/", data);
+            var source = new TaskCompletionSource<JArray>();
+            NSDictionary dictionary = new NSDictionary();
+            if (data != null)
+            {
+                dictionary = NSDictionary.FromObjectsAndKeys(data.Values.ToArray(), data.Keys.ToArray());
+            }
+
+            Videos.Index(dictionary, (jsonArray, error) =>
+            {
+                if (error == null)
+                {
+                    var result = new JArray();
+                    for (nuint i = 0; i < jsonArray.Count; i++)
+                    {
+                        var item = jsonArray.GetItem<ContentModel>(i);
+                        var jsonObject = new JObject(
+                            new JProperty("token", item.Token),
+                            new JProperty("state_string", item.StateString),
+                            new JProperty("title", item.Title),
+                            new JProperty("description", item.Desc),
+                            new JProperty("submission_date", item.Date),
+                            new JProperty("tags", ""),
+                            new JProperty("key", ""),
+                            new JProperty("VideoItem", "")
+                        );
+                        result.Add(jsonObject);
+                    }
+                    source.TrySetResult(result);
+                }
+                else
+                {
+                    Exception exception = new Exception(error.LocalizedDescription);
+                    source.TrySetException(exception);
+                }
+            });
+
+            return await source.Task;
         }
 
         public async Task<JObject> Get(string tokenOrKey)
         {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.GET, "/videos/" + tokenOrKey + "",
-                null);
+            var source = new TaskCompletionSource<JObject>();
+            var dictionary = new NSDictionary();
+
+            Videos.Get(tokenOrKey, dictionary, (content, response, error) =>
+            {
+                if (error == null)
+                {
+                    var result = new JObject(
+                        new JProperty("token", content.Token),
+                        new JProperty("state_string", content.StateString),
+                        new JProperty("title", content.Title),
+                        new JProperty("description", content.Desc),
+                        new JProperty("submission_date", content.Date),
+                        new JProperty("tags", ""),
+                        new JProperty("key", ""),
+                        new JProperty("VideoItem", "")
+                    );
+                    source.TrySetResult(result);
+            }
+                else
+                {
+                    Exception exception = new Exception(error.LocalizedDescription);
+                    source.TrySetException(exception);
+                }
+            });
+
+            return await source.Task;
+        }
+
+        public async Task<String> GetVideoUrl(string tokenOrKey)
+        {
+            var source = new TaskCompletionSource<String>();
+            source.SetResult(Videos.GetVideoUrl(tokenOrKey));
+            return await source.Task;
+        }
+
+        public async Task<String> GetImageUrl(string tokenOrKey)
+        {
+            var source = new TaskCompletionSource<String>();
+            source.SetResult(Videos.GetImageUrl(tokenOrKey));
+            return await source.Task;
         }
 
         public async Task<JObject> Update(string tokenOrKey, Dictionary<string, string> data)
         {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.POST, "/videos/" + tokenOrKey + "",
-                data);
+            var source = new TaskCompletionSource<JObject>();
+            NSDictionary dictionary = new NSDictionary();
+            if (data != null)
+            {
+                dictionary = NSDictionary.FromObjectsAndKeys(data.Values.ToArray(), data.Keys.ToArray());
+            }
+
+            Videos.Update(tokenOrKey, dictionary, (content, response, error) =>
+            {
+                if (error == null)
+                {
+                    var result = new JObject(
+                        new JProperty("token", content.Token),
+                        new JProperty("state_string", content.StateString),
+                        new JProperty("title", content.Title),
+                        new JProperty("description", content.Desc),
+                        new JProperty("submission_date", content.Date),
+                        new JProperty("tags", ""),
+                        new JProperty("key", ""),
+                        new JProperty("VideoItem", "")
+                    );
+                    source.TrySetResult(result);
+                }
+                else
+                {
+                    Exception exception = new Exception(error.LocalizedDescription);
+                    source.TrySetException(exception);
+                }
+            });
+
+            return await source.Task;
         }
 
         public async Task Destroy(string tokenOrKey)
         {
-            await Connection.RequestString(ZiggeoConnect.Method.DELETE, "/videos/" + tokenOrKey + "",
-                null);
+            var source = new TaskCompletionSource<string>();
+
+            Videos.Destroy(tokenOrKey, "", (jsonObject, response, error) =>
+            {
+                if (error == null)
+                {
+                    var result = "";
+                    if (jsonObject != null)
+                    {
+                        result = jsonObject.ToString();
+                    }
+                    source.TrySetResult(result);
+                }
+                else
+                {
+                    Exception exception = new Exception(error.LocalizedDescription);
+                    source.TrySetException(exception);
+                }
+            });
+            await source.Task;
         }
 
         public async Task<JObject> Create(Dictionary<string, string> data)
         {
-            return await Connection.RequestJSON(ZiggeoConnect.Method.POST, "/videos?create_stream=true",
-                data);
+            var source = new TaskCompletionSource<JObject>();
+            NSDictionary dictionary = new NSDictionary();
+            if (data != null)
+            {
+                dictionary = NSDictionary.FromObjectsAndKeys(data.Values.ToArray(), data.Keys.ToArray());
+            }
+
+            Videos.CreateEmptyVideoWithData(dictionary, (jsonObject, response, error) =>
+            {
+                if (error == null)
+                {
+                    var content = new ContentModel();
+                    content.SetInfo(jsonObject);
+                    var result = new JObject(
+                        new JProperty("token", content.Token),
+                        new JProperty("state_string", content.StateString),
+                        new JProperty("title", content.Title),
+                        new JProperty("description", content.Desc),
+                        new JProperty("submission_date", content.Date),
+                        new JProperty("tags", ""),
+                        new JProperty("key", ""),
+                        new JProperty("VideoItem", "")
+                    );
+                    source.TrySetResult(result);
+                }
+                else
+                {
+                    Exception exception = new Exception(error.LocalizedDescription);
+                    source.TrySetException(exception);
+                }
+            });
+
+            return await source.Task;
         }
 
         public async Task<JObject> Create(string filePath, Dictionary<string, string> data)
         {
-            try
+            var source = new TaskCompletionSource<JObject>();
+            NSDictionary dictionary = new NSDictionary();
+            if (data != null)
             {
-                UploadStarted?.Invoke(filePath);
-                Console.WriteLine("creating video...");
-                var video = await Create(data);
-                string videoToken = video["video"]["token"].Value<string>();
-                Console.WriteLine("video token = {0}", videoToken);
-                //TokenAssigned?.Invoke(videoToken, filePath);
-                string streamToken = video["stream"]["token"].Value<string>();
-                Console.WriteLine("stream token = {0}", streamToken);
-                await Streams.AttachVideo(videoToken, streamToken, filePath);
-                Console.WriteLine("video attached");
-                var result = await Streams.Bind(videoToken, streamToken);
-                UploadComplete?.Invoke(videoToken, filePath);
-                return result;
+                dictionary = NSDictionary.FromObjectsAndKeys(data.Values.ToArray(), data.Keys.ToArray());
             }
-            catch (Exception ex)
+
+            Videos.Create(filePath, dictionary, (jsonObject, response, error) =>
             {
-                UploadFailed?.Invoke(filePath, ex);
-                throw ex;
-            }
-        }
+            },
+            (totalBytesSent, totalBytesExpectedToSend) =>
+            {
+            },
+            (jsonObject, response, error) =>
+            {
+                if (error == null)
+                {
+                    var content = new ContentModel();
+                    content.SetInfo(jsonObject);
+                    var result = new JObject(
+                        new JProperty("token", content.Token),
+                        new JProperty("state_string", content.StateString),
+                        new JProperty("title", content.Title),
+                        new JProperty("description", content.Desc),
+                        new JProperty("submission_date", content.Date),
+                        new JProperty("tags", ""),
+                        new JProperty("key", ""),
+                        new JProperty("VideoItem", "")
+                    );
+                    source.TrySetResult(result);
+                }
+                else
+                {
+                    Exception exception = new Exception(error.LocalizedDescription);
+                    source.TrySetException(exception);
+                }
+            });
 
-        public Task<String> GetVideoUrl(string tokenOrKey)
-        {
-            return Task.FromResult(Connection.GetServerURL("/videos/" + tokenOrKey + "/video.mp4"));
-        }
-
-        public Task<String> GetImageUrl(string tokenOrKey)
-        {
-            return Task.FromResult(Connection.GetServerURL("/videos/" + tokenOrKey + "/image"));
+            return await source.Task;
         }
     }
 }
