@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>Ziggeo.XamarinSDK.Netstandard</id>
-    <version>1.3.16</version>
-    <authors>Ziggeo</authors>
-    <owners>Ziggeo</owners>
+    <version>1.3.14</version>
+    <authors>alexbziggeocom</authors>
+    <owners>alexbziggeocom</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://raw.github.com/Ziggeo/ZiggeoCSharpSDK/master/LICENSE.md</licenseUrl>
-    <projectUrl>https://raw.github.com/Ziggeo/ZiggeoCSharpSDK</projectUrl>
+    <projectUrl>https://raw.github.com/alexbziggeocom/Ziggeo.XamarinSDK.Netstandard</projectUrl>
     <iconUrl>https://ziggeo.com/assets/images/logo.png</iconUrl>
     <description>Ziggeo API (https://ziggeo.com) allows you to integrate video recording and playback with only several lines of code in your app.</description>
     <language>en-US</language>
@@ -20,21 +20,22 @@
         <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
         <dependency id="Karamunting.Android.Karumi.Dexter" version="6.2.0" />
         <dependency id="GoogleGson" version="2.8.6" />
-        <dependency id="Naxam.SquareUp.OkHttp3.LoggingInterceptor" version="3.11.0" />
-        <dependency id="Square.OkHttp3" version="3.12.6" />
-        <dependency id="Xam.Plugins.Android.ExoPlayer" version="2.11.8" />
-        <dependency id="Xamarin.AndroidX.AppCompat" version="1.3.0" />
-        <dependency id="Xamarin.AndroidX.ConstraintLayout" version="2.0.4" />
-        <dependency id="Xamarin.AndroidX.RecyclerView" version="1.2.1" />
-        <dependency id="Xamarin.AndroidX.Room.Runtime" version="2.3.0" />
-        <dependency id="Xamarin.AndroidX.Work.Runtime" version="2.7.1.2" exclude="Build,Analyzers" />
+    	<dependency id="Naxam.SquareUp.OkHttp3.LoggingInterceptor" version="3.11.0" />
+    	<dependency id="Square.OkHttp3" version="3.12.6" />
+    	<dependency id="Xam.Plugins.Android.ExoPlayer" version="2.11.8" />
+    	<dependency id="Xamarin.AndroidX.AppCompat" version="1.3.0" />
+    	<dependency id="Xamarin.AndroidX.ConstraintLayout" version="2.0.4" />
+    	<dependency id="Xamarin.AndroidX.RecyclerView" version="1.2.1" />
+    	<dependency id="Xamarin.AndroidX.Room.Runtime" version="2.3.0" />
+    	<dependency id="Xamarin.AndroidX.Work.Runtime" version="2.7.1.2" exclude="Build,Analyzers" />
         <dependency id="Xamarin.Google.MLKit.MediaPipe.Internal" version="116.0.0.3" />
-        <dependency id="Xamarin.Google.Android.Material" version="1.0.0.1" />
-        <dependency id="Xamarin.Google.ZXing.Core" version="3.3.3" />
+    	<dependency id="Xamarin.Google.Android.Material" version="1.0.0.1" />
+    	<dependency id="Xamarin.Google.ZXing.Core" version="3.3.3" />
         <dependency id="Xamarin.Android.ReactiveX.RxJava" version="2.2.9"/>
         <dependency id="Xamarin.Google.Guava" version="27.1.0.1"/>
         <dependency id="Xamarin.Android.ReactiveX.RxAndroid" version="2.1.1"/>
         <dependency id="Xamarin.Android.ReactiveStreams" version="1.0.2"/>
+
       </group>
       <group targetFramework="Xamarin.iOS1.0">
         <dependency id="Newtonsoft.Json" version="12.0.2" exclude="Build,Analyzers" />
