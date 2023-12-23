@@ -19,7 +19,8 @@
                 nativeConfig.MaxDuration = (int)config.MaxDuration;
                 nativeConfig.ShouldEnableCoverShot = config.ShouldEnableCoverShot;
                 nativeConfig.ShouldConfirmStopRecording = config.ShouldConfirmStopRecording;
-                nativeConfig.StopRecordingConfirmationDialogConfig = StopRecordingConfirmationDialogConfigMapper.Map(config.StopRecordingConfirmationDialogConfig);
+                if (config.StopRecordingConfirmationDialogConfig != null)
+                    nativeConfig.StopRecordingConfirmationDialogConfig = StopRecordingConfirmationDialogConfigMapper.Map(config.StopRecordingConfirmationDialogConfig);
                 nativeConfig.IsPausedMode = config.PausedMode;
             }
 

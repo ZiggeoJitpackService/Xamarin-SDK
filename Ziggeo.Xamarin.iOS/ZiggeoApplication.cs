@@ -69,15 +69,45 @@ namespace Ziggeo
         {
             if (_ziggeo == null)
             {
-                _init();
+                _ziggeo = new ZiggeoMediaSDK.Ziggeo(_appToken);
+            }
+    
+            if (QrScannerConfig != null)
+            {
+                _ziggeo.QrScannerConfig = QrScannerConfigMapper.Map(QrScannerConfig);
+                _ziggeo.SetQRScannerDelegate(new QrScannerCallback(QrScannerConfig));
+                _ziggeo.SetHardwarePermissionDelegate(new HardwarePermissionQRScannerCallback(QrScannerConfig));
             }
 
-            _ziggeo.QrScannerConfig = QrScannerConfigMapper.Map(QrScannerConfig);
-            _ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
-            _ziggeo.PlayerConfig = PlayerConfigMapper.Map(PlayerConfig);
-            _ziggeo.UploadingConfig = UploaderConfigMapper.Map(UploaderConfig);
-            _ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);
-            _ziggeo.RecorderConfig = CameraRecorderConfigMapper.Map(CameraRecorderConfig);
+            if (FileSelectorConfig != null)
+            {
+                _ziggeo.FileSelectorConfig = FileSelectorConfigMapper.Map(FileSelectorConfig);
+                _ziggeo.SetFileSelectorDelegate(new FileSelectorCallback(FileSelectorConfig));
+            }
+
+            if (PlayerConfig != null)
+            { 
+                _ziggeo.PlayerConfig = PlayerConfigMapper.Map(PlayerConfig);
+                _ziggeo.SetPlayerDelegate(new PlayerCallback(PlayerConfig));
+            }
+
+            if (UploaderConfig != null)
+            {
+                _ziggeo.UploadingConfig = UploaderConfigMapper.Map(UploaderConfig);
+                _ziggeo.SetUploadingDelegate(new UploaderCallback(UploaderConfig));
+            }
+
+            if (ScreenRecorderConfig != null)
+            {
+                _ziggeo.RecorderConfig = ScreenRecorderConfigMapper.Map(ScreenRecorderConfig);
+            }
+
+            if (CameraRecorderConfig != null)
+            {
+                    _ziggeo.RecorderConfig = CameraRecorderConfigMapper.Map(CameraRecorderConfig);
+                    _ziggeo.SetRecorderDelegate(new RecorderCallback(CameraRecorderConfig));
+                    _ziggeo.SetHardwarePermissionDelegate(new HardwarePermissionRecorderCallback(CameraRecorderConfig));
+            }
         }
 
         public string ServerAuthToken
@@ -103,8 +133,6 @@ namespace Ziggeo
             qrZiggeo.StartQrScanner();
         }
 
-
-
         public void SetSensorManager(ISensorManagerEventsListener listener)
         {
             //_ziggeo.SetSensorCallback(new SensorManagerCallback(listener));
@@ -114,7 +142,6 @@ namespace Ziggeo
         public void StartPlayer(string videoToken)
         {
             _initConfigs();
-            _ziggeo.SetPlayerDelegate(new PlayerCallback(PlayerConfig));
             _ziggeo.PlayVideo(videoToken);
         }
 
@@ -128,43 +155,45 @@ namespace Ziggeo
 
         public void StartAudioWithToken(string[] mediaToken)
         {
+            _initConfigs();
             _ziggeo.PlayAudios(mediaToken);
         }
 
         public void StartAudioWithPath(string[] mediaPath)
         {
+            _initConfigs();
             _ziggeo.PlayAudioFromUris(mediaPath);
         }
 
         public void OpenImage(string mediaToken)
         {
+            _initConfigs();
             _ziggeo.ShowImage(mediaToken);
         }
 
         public void OpenImageWithPath(string mediaPath)
         {
+            _initConfigs();
             _ziggeo.ShowImage(mediaPath);
         }
 
         public void StartAudioRecorder()
         {
+            _initConfigs();
             _ziggeo.StartAudioRecorder();
         }
 
         public void StartImageRecorder()
         {
+            _initConfigs();
             _ziggeo.StartImageRecorder();
         }
-
-        
 
         public void StartFileSelector()
         {
             _initConfigs();
             _ziggeo.StartFileSelector();
         }
-
-        
 
         public void StartCameraRecorder()
         {

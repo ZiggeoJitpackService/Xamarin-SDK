@@ -7,10 +7,14 @@
             ZiggeoMediaSDK.StopRecordingConfirmationDialogConfig nativeConfig = new ZiggeoMediaSDK.StopRecordingConfirmationDialogConfig();
             if (config != null)
             {
-                nativeConfig.TitleText = config.titleText;
-                nativeConfig.MesText = config.mesText;
-                nativeConfig.PosBtnText = config.posBtnText;
-                nativeConfig.NegBtnText = config.negBtnText;
+                if (config.titleText != null)
+                    nativeConfig.TitleText = config.titleText;
+                if (config.mesText != null)
+                    nativeConfig.MesText = config.mesText;
+                if (config.posBtnText != null)
+                    nativeConfig.PosBtnText = config.posBtnText;
+                if (config.negBtnText != null)
+                    nativeConfig.NegBtnText = config.negBtnText;
             }
 
             return nativeConfig;
