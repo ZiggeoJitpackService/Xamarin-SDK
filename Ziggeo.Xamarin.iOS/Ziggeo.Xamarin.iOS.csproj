@@ -237,7 +237,7 @@
       <Name>Ziggeo.Xamarin.NetStandard</Name>
     </ProjectReference>
     <ProjectReference Include="..\Ziggeo.Xamarin.iOS.Binding\Ziggeo.Xamarin.iOS.Binding.csproj">
-      <Project>{BAAAFE32-9DDF-4851-A84D-121F13C74BFB}</Project>
+      <Project>{E8F484CF-2F94-483D-9E47-65CF922642E2}</Project>
       <Name>Ziggeo.Xamarin.iOS.Binding</Name>
     </ProjectReference>
   </ItemGroup>
