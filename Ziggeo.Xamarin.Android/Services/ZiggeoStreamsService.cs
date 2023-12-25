@@ -55,10 +55,10 @@ namespace Ziggeo.Services
             await source.Task;
         }
 
-        public async Task<JObject> Bind(string tokenOrKey, string streamToken)
+        public async Task<JObject> Bind(string tokenOrKey, string streamToken, string uploadId)
         {
             var source = new TaskCompletionSource<JObject>();
-            Streams.Bind(tokenOrKey, streamToken, new Callback(
+            Streams.Bind(tokenOrKey, streamToken, null, uploadId,new Callback(
                 (call, response) =>
                 {
                     if (response.IsSuccessful)

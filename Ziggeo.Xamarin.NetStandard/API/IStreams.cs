@@ -11,7 +11,7 @@ namespace Ziggeo
 
         Task AttachImage(string tokenOrKey, string streamToken, string filePath);
 
-        Task<JObject> Bind(string tokenOrKey, string streamToken);
+        Task<JObject> Bind(string tokenOrKey, string streamToken, string uploadId);
 
         Task AttachVideo(string tokenOrKey, string streamToken, string filePath);
     }
