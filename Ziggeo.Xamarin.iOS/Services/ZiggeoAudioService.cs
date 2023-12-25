@@ -35,15 +35,21 @@ namespace Ziggeo.Xamarin.iOS.Services
                     var result = new JArray();
                     for (nuint i = 0; i < jsonArray.Count; i++)
                     {
-                        var item = jsonArray.GetItem<ContentModel>(i);
+                        var item = jsonArray.GetItem<Audio>(i);
+
+                        var tags = new JArray();
+                        for (int j = 0; j < item.Tags.Length; j++)
+                        {
+                            tags.Add(item.Tags[j].ToString());
+                        }
                         var jsonObject = new JObject(
                             new JProperty("token", item.Token),
                             new JProperty("state_string", item.StateString),
                             new JProperty("title", item.Title),
-                            new JProperty("description", item.Desc),
-                            new JProperty("submission_date", item.Date),
-                            new JProperty("tags", ""),
-                            new JProperty("key", ""),
+                            new JProperty("description", item.Description),
+                            new JProperty("submission_date", item.Date.ToString()),
+                            new JProperty("tags", tags),
+                            new JProperty("key", item.Key),
                             new JProperty("AudioItem", "")
                         );
                         result.Add(jsonObject);
@@ -66,18 +72,23 @@ namespace Ziggeo.Xamarin.iOS.Services
             var source = new TaskCompletionSource<JObject>();
             var dictionary = new NSDictionary();
 
-            Audios.Get(tokenOrKey, dictionary, (content, response, error) =>
+            Audios.Get(tokenOrKey, dictionary, (item, response, error) =>
             {
                 if (error == null)
                 {
+                    var tags = new JArray();
+                    for (int j = 0; j < item.Tags.Length; j++)
+                    {
+                        tags.Add(item.Tags[j].ToString());
+                    }
                     var result = new JObject(
-                        new JProperty("token", content.Token),
-                        new JProperty("state_string", content.StateString),
-                        new JProperty("title", content.Title),
-                        new JProperty("description", content.Desc),
-                        new JProperty("submission_date", content.Date),
-                        new JProperty("tags", ""),
-                        new JProperty("key", ""),
+                        new JProperty("token", item.Token),
+                        new JProperty("state_string", item.StateString),
+                        new JProperty("title", item.Title),
+                        new JProperty("description", item.Description),
+                        new JProperty("submission_date", item.Date.ToString()),
+                        new JProperty("tags", tags),
+                        new JProperty("key", item.Key),
                         new JProperty("AudioItem", "")
                     );
                     source.TrySetResult(result);
@@ -101,18 +112,23 @@ namespace Ziggeo.Xamarin.iOS.Services
                 dictionary = NSDictionary.FromObjectsAndKeys(data.Values.ToArray(), data.Keys.ToArray());
             }
 
-            Audios.Update(tokenOrKey, dictionary, (content, response, error) =>
+            Audios.Update(tokenOrKey, dictionary, (item, response, error) =>
             {
                 if (error == null)
                 {
+                    var tags = new JArray();
+                    for (int j = 0; j < item.Tags.Length; j++)
+                    {
+                        tags.Add(item.Tags[j].ToString());
+                    }
                     var result = new JObject(
-                        new JProperty("token", content.Token),
-                        new JProperty("state_string", content.StateString),
-                        new JProperty("title", content.Title),
-                        new JProperty("description", content.Desc),
-                        new JProperty("submission_date", content.Date),
-                        new JProperty("tags", ""),
-                        new JProperty("key", ""),
+                        new JProperty("token", item.Token),
+                        new JProperty("state_string", item.StateString),
+                        new JProperty("title", item.Title),
+                        new JProperty("description", item.Description),
+                        new JProperty("submission_date", item.Date.ToString()),
+                        new JProperty("tags", tags),
+                        new JProperty("key", item.Key),
                         new JProperty("AudioItem", "")
                     );
                     source.TrySetResult(result);
@@ -180,16 +196,22 @@ namespace Ziggeo.Xamarin.iOS.Services
             {
                 if (error == null)
                 {
-                    var content = new ContentModel();
-                    content.SetInfo(jsonObject);
+                    var item = new Audio();
+                    item.SetInfo(jsonObject);
+
+                    var tags = new JArray();
+                    for (int j = 0; j < item.Tags.Length; j++)
+                    {
+                        tags.Add(item.Tags[j].ToString());
+                    }
                     var result = new JObject(
-                        new JProperty("token", content.Token),
-                        new JProperty("state_string", content.StateString),
-                        new JProperty("title", content.Title),
-                        new JProperty("description", content.Desc),
-                        new JProperty("submission_date", content.Date),
-                        new JProperty("tags", ""),
-                        new JProperty("key", ""),
+                        new JProperty("token", item.Token),
+                        new JProperty("state_string", item.StateString),
+                        new JProperty("title", item.Title),
+                        new JProperty("description", item.Description),
+                        new JProperty("submission_date", item.Date.ToString()),
+                        new JProperty("tags", tags),
+                        new JProperty("key", item.Key),
                         new JProperty("AudioItem", "")
                     );
                     source.TrySetResult(result);

@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{BAAAFE32-9DDF-4851-A84D-121F13C74BFB}</ProjectGuid>
+    <ProjectGuid>{E8F484CF-2F94-483D-9E47-65CF922642E2}</ProjectGuid>
     <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>NativeLibrary</RootNamespace>
@@ -52,6 +52,14 @@
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.iOS.SwiftRuntimeSupport">
+      <Version>0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.iOS.MaterialComponents">
+      <Version>92.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>
