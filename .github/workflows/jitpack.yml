@@ -41,5 +41,5 @@ jobs:
         run: dotnet pack /Users/runner/work/Xamarin-SDK/Xamarin-SDK/Ziggeo.Xamarin.NetStandard/Ziggeo.Xamarin.NetStandard.csproj --configuration Release -o .
         
       - name: Publish nuget package
-        run: dotnet nuget push Ziggeo.XamarinSDK.Netstandard.1.3.13.nupkg  --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json --timeout 360 --skip-duplicate
+        run: dotnet nuget push Ziggeo.XamarinSDK.Netstandard.1.3.14.nupkg  --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json --timeout 360 --skip-duplicate
     
